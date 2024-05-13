@@ -163,29 +163,48 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-wrap: wrap; /* Adiciona quebra de linha */
+            justify-content: center; /* Centraliza os itens */
         }
 
-        .categories ul li {
-            display: inline-block;
-            margin-right: 20px;
+        .category-item {
+            margin: 20px;
+            text-align: center;
+            flex: 0 0 calc(25% - 40px); /* 4 itens por linha */
+            max-width: calc(25% - 40px); /* Largura máxima dos itens */
+            box-sizing: border-box;
         }
 
-        .categories ul li:last-child {
-            margin-right: 0;
+        .category-item img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
         }
 
-        .categories ul li a {
-            color: #333;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+        .category-item h3 {
+            margin-top: 10px;
         }
 
-        .categories ul li a:hover {
+        .navigation-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .navigation-buttons button {
             background-color: #333;
             color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #ffcc00;
+            color: #333;
         }
 
         @media screen and (max-width: 768px) {
@@ -250,12 +269,13 @@
 
     <div class="categories">
         <h3>Categorias</h3>
-        <ul>
-            <li><a href="#">Massas</a></li>
-            <li><a href="#">Bolos</a></li>
-            <li><a href="#">Doces</a></li>
-            <!-- Adicione mais categorias conforme necessário -->
+        <ul id="category-list">
+            <!-- Categorias aqui -->
         </ul>
+        <div class="navigation-buttons">
+            <button onclick="prevCategories()">Anterior</button>
+            <button onclick="nextCategories()">Próxima</button>
+        </div>
     </div>
 
     <!-- Conteúdo da página aqui -->
@@ -265,6 +285,94 @@
     </footer>
 
     <script>
+        var categories = [
+            {
+                name: "Massas",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Peixes",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Frutas",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Lanches",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Saladas",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Sopas",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Carnes vermelhas",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Sobremesas de chocolate",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Vegetais assados",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Smoothies",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Sanduíches",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Bolos decorados",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Saladas de frutas",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Tortas salgadas",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Pratos de frango grelhado",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Pratos de carne de porco",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Pratos de cordeiro",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Pratos de comida mexicana",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Pratos de comida italiana",
+                image: "OIG4.jpg"
+            },
+            {
+                name: "Pratos de comida asiática",
+                image: "OIG4.jpg"
+            }
+            // Adicione mais categorias conforme necessário
+        ];
+
+        var currentCategoryIndex = 0;
+        var totalCategories = categories.length;
+        var categoriesPerPage = 4; // Número de categorias por página
+
         function toggleMenu() {
             var x = document.getElementById("mobile-menu");
             var menuIcon = document.querySelector('.menu-icon');
@@ -292,32 +400,53 @@
             }
         }
 
-        window.addEventListener('resize', function() {
-            var width = window.innerWidth;
-            var mobileMenu = document.getElementById('mobile-menu');
-            var mainNav = document.getElementById('main-nav');
-            var menuIcon = document.querySelector('.menu-icon');
-
-            if (width > 768) {
-                mobileMenu.style.display = 'none';
-                menuIcon.classList.remove('open'); // Remover a classe 'open' quando a tela for maior
-            } else {
-                if (mainNav.style.display === 'none') {
-                    mobileMenu.style.display = 'block';
-                }
+        function prevCategories() {
+            currentCategoryIndex -= categoriesPerPage;
+            if (currentCategoryIndex < 0) {
+                currentCategoryIndex = Math.floor(totalCategories / categoriesPerPage) * categoriesPerPage;
             }
+            updateCategories();
+        }
+
+        function nextCategories() {
+            currentCategoryIndex += categoriesPerPage;
+            if (currentCategoryIndex >= totalCategories) {
+                currentCategoryIndex = 0;
+            }
+            updateCategories();
+        }
+
+        function updateCategories() {
+            var categoryList = document.getElementById('category-list');
+            categoryList.innerHTML = ''; // Limpa a lista de categorias
+
+            for (var i = currentCategoryIndex; i < Math.min(currentCategoryIndex + categoriesPerPage, totalCategories); i++) {
+                var category = categories[i];
+                var listItem = document.createElement('li');
+                listItem.className = 'category-item';
+
+                var image = document.createElement('img');
+                image.src = category.image;
+                image.alt = category.name;
+
+                var name = document.createElement('h3');
+                name.textContent = category.name;
+
+                listItem.appendChild(image);
+                listItem.appendChild(name);
+
+                categoryList.appendChild(listItem);
+            }
+        }
+
+        window.addEventListener('resize', function () {
+            // Atualiza as categorias ao redimensionar a janela (para garantir que estejam centralizadas)
+            updateCategories();
         });
 
-        // Verifica a largura ao carregar a página para dispositivos móveis
-        window.addEventListener('load', function() {
-            var width = window.innerWidth;
-            var mobileMenu = document.getElementById('mobile-menu');
-            var mainNav = document.getElementById('main-nav');
-            var menuIcon = document.querySelector('.menu-icon');
-
-            if (width <= 768 && mainNav.style.display === 'none') {
-                mobileMenu.style.display = 'none';
-            }
+        // Atualiza as categorias ao carregar a página
+        window.addEventListener('load', function () {
+            updateCategories();
         });
     </script>
 
