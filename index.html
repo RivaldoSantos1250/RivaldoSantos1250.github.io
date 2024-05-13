@@ -205,7 +205,7 @@
             }
 
             .mobile-menu {
-                display: block;
+                display: none;
             }
         }
     </style>
@@ -305,6 +305,18 @@
                 if (mainNav.style.display === 'none') {
                     mobileMenu.style.display = 'block';
                 }
+            }
+        });
+
+        // Verifica a largura ao carregar a página para dispositivos móveis
+        window.addEventListener('load', function() {
+            var width = window.innerWidth;
+            var mobileMenu = document.getElementById('mobile-menu');
+            var mainNav = document.getElementById('main-nav');
+            var menuIcon = document.querySelector('.menu-icon');
+
+            if (width <= 768 && mainNav.style.display === 'none') {
+                mobileMenu.style.display = 'none';
             }
         });
     </script>
