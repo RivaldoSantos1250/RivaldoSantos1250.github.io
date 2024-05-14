@@ -14,25 +14,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgb(255, 125, 3);
+            background-color: rgb(255, 166, 0);
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Agora é uma coluna para alinhar verticalmente */
         }
         
-        .loading-spinner {
-            border: 8px solid rgba(0, 0, 0, 0.1);
-            border-left-color: #333;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+        .loading-gif {
+            width: 300px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+            margin-bottom: 20px; /* Espaçamento abaixo do GIF */
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .loading-text {
+            font-size: 20px;
+            color: #333;
         }
         
         .content {
@@ -41,6 +39,21 @@
         
         .loaded .content {
             display: block; /* Mostra o conteúdo quando estiver carregado */
+        }
+
+        .loading-spinner {
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #333;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            position: relative; /* Necessário para posicionar o GIF */
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         body {
@@ -65,7 +78,7 @@
             justify-content: space-between;
             align-items: center;
             top: 0;
-            z-index: 9999;
+            z-index: 99;
             
         }
 
@@ -437,14 +450,11 @@
 
 <body>
 
-     <!-- Loading Overlay -->
-     <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
-    </div>
-    
-    <!-- Conteúdo do site -->
-    <div class="content">
-        <!-- Seu conteúdo existente aqui -->
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <img src="gb.gif" alt="Loading GIF" class="loading-gif">
+        <div class="loading-spinner">
+        </div>
     </div>
 
     <header>
