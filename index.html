@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
     <title>TiaNaCozinha</title>
     <style>
         body {
@@ -256,6 +257,37 @@
             color: #666;
         }
 
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 10px;
+            border-radius: 50%;
+            background-color: #ffcc00;
+            color: #333;
+            font-size: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none; /* Remove sublinhado dos links */
+        }
+
+        .social-icons a:hover {
+            background-color: #fff;
+            color: #ffcc00;
+        }
+
         @media screen and (max-width: 768px) {
             nav ul {
                 display: none;
@@ -376,7 +408,14 @@
     <!-- Conteúdo da página aqui -->
 
     <footer>
-        <!-- Rodapé aqui -->
+        <p>Siga-nos nas redes sociais:</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
     </footer>
 
     <script>
