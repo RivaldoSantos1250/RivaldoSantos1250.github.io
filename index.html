@@ -195,6 +195,7 @@
     height: 150px;
     object-fit: cover;
     transition: transform 0.3s ease; /* Adiciona uma transição suave */
+    cursor: pointer;
         }
 
         .category-item p {
@@ -203,7 +204,7 @@
 }
 
 
-        .category-item:hover {
+        .category-item img:hover {
             transform: scale(1.1);
         }
 
@@ -401,7 +402,7 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <button class="dark-mode-toggle" onclick="toggleDarkMode()">Modo Dark</button>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()"><i class="fa-solid fa-moon"></i></button>
     </header>
 
     <div class="mobile-menu" id="mobile-menu">
