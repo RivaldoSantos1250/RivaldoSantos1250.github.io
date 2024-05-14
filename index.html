@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>TiaNaCozinha</title>
     <style>
         body {
@@ -167,6 +167,7 @@
             display: flex;
             flex-wrap: wrap; /* Adiciona quebra de linha */
             justify-content: center; /* Centraliza os itens */
+            transition: transform 0.3s ease; /* Adiciona uma transição suave ao transformar */
         }
 
         .category-item {
@@ -175,6 +176,7 @@
             flex: 0 0 calc(20% - 40px); /* 5 itens por linha */
             max-width: calc(20% - 40px); /* Largura máxima dos itens */
             box-sizing: border-box;
+            transition: transform 0.3s ease; /* Adiciona uma transição suave ao transformar */
         }
 
         .category-item img {
@@ -182,10 +184,11 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
+            transition: transform 0.3s ease; /* Adiciona uma transição suave ao transformar */
         }
 
-        .category-item h3 {
-            margin-top: 10px;
+        .category-item:hover {
+            transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
         }
 
         .navigation-buttons {
@@ -504,86 +507,54 @@
         ];
 
         var currentCategoryIndex = 0;
-        var totalCategories = categories.length;
-        var categoriesPerPage = 4; // Número de categorias por página
+        var categoryList = document.getElementById("category-list");
+
+        function showCategories() {
+            var startIndex = currentCategoryIndex;
+            var endIndex = Math.min(currentCategoryIndex + 5, categories.length);
+
+            categoryList.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
+
+            for (var i = startIndex; i < endIndex; i++) {
+                var category = categories[i];
+                var listItem = document.createElement("li");
+                listItem.classList.add("category-item");
+                listItem.innerHTML = `
+                    <img src="${category.image}" alt="${category.name}">
+                    <p>${category.name}</p>
+                `;
+                categoryList.appendChild(listItem);
+            }
+        }
+
+        function nextCategories() {
+            currentCategoryIndex += 5;
+            if (currentCategoryIndex >= categories.length) {
+                currentCategoryIndex = 0;
+            }
+            showCategories();
+        }
+
+        function prevCategories() {
+            currentCategoryIndex -= 5;
+            if (currentCategoryIndex < 0) {
+                currentCategoryIndex = Math.max(0, categories.length - 5);
+            }
+            showCategories();
+        }
 
         function toggleMenu() {
-            var x = document.getElementById("mobile-menu");
-            var menuIcon = document.querySelector('.menu-icon');
-            menuIcon.classList.toggle('open'); // Adiciona ou remove a classe 'open'
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
+            var mobileMenu = document.getElementById("mobile-menu");
+            mobileMenu.style.display = mobileMenu.style.display === "block" ? "none" : "block";
         }
 
         function toggleDarkMode() {
             var body = document.body;
             body.classList.toggle("dark-mode");
-
-            var darkModeToggle = document.querySelector('.dark-mode-toggle');
-            if (body.classList.contains('dark-mode')) {
-                darkModeToggle.textContent = 'Modo White';
-                body.style.backgroundColor = "#333"; // fundo escuro
-                body.style.color = "#fff"; // texto claro
-            } else {
-                darkModeToggle.textContent = 'Modo Dark';
-                body.style.backgroundColor = "#fff"; // fundo claro
-                body.style.color = "#333"; // texto escuro
-            }
         }
 
-        function prevCategories() {
-            currentCategoryIndex -= categoriesPerPage;
-            if (currentCategoryIndex < 0) {
-                currentCategoryIndex = Math.floor(totalCategories / categoriesPerPage) * categoriesPerPage;
-            }
-            updateCategories();
-        }
-
-        function nextCategories() {
-            currentCategoryIndex += categoriesPerPage;
-            if (currentCategoryIndex >= totalCategories) {
-                currentCategoryIndex = 0;
-            }
-            updateCategories();
-        }
-
-        function updateCategories() {
-            var categoryList = document.getElementById('category-list');
-            categoryList.innerHTML = ''; // Limpa a lista de categorias
-
-            for (var i = currentCategoryIndex; i < Math.min(currentCategoryIndex + categoriesPerPage, totalCategories); i++) {
-                var category = categories[i];
-                var listItem = document.createElement('li');
-                listItem.className = 'category-item';
-
-                var image = document.createElement('img');
-                image.src = category.image;
-                image.alt = category.name;
-
-                var name = document.createElement('h3');
-                name.textContent = category.name;
-
-                listItem.appendChild(image);
-                listItem.appendChild(name);
-
-                categoryList.appendChild(listItem);
-            }
-        }
-
-        window.addEventListener('resize', function () {
-            // Atualiza as categorias ao redimensionar a janela (para garantir que estejam centralizadas)
-            updateCategories();
-        });
-
-        // Atualiza as categorias ao carregar a página
-        window.addEventListener('load', function () {
-            updateCategories();
-        });
+        showCategories();
     </script>
-
 </body>
 
 </html>
