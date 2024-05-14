@@ -463,6 +463,15 @@
         .search-button:hover {
             background-color: #f0c300;
         }
+
+        /* Estilos responsivos */
+        @media screen and (max-width: 600px) {
+            .search-input {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 
 <script>
@@ -495,21 +504,13 @@
                 <li><a href="#">Receitas</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
+            
         </nav>
         <div class="menu-icon" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <button class="dark-mode-toggle" onclick="toggleDarkMode()"><i class="fas fa-moon"></i></button>
-        <form class="search-form" action="resultados-pesquisa.html" method="GET">
-            <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-            <button class="search-button" type="submit">Pesquisar</button>
-        </form>
-        
-        <div id="search-results"></div>
-    
-
     </header>
 
     <div class="mobile-menu" id="mobile-menu">
@@ -519,7 +520,10 @@
             <li><a href="#">Contato</a></li>
         </ul>
     </div>
-
+    <form class="search-form" action="resultados-pesquisa.html" method="GET">
+        <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+        <button class="search-button" type="submit">Pesquisar</button>
+    </form>
     <div class="video-banner">
         <video src="Menu.mp4" autoplay muted loop></video>
         <div class="banner-content">
