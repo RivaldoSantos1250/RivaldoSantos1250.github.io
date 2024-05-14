@@ -21,12 +21,15 @@
         }
 
         header {
+            position: sticky;
             background-color: #333;
             color: #fff;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            top: 0;
+            z-index: 9999;
         }
 
         .logo h1 {
@@ -81,7 +84,7 @@
             left: 0;
             width: 100%;
             background-color: #333;
-            z-index: 1;
+            z-index: 99;
             padding: 10px 0;
         }
 
@@ -353,28 +356,6 @@
         }
 
         @media screen and (max-width: 768px) {
-
-            .header-reveal nav ul {
-                display: none;
-            }
-
-            .header-reveal .menu-icon {
-                display: block;
-            }
-
-            .header-reveal .menu-icon .bar {
-                width: 25px;
-                height: 3px;
-                background-color: #fff;
-                margin: 5px;
-            }
-
-            .header-reveal .category-item {
-                flex: 0 0 calc(50% - 40px);
-                max-width: calc(50% - 40px);
-            }
-
-
             nav ul {
                 display: none;
             }
@@ -398,8 +379,6 @@
                 flex: 0 0 calc(50% - 40px);
                 max-width: calc(50% - 40px);
             }
-
-            
         }
     </style>
 </head>
@@ -437,7 +416,7 @@
         <video src="Menu.mp4" autoplay muted loop></video>
         <div class="banner-content">
             <h2>Veja nossas deliciosas receitas</h2>
-            <p>Assista aos vídeos e aprenda a preparar pratos incríveis!</p>
+            <p>aprenda a preparar pratos incríveis!</p>
         </div>
     </div>
 
