@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Pesquisa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            opacity: 0; /* Inicia com opacidade 0 */
+            transition: opacity 0.5s ease; /* Adiciona uma transição suave */
+        }
+
+        .recipe {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adiciona uma transição suave */
+            cursor: pointer;
+            position: relative;
+        }
+
+        .recipe:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px); /* Levanta um pouco ao passar o mouse */
+        }
+
+        .recipe img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recipe-content {
+            padding: 20px;
+        }
+
+        .recipe-title {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .recipe-title a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .recipe-title a:hover {
+            color: #ffcc00;
+        }
+
+        .recipe-description {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .recipe-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+        }
+
+        /* Animação de fade-in para os resultados */
+        #search-results.fade-in {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Resultados da Pesquisa</h1>
+    
+    <div id="search-results"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var params = new URLSearchParams(window.location.search);
+            var query = params.get('q');
+
+            if (query !== null && query !== '') {
+                searchRecipes(query);
+            } else {
+                displayNoResults();
+            }
+        });
+
+        function searchRecipes(query) {
+            // Conjunto de dados de exemplo das receitas
+            var recipes = [
+                { nome: "Receita 1", descricao: "Descrição da Receita 1", imagem: "OIG4.jpg", link: "receita1.html" },
+                { nome: "Receita 2", descricao: "Descrição da Receita 2", imagem: "OIG4.jpg", link: "receita2.html" },
+                { nome: "ze", descricao: "Descrição da Receita ze", imagem: "ze.jpg", link: "ze.html" }, // Receita "ze"
+            ];
+
+            // Filtra as receitas que correspondem à consulta
+            var results = recipes.filter(function(recipe) {
+                return recipe.nome.toLowerCase().includes(query);
+            });
+
+            // Exibe os resultados na página
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            var resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+
+            if (results.length > 0) {
+                results.forEach(function(recipe) {
+                    var recipeHTML = '<div class="recipe">';
+                    recipeHTML += '<img src="' + recipe.imagem + '" alt="' + recipe.nome + '">';
+                    recipeHTML += '<div class="recipe-info">';
+                    recipeHTML += '<h3 class="recipe-title"><a href="' + recipe.link + '">' + recipe.nome + '</a></h3>';
+                    recipeHTML += '<p class="recipe-description">' + recipe.descricao + '</p>';
+                    recipeHTML += '</div></div>';
+                    resultsContainer.innerHTML += recipeHTML;
+                });
+
+                // Adiciona a classe de animação para fade-in dos resultados
+                resultsContainer.classList.add('fade-in');
+            } else {
+                displayNoResults();
+            }
+        }
+
+        function displayNoResults() {
+            var resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+            // Adiciona a classe de animação para fade-in dos resultados
+            resultsContainer.classList.add('fade-in');
+        }
+    </script>
+
+</body>
+</html>

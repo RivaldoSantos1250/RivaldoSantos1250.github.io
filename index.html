@@ -435,6 +435,34 @@
                 max-width: calc(50% - 40px);
             }
         }
+
+        .search-form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #f0c300;
+        }
     </style>
 
 <script>
@@ -474,6 +502,13 @@
             <div class="bar"></div>
         </div>
         <button class="dark-mode-toggle" onclick="toggleDarkMode()"><i class="fas fa-moon"></i></button>
+        <form class="search-form" action="resultados-pesquisa.html" method="GET">
+            <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+            <button class="search-button" type="submit">Pesquisar</button>
+        </form>
+        
+        <div id="search-results"></div>
+    
 
     </header>
 
@@ -586,19 +621,11 @@
         });
         var categories = [
             {
-                name: "Massas",
+                name: "Café da Manhã",
                 image: "OIG4.jpg"
             },
             {
-                name: "Peixes",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Frutas",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Lanches",
+                name: "Petiscos e Entradas",
                 image: "OIG4.jpg"
             },
             {
@@ -606,65 +633,26 @@
                 image: "OIG4.jpg"
             },
             {
-                name: "Sopas",
+                name: "Prato Principal",
                 image: "OIG4.jpg"
             },
             {
-                name: "Carnes vermelhas",
+                name: "Sobremesas",
                 image: "OIG4.jpg"
             },
             {
-                name: "Sobremesas de chocolate",
+                name: "Sopas e Caldos",
                 image: "OIG4.jpg"
             },
             {
-                name: "Vegetais assados",
+                name: "Drinques",
                 image: "OIG4.jpg"
             },
+
             {
-                name: "Smoothies",
+                name: "Vegetariano",
                 image: "OIG4.jpg"
             },
-            {
-                name: "Sanduíches",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Bolos decorados",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Saladas de frutas",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Tortas salgadas",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Pratos de frango grelhado",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Pratos de carne de porco",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Pratos de cordeiro",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Pratos de comida mexicana",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Pratos de comida italiana",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Pratos de comida asiática",
-                image: "OIG4.jpg"
-            }
         ];
 
         var currentCategoryIndex = 0;
@@ -689,7 +677,7 @@
         }
 
         function nextCategories() {
-            currentCategoryIndex += 5;
+            currentCategoryIndex += 4;
             if (currentCategoryIndex >= categories.length) {
                 currentCategoryIndex = 0;
             }
@@ -697,9 +685,9 @@
         }
 
         function prevCategories() {
-            currentCategoryIndex -= 5;
+            currentCategoryIndex -= 4;
             if (currentCategoryIndex < 0) {
-                currentCategoryIndex = Math.max(0, categories.length - 5);
+                currentCategoryIndex = Math.max(0, categories.length - 4);
             }
             showCategories();
         }
@@ -715,6 +703,49 @@
         }
 
         showCategories();
+
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            var query = document.getElementById('search-input').value.trim().toLowerCase();
+            if (query !== '') {
+                searchRecipes(query);
+            }
+        });
+
+        function searchRecipes(query) {
+            // Conjunto de dados de exemplo das receitas
+            var recipes = [
+                { nome: "Receita 1", descricao: "Descrição da Receita 1" },
+                { nome: "Receita 2", descricao: "Descrição da Receita 2" },
+                { nome: "ze", descricao: "Descrição da Receita ze" }, // Receita "ze"
+            ];
+
+            // Filtra as receitas que correspondem à consulta
+            var results = recipes.filter(function(recipe) {
+                return recipe.nome.toLowerCase().includes(query);
+            });
+
+            // Exibe os resultados na página
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            var resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+
+            if (results.length > 0) {
+                results.forEach(function(recipe) {
+                    var recipeHTML = '<div>';
+                    recipeHTML += '<h3>' + recipe.nome + '</h3>';
+                    recipeHTML += '<p>' + recipe.descricao + '</p>';
+                    recipeHTML += '</div>';
+                    resultsContainer.innerHTML += recipeHTML;
+                });
+            } else {
+                resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+            }
+        }
     </script>
 </body>
 
