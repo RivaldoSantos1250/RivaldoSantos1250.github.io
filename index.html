@@ -30,6 +30,19 @@
             align-items: center;
             top: 0;
             z-index: 9999;
+            
+        }
+
+        @keyframes fadeInHeader {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .logo h1 {
@@ -45,6 +58,11 @@
         nav ul li {
             display: inline-block;
             margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li:hover {
+            transform: translateY(-3px);
         }
 
         nav ul li a {
@@ -164,10 +182,10 @@
         }
 
         .categories h3 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
 
         .categories ul {
             list-style: none;
@@ -181,73 +199,56 @@
 
         .category-item {
             margin: 20px;
-    text-align: center;
-    flex: 0 0 calc(20% - 40px);
-    max-width: calc(20% - 40px);
-    box-sizing: border-box;
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Adiciona uma transição suave */
-    opacity: 0; /* Começa com opacidade zero para o efeito reveal */
+            text-align: center;
+            flex: 0 0 calc(20% - 40px);
+            max-width: calc(20% - 40px);
+            box-sizing: border-box;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            /* Adiciona uma transição suave */
+            opacity: 0;
+            /* Começa com opacidade zero para o efeito reveal */
         }
 
         .category-item img {
             border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    transition: transform 0.3s ease; /* Adiciona uma transição suave */
-    cursor: pointer;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            /* Adiciona uma transição suave */
+            cursor: pointer;
         }
 
         .category-item p {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
+            margin-top: 10px;
+            font-weight: bold;
+        }
 
         .category-item img:hover {
             transform: scale(1.1);
         }
 
-
         @keyframes reveal {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
 
-.categories .category-item:nth-child(odd) {
-    animation: reveal 0.5s ease forwards;
-}
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.categories .category-item:nth-child(even) {
-    animation: reveal 0.5s ease forwards;
-    animation-delay: 0.2s; /* Adiciona um pequeno atraso para o efeito escalonado */
-}
+        .categories .category-item:nth-child(odd) {
+            animation: reveal 0.5s ease forwards;
+        }
 
-.navigation-buttons {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.navigation-buttons button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.navigation-buttons button:hover {
-    background-color: #ffcc00;
-    color: #333;
-}
+        .categories .category-item:nth-child(even) {
+            animation: reveal 0.5s ease forwards;
+            animation-delay: 0.2s;
+            /* Adiciona um pequeno atraso para o efeito escalonado */
+        }
 
         .navigation-buttons {
             margin-top: 20px;
@@ -292,7 +293,8 @@
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease; /* Adiciona uma transição suave ao transformar */
+            transition: transform 0.3s ease;
+            /* Adiciona uma transição suave ao transformar */
         }
 
         .recipe img {
@@ -320,9 +322,12 @@
         }
 
         .recipe:hover {
-            transform: scale(1.05); /* Aumenta o tamanho ao passar o mouse */
-            transition: transform 0.3s ease; /* Adiciona uma transição suave */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+            transform: scale(1.05);
+            /* Aumenta o tamanho ao passar o mouse */
+            transition: transform 0.3s ease;
+            /* Adiciona uma transição suave */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Adiciona uma sombra sutil */
         }
 
         footer {
@@ -402,7 +407,8 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <button class="dark-mode-toggle" onclick="toggleDarkMode()"><i class="fa-solid fa-moon"></i></button>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()"><i class="fas fa-moon"></i></button>
+
     </header>
 
     <div class="mobile-menu" id="mobile-menu">
@@ -483,8 +489,7 @@
     </footer>
 
     <script>
-
-function toggleMenu() {
+        function toggleMenu() {
             var x = document.getElementById("mobile-menu");
             if (x.style.display === "block") {
                 x.style.display = "none";
@@ -493,7 +498,14 @@ function toggleMenu() {
             }
         }
 
-        window.addEventListener('resize', function() {
+        function toggleDarkMode() {
+    console.log("Toggle dark mode function called");
+    var body = document.body;
+    body.classList.toggle("dark-mode");
+    console.log("Body class list:", body.classList);
+}
+
+        window.addEventListener('resize', function () {
             var width = window.innerWidth;
             var mobileMenu = document.getElementById('mobile-menu');
             var mainNav = document.getElementById('main-nav');
