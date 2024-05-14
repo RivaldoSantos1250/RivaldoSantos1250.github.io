@@ -156,7 +156,7 @@
 
         .categories {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .categories ul {
@@ -171,8 +171,8 @@
         .category-item {
             margin: 20px;
             text-align: center;
-            flex: 0 0 calc(25% - 40px); /* 4 itens por linha */
-            max-width: calc(25% - 40px); /* Largura máxima dos itens */
+            flex: 0 0 calc(20% - 40px); /* 5 itens por linha */
+            max-width: calc(20% - 40px); /* Largura máxima dos itens */
             box-sizing: border-box;
         }
 
@@ -205,6 +205,55 @@
         .navigation-buttons button:hover {
             background-color: #ffcc00;
             color: #333;
+        }
+
+        .trending-section {
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+        }
+
+        .trending-section h2 {
+            text-align: center; /* Centraliza o texto */
+            margin-bottom: 20px;
+            font-size: 24px; /* Aumenta o tamanho do texto */
+            color: #333; /* Cor do texto */
+        }
+
+        .recipe {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd; /* Adiciona uma borda sutil */
+        }
+
+        .recipe-info {
+            flex: 1;
+        }
+
+        .recipe-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .recipe-description {
+            font-size: 14px;
+            color: #666;
         }
 
         @media screen and (max-width: 768px) {
@@ -282,6 +331,47 @@
             <button onclick="nextCategories()">Próxima</button>
         </div>
     </div>
+
+    <div class="trending-section">
+        <h2>Receitas em Destaque</h2> <!-- Título modificado -->
+        <div class="recipe">
+            <img src="OIG4.znW.jpg" alt="Miniatura Receita 1">
+            <div class="recipe-info">
+                <h3 class="recipe-title">Título da Receita 1</h3>
+                <p class="recipe-description">Descrição curta da Receita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="recipe">
+            <img src="OIG4.znW.jpg" alt="Miniatura Receita 2">
+            <div class="recipe-info">
+                <h3 class="recipe-title">Título da Receita 2</h3>
+                <p class="recipe-description">Descrição curta da Receita 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="recipe">
+            <img src="OIG4.znW.jpg" alt="Miniatura Receita 3">
+            <div class="recipe-info">
+                <h3 class="recipe-title">Título da Receita 3</h3>
+                <p class="recipe-description">Descrição curta da Receita 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="recipe">
+            <img src="OIG4.znW.jpg" alt="Miniatura Receita 4">
+            <div class="recipe-info">
+                <h3 class="recipe-title">Título da Receita 4</h3>
+                <p class="recipe-description">Descrição curta da Receita 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="recipe">
+            <img src="OIG4.znW.jpg" alt="Miniatura Receita 5">
+            <div class="recipe-info">
+                <h3 class="recipe-title">Título da Receita 5</h3>
+                <p class="recipe-description">Descrição curta da Receita 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <!-- Adicione mais receitas conforme necessário -->
+    </div>
+
 
     <!-- Conteúdo da página aqui -->
 
@@ -376,7 +466,7 @@
 
         var currentCategoryIndex = 0;
         var totalCategories = categories.length;
-        var categoriesPerPage = 4; // Alterado para 4 categorias por página
+        var categoriesPerPage = 4; // Número de categorias por página
 
         function toggleMenu() {
             var x = document.getElementById("mobile-menu");
