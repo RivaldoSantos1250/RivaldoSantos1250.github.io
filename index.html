@@ -411,6 +411,12 @@
         }
 
         @media screen and (max-width: 768px) {
+
+            .logo h1 {
+            font-size: 20px;
+        }
+
+
             nav ul {
                 display: none;
             }
@@ -434,11 +440,13 @@
                 flex: 0 0 calc(50% - 40px);
                 max-width: calc(50% - 40px);
             }
+
+
         }
 
         .search-form {
+            align-items: center;
             text-align: center;
-            margin-top: 50px;
         }
 
         .search-input {
@@ -463,6 +471,25 @@
         .search-button:hover {
             background-color: #f0c300;
         }
+
+        .search-container {
+        display: none;
+        position: fixed;
+        top: 60px; /* Ajuste conforme necessário para a altura do seu cabeçalho */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        z-index: 1000;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        
+    
+    }
+
+    .search-container.active {
+        display: block;
+        }
+
 
         /* Estilos responsivos */
         @media screen and (max-width: 600px) {
@@ -498,14 +525,24 @@
         <div class="logo">
             <h1>TiaNaCozinha</h1>
         </div>
+        
         <nav>
             <ul id="main-nav">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Receitas</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
+            <div class="search-container">
+                <form class="search-form" action="resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
             
         </nav>
+        <div class="mobile-search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
         <div class="menu-icon" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -520,10 +557,6 @@
             <li><a href="#">Contato</a></li>
         </ul>
     </div>
-    <form class="search-form" action="resultados-pesquisa.html" method="GET">
-        <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-        <button class="search-button" type="submit">Pesquisar</button>
-    </form>
     <div class="video-banner">
         <video src="Menu.mp4" autoplay muted loop></video>
         <div class="banner-content">
@@ -750,6 +783,11 @@
                 resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
             }
         }
+        function toggleSearch() {
+    var searchContainer = document.querySelector('.search-container');
+    searchContainer.classList.toggle('active');
+}
+
     </script>
 </body>
 
