@@ -21,7 +21,7 @@
     let currentMusicIndex = 0;
 
     const musicList = [
-        '/assets/sound/R5.mp3',
+        'https://simulatorradio.stream/stream',
         '/assets/sound/R4.mp3',
         '/assets/sound/R1.mp3'
     ];
