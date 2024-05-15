@@ -125,24 +125,24 @@
         }
 
         .menu-icon .bar {
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-            margin: 5px;
-            transition: transform 0.3s ease;
-        }
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: transform 0.3s ease; /* Adicionamos a transição aqui */
+}
 
-        .menu-icon.open .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
+.menu-icon.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); /* Adicionamos as transformações para o ícone "X" aqui */
+}
 
-        .menu-icon.open .bar:nth-child(2) {
-            opacity: 0;
-        }
+.menu-icon.open .bar:nth-child(2) {
+    opacity: 0; /* Ocultamos a segunda barra quando o menu está aberto */
+}
 
-        .menu-icon.open .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+.menu-icon.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações para o ícone "X" aqui */
+}
 
         .mobile-menu {
             display: none;
@@ -490,6 +490,10 @@
         display: block;
         }
 
+        .fa-search {
+            cursor: pointer;
+        }
+
 
         /* Estilos responsivos */
         @media screen and (max-width: 600px) {
@@ -627,163 +631,169 @@
     </footer>
 
     <script>
-        function toggleMenu() {
-            var x = document.getElementById("mobile-menu");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
+        // Função para alternar o menu móvel e controlar a animação do ícone do menu hamburguer
+function toggleMenu() {
+    var mobileMenu = document.getElementById("mobile-menu");
+    var menuIcon = document.querySelector(".menu-icon");
 
-        function toggleDarkMode() {
-    console.log("Toggle dark mode function called");
-    var body = document.body;
-    body.classList.toggle("dark-mode");
-    console.log("Body class list:", body.classList);
+    // Verifica se o menu está visível ou não e alterna sua exibição
+    if (mobileMenu.style.display === "block") {
+        mobileMenu.style.display = "none";
+        menuIcon.classList.remove("open"); // Remove a classe 'open' para voltar ao ícone do menu hamburguer
+    } else {
+        mobileMenu.style.display = "block";
+        menuIcon.classList.add("open"); // Adiciona a classe 'open' para mostrar o ícone "X" do menu aberto
+    }
 }
 
-        window.addEventListener('resize', function () {
-            var width = window.innerWidth;
-            var mobileMenu = document.getElementById('mobile-menu');
-            var mainNav = document.getElementById('main-nav');
+// Função para alternar o modo escuro
+function toggleDarkMode() {
+    var body = document.body;
+    body.classList.toggle("dark-mode");
+}
 
-            if (width > 768) {
-                mobileMenu.style.display = 'none';
-            } else {
-                if (mainNav.style.display === 'none') {
-                    mobileMenu.style.display = 'block';
-                }
-            }
+// Event listener para ajustar o menu móvel ao redimensionar a tela
+window.addEventListener('resize', function () {
+    var width = window.innerWidth;
+    var mobileMenu = document.getElementById('mobile-menu');
+    var mainNav = document.getElementById('main-nav');
+
+    if (width > 768) {
+        mobileMenu.style.display = 'none';
+    } else {
+        if (mainNav.style.display === 'none') {
+            mobileMenu.style.display = 'block';
+        }
+    }
+});
+
+// Dados das categorias
+var categories = [
+    {
+        name: "Café da Manhã",
+        image: "OIG4.jpg"
+    },
+    {
+        name: "Petiscos e Entradas",
+        image: "OIG4.jpg"
+    },
+    {
+        name: "Saladas",
+        image: "OIG4.jpg"
+    },
+    {
+        name: "Prato Principal",
+        image: "OIG4.jpg"
+    },
+    {
+        name: "Sobremesas",
+        image: "OIG4.jpg"
+    },
+    {
+        name: "Sopas e Caldos",
+        image: "OIG4.jpg"
+    },
+    {
+        name: "Drinques",
+        image: "OIG4.jpg"
+    },
+    {
+        name: "Vegetariano",
+        image: "OIG4.jpg"
+    },
+];
+
+var currentCategoryIndex = 0;
+var categoryList = document.getElementById("category-list");
+
+// Função para exibir as categorias
+function showCategories() {
+    var startIndex = currentCategoryIndex;
+    var endIndex = Math.min(currentCategoryIndex + 4, categories.length);
+
+    categoryList.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
+
+    for (var i = startIndex; i < endIndex; i++) {
+        var category = categories[i];
+        var listItem = document.createElement("li");
+        listItem.classList.add("category-item");
+        listItem.innerHTML = `
+            <img src="${category.image}" alt="${category.name}">
+            <p>${category.name}</p>
+        `;
+        categoryList.appendChild(listItem);
+    }
+}
+
+// Função para exibir as próximas categorias
+function nextCategories() {
+    currentCategoryIndex += 4;
+    if (currentCategoryIndex >= categories.length) {
+        currentCategoryIndex = 0;
+    }
+    showCategories();
+}
+
+// Função para exibir as categorias anteriores
+function prevCategories() {
+    currentCategoryIndex -= 4;
+    if (currentCategoryIndex < 0) {
+        currentCategoryIndex = Math.max(0, categories.length - 4);
+    }
+    showCategories();
+}
+
+// Chama a função para exibir as categorias
+showCategories();
+
+// Event listener para o formulário de pesquisa
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio do formulário
+
+    var query = document.getElementById('search-input').value.trim().toLowerCase();
+    if (query !== '') {
+        searchRecipes(query);
+    }
+});
+
+// Função para pesquisar receitas
+function searchRecipes(query) {
+    // Conjunto de dados de exemplo das receitas
+    var recipes = [
+        { nome: "Receita 1", descricao: "Descrição da Receita 1" },
+        { nome: "Receita 2", descricao: "Descrição da Receita 2" },
+        { nome: "ze", descricao: "Descrição da Receita ze" }, // Receita "ze"
+    ];
+
+    // Filtra as receitas que correspondem à consulta
+    var results = recipes.filter(function(recipe) {
+        return recipe.nome.toLowerCase().includes(query);
+    });
+
+    // Exibe os resultados na página
+    displayResults(results);
+}
+
+// Função para exibir os resultados da pesquisa
+function displayResults(results) {
+    var resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+
+    if (results.length > 0) {
+        results.forEach(function(recipe) {
+            var recipeHTML = '<div>';
+            recipeHTML += '<h3>' + recipe.nome + '</h3>';
+            recipeHTML += '<p>' + recipe.descricao + '</p>';
+            recipeHTML += '</div>';
+            resultsContainer.innerHTML += recipeHTML;
         });
-        var categories = [
-            {
-                name: "Café da Manhã",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Petiscos e Entradas",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Saladas",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Prato Principal",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Sobremesas",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Sopas e Caldos",
-                image: "OIG4.jpg"
-            },
-            {
-                name: "Drinques",
-                image: "OIG4.jpg"
-            },
+    } else {
+        resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+    }
+}
 
-            {
-                name: "Vegetariano",
-                image: "OIG4.jpg"
-            },
-        ];
-
-        var currentCategoryIndex = 0;
-        var categoryList = document.getElementById("category-list");
-
-        function showCategories() {
-            var startIndex = currentCategoryIndex;
-            var endIndex = Math.min(currentCategoryIndex + 4, categories.length);
-
-            categoryList.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
-
-            for (var i = startIndex; i < endIndex; i++) {
-                var category = categories[i];
-                var listItem = document.createElement("li");
-                listItem.classList.add("category-item");
-                listItem.innerHTML = `
-                    <img src="${category.image}" alt="${category.name}">
-                    <p>${category.name}</p>
-                `;
-                categoryList.appendChild(listItem);
-            }
-        }
-
-        function nextCategories() {
-            currentCategoryIndex += 4;
-            if (currentCategoryIndex >= categories.length) {
-                currentCategoryIndex = 0;
-            }
-            showCategories();
-        }
-
-        function prevCategories() {
-            currentCategoryIndex -= 4;
-            if (currentCategoryIndex < 0) {
-                currentCategoryIndex = Math.max(0, categories.length - 4);
-            }
-            showCategories();
-        }
-
-        function toggleMenu() {
-            var mobileMenu = document.getElementById("mobile-menu");
-            mobileMenu.style.display = mobileMenu.style.display === "block" ? "none" : "block";
-        }
-
-        function toggleDarkMode() {
-            var body = document.body;
-            body.classList.toggle("dark-mode");
-        }
-
-        showCategories();
-
-        document.getElementById('search-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio do formulário
-
-            var query = document.getElementById('search-input').value.trim().toLowerCase();
-            if (query !== '') {
-                searchRecipes(query);
-            }
-        });
-
-        function searchRecipes(query) {
-            // Conjunto de dados de exemplo das receitas
-            var recipes = [
-                { nome: "Receita 1", descricao: "Descrição da Receita 1" },
-                { nome: "Receita 2", descricao: "Descrição da Receita 2" },
-                { nome: "ze", descricao: "Descrição da Receita ze" }, // Receita "ze"
-            ];
-
-            // Filtra as receitas que correspondem à consulta
-            var results = recipes.filter(function(recipe) {
-                return recipe.nome.toLowerCase().includes(query);
-            });
-
-            // Exibe os resultados na página
-            displayResults(results);
-        }
-
-        function displayResults(results) {
-            var resultsContainer = document.getElementById('search-results');
-            resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
-
-            if (results.length > 0) {
-                results.forEach(function(recipe) {
-                    var recipeHTML = '<div>';
-                    recipeHTML += '<h3>' + recipe.nome + '</h3>';
-                    recipeHTML += '<p>' + recipe.descricao + '</p>';
-                    recipeHTML += '</div>';
-                    resultsContainer.innerHTML += recipeHTML;
-                });
-            } else {
-                resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-            }
-        }
-        function toggleSearch() {
+// Função para alternar a exibição do campo de pesquisa
+function toggleSearch() {
     var searchContainer = document.querySelector('.search-container');
     searchContainer.classList.toggle('active');
 }
