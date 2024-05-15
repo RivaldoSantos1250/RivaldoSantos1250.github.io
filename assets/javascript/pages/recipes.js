@@ -28,7 +28,6 @@
 
     function loadMusic(index) {
         audioPlayer.src = musicList[index];
-        audioPlayer.play();
     }
 
     function playMusic() {
