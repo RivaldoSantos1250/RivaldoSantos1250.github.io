@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/header.css">
     <title>TiaNaCozinha</title>
     <style>
 
@@ -54,144 +55,6 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .dark-mode body {
-            background-color: #333;
-            color: #fff;
-        }
-
-        header {
-            position: sticky;
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            top: 0;
-            z-index: 99;
-            
-        }
-
-        @keyframes fadeInHeader {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo h1 {
-            margin: 0;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin-right: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        nav ul li:hover {
-            transform: translateY(-3px);
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-        }
-
-        .menu-icon .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px;
-    transition: transform 0.3s ease; /* Adicionamos a transição aqui */
-}
-
-.menu-icon.open .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg); /* Adicionamos as transformações para o ícone "X" aqui */
-}
-
-.menu-icon.open .bar:nth-child(2) {
-    opacity: 0; /* Ocultamos a segunda barra quando o menu está aberto */
-}
-
-.menu-icon.open .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações para o ícone "X" aqui */
-}
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            background-color: #333;
-            z-index: 99;
-            padding: 10px 0;
-        }
-
-        .mobile-menu ul {
-            text-align: center;
-        }
-
-        .mobile-menu ul li {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .mobile-menu ul li:last-child {
-            margin-bottom: 0;
-        }
-
-        .mobile-menu ul li a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            padding: 10px 0;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-menu ul li a:hover {
-            color: #ffcc00;
-        }
-
-        .dark-mode-toggle {
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .dark-mode-toggle:hover {
-            background-color: #fff;
-            color: #333;
         }
 
         .video-banner {
@@ -411,96 +274,9 @@
         }
 
         @media screen and (max-width: 768px) {
-
-            .logo h1 {
-            font-size: 20px;
-        }
-
-
-            nav ul {
-                display: none;
-            }
-
-            .menu-icon {
-                display: block;
-            }
-
-            .menu-icon .bar {
-                width: 25px;
-                height: 3px;
-                background-color: #fff;
-                margin: 5px;
-            }
-
-            .mobile-menu {
-                display: none;
-            }
-
             .category-item {
                 flex: 0 0 calc(50% - 40px);
                 max-width: calc(50% - 40px);
-            }
-
-
-        }
-
-        .search-form {
-            align-items: center;
-            text-align: center;
-        }
-
-        .search-input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            width: 300px;
-            margin-right: 10px;
-        }
-
-        .search-button {
-            padding: 10px 20px;
-            background-color: #ffcc00;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .search-button:hover {
-            background-color: #f0c300;
-        }
-
-        .search-container {
-        display: none;
-        position: fixed;
-        top: 60px; /* Ajuste conforme necessário para a altura do seu cabeçalho */
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        z-index: 1000;
-        padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        
-    
-    }
-
-    .search-container.active {
-        display: block;
-        }
-
-        .fa-search {
-            cursor: pointer;
-        }
-
-
-        /* Estilos responsivos */
-        @media screen and (max-width: 600px) {
-            .search-input {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 10px;
             }
         }
     </style>
@@ -517,7 +293,6 @@
 </head>
 
 <body>
-
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <img src="gb.gif" alt="Loading GIF" class="loading-gif">
@@ -630,42 +405,10 @@
         <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
     </footer>
 
+    <script src="assets/javascript/script.js"></script>
+
     <script>
         // Função para alternar o menu móvel e controlar a animação do ícone do menu hamburguer
-function toggleMenu() {
-    var mobileMenu = document.getElementById("mobile-menu");
-    var menuIcon = document.querySelector(".menu-icon");
-
-    // Verifica se o menu está visível ou não e alterna sua exibição
-    if (mobileMenu.style.display === "block") {
-        mobileMenu.style.display = "none";
-        menuIcon.classList.remove("open"); // Remove a classe 'open' para voltar ao ícone do menu hamburguer
-    } else {
-        mobileMenu.style.display = "block";
-        menuIcon.classList.add("open"); // Adiciona a classe 'open' para mostrar o ícone "X" do menu aberto
-    }
-}
-
-// Função para alternar o modo escuro
-function toggleDarkMode() {
-    var body = document.body;
-    body.classList.toggle("dark-mode");
-}
-
-// Event listener para ajustar o menu móvel ao redimensionar a tela
-window.addEventListener('resize', function () {
-    var width = window.innerWidth;
-    var mobileMenu = document.getElementById('mobile-menu');
-    var mainNav = document.getElementById('main-nav');
-
-    if (width > 768) {
-        mobileMenu.style.display = 'none';
-    } else {
-        if (mainNav.style.display === 'none') {
-            mobileMenu.style.display = 'block';
-        }
-    }
-});
 
 // Dados das categorias
 var categories = [
@@ -746,57 +489,7 @@ function prevCategories() {
 // Chama a função para exibir as categorias
 showCategories();
 
-// Event listener para o formulário de pesquisa
-document.getElementById('search-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio do formulário
 
-    var query = document.getElementById('search-input').value.trim().toLowerCase();
-    if (query !== '') {
-        searchRecipes(query);
-    }
-});
-
-// Função para pesquisar receitas
-function searchRecipes(query) {
-    // Conjunto de dados de exemplo das receitas
-    var recipes = [
-        { nome: "Receita 1", descricao: "Descrição da Receita 1" },
-        { nome: "Receita 2", descricao: "Descrição da Receita 2" },
-        { nome: "ze", descricao: "Descrição da Receita ze" }, // Receita "ze"
-    ];
-
-    // Filtra as receitas que correspondem à consulta
-    var results = recipes.filter(function(recipe) {
-        return recipe.nome.toLowerCase().includes(query);
-    });
-
-    // Exibe os resultados na página
-    displayResults(results);
-}
-
-// Função para exibir os resultados da pesquisa
-function displayResults(results) {
-    var resultsContainer = document.getElementById('search-results');
-    resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
-
-    if (results.length > 0) {
-        results.forEach(function(recipe) {
-            var recipeHTML = '<div>';
-            recipeHTML += '<h3>' + recipe.nome + '</h3>';
-            recipeHTML += '<p>' + recipe.descricao + '</p>';
-            recipeHTML += '</div>';
-            resultsContainer.innerHTML += recipeHTML;
-        });
-    } else {
-        resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-    }
-}
-
-// Função para alternar a exibição do campo de pesquisa
-function toggleSearch() {
-    var searchContainer = document.querySelector('.search-container');
-    searchContainer.classList.toggle('active');
-}
 
     </script>
 </body>

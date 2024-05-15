@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/header.css">
     <title>Resultados da Pesquisa</title>
     <style>
         body {
@@ -88,9 +90,48 @@
 </head>
 <body>
 
+    <header>
+        <div class="logo">
+            <h1>TiaNaCozinha</h1>
+        </div>
+        
+        <nav>
+            <ul id="main-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Receitas</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            <div class="search-container">
+                <form class="search-form" action="resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
+            
+        </nav>
+        <div class="mobile-search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Receitas</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </div>
+
     <h1>Resultados da Pesquisa</h1>
     
     <div id="search-results"></div>
+
+    <script src="assets/javascript/script.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
