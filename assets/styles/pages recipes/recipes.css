@@ -1,0 +1,197 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+.recipe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    animation: slideInLeft 1s ease;
+}
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+.recipe img {
+    max-width: 40%;
+    border-radius: 8px;
+    animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+.recipe .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+.details h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #007bff;
+}
+.details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+.ingredients h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.ingredients ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.ingredients li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.checkbox {
+    display: none;
+}
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+}
+.custom-checkbox::after {
+    content: '\2713';
+    font-size: 16px;
+    color: #007bff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.checkbox:checked + .custom-checkbox::after {
+    opacity: 1;
+}
+.cut {
+    text-decoration: line-through;
+    color: #ccc;
+}
+.cut::after {
+    content: '\00a0'; /* Add a non-breaking space after the cut */
+}
+.instruction-number {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+    color: #007bff;
+}
+.recipe-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.recipe-info i {
+    font-size: 24px;
+    margin-right: 5px;
+    color: #007bff;
+}
+.music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff;
+    border-top: 1px solid #ccc;
+    padding: 10px 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
+}
+.music-player.active {
+    transform: translateY(0);
+}
+.music-player h2 {
+    margin-top: 0;
+    color: #fff;
+}
+.music-player audio {
+    width: 100%;
+    margin-top: 10px;
+}
+.music-player .controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.music-player button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+.music-player button:hover {
+    transform: scale(1.2);
+}
+.toggle-btn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: #ffbb00;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.toggle-btn:hover {
+    transform: scale(1.1);
+}

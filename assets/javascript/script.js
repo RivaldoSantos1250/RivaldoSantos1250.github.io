@@ -12,12 +12,6 @@ function toggleMenu() {
     }
 }
 
-// Função para alternar o modo escuro
-function toggleDarkMode() {
-    var body = document.body;
-    body.classList.toggle("dark-mode");
-}
-
 // Event listener para ajustar o menu móvel ao redimensionar a tela
 window.addEventListener('resize', function () {
     var width = window.innerWidth;
@@ -33,16 +27,6 @@ window.addEventListener('resize', function () {
     }
 });
 
-// Event listener para o formulário de pesquisa
-document.getElementById('search-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio do formulário
-
-    var query = document.getElementById('search-input').value.trim().toLowerCase();
-    if (query !== '') {
-        searchRecipes(query);
-    }
-});
-
 // Função para pesquisar receitas
 function searchRecipes(query) {
     // Conjunto de dados de exemplo das receitas
@@ -52,12 +36,16 @@ function searchRecipes(query) {
         { nome: "ze", descricao: "Descrição da Receita ze" }, // Receita "ze"
     ];
 
+    // Criar uma expressão regular para a consulta, ignorando a diferença entre maiúsculas e minúsculas
+    var regex = new RegExp(query, 'i');
+
     // Filtra as receitas que correspondem à consulta
     var results = recipes.filter(function(recipe) {
-        return recipe.nome.toLowerCase().includes(query);
+        // Verifique se o nome da receita corresponde à expressão regular
+        return regex.test(recipe.nome);
     });
 
-    // Exibe os resultados na página
+    // Exiba os resultados na página
     displayResults(results);
 }
 

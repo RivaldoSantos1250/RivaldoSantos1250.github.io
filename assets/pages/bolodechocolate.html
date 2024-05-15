@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/styles/pages recipes/recipes.css">
+    <title>Receita de Bolo de Chocolate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Receita de Bolo de Chocolate</h1>
+
+    <div class="recipe">
+        <img src="https://via.placeholder.com/300" alt="Bolo de Chocolate">
+        <div class="details">
+            <h3>Informações da Receita</h3>
+            <div class="recipe-info">
+                <i class="far fa-clock"></i>
+                <p>Tempo de Preparo: 1h</p>
+            </div>
+            <div class="recipe-info">
+                <i class="fas fa-utensils"></i>
+                <p>Porções: 12 porções</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="recipe">
+        <div class="ingredients">
+            <h2>Ingredientes:</h2>
+            <ul>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="flour"><label class="custom-checkbox" for="flour"></label><span>2 xícaras de farinha de trigo</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="sugar"><label class="custom-checkbox" for="sugar"></label><span>1 xícara de açúcar</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="milk"><label class="custom-checkbox" for="milk"></label><span>1 xícara de leite</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="cocoa"><label class="custom-checkbox" for="cocoa"></label><span>1 xícara de chocolate em pó</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="oil"><label class="custom-checkbox" for="oil"></label><span>1/2 xícara de óleo</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="eggs"><label class="custom-checkbox" for="eggs"></label><span>3 ovos</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="baking-powder"><label class="custom-checkbox" for="baking-powder"></label><span>1 colher de sopa de fermento em pó</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="salt"><label class="custom-checkbox" for="salt"></label><span>1 pitada de sal</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="recipe">
+        <div class="ingredients">
+            <h2>Modo de Preparo:</h2>
+            <ol>
+                <li class="instruction"><span class="instruction-number">1.</span> Misture todos os ingredientes secos em uma tigela.</li>
+                <li class="instruction"><span class="instruction-number">2.</span> Adicione os ovos, o leite e o óleo, e misture bem até obter uma massa homogênea.</li>
+                <li class="instruction"><span class="instruction-number">3.</span> Por último, acrescente o fermento em pó e misture delicadamente.</li>
+                <li class="instruction"><span class="instruction-number">4.</span> Despeje a massa em uma forma untada e leve ao forno preaquecido a 180°C por aproximadamente 40 minutos, ou até que o bolo esteja assado.</li>
+                <li class="instruction"><span class="instruction-number">5.</span> Deixe esfriar e desenforme.</li>
+                <li class="instruction"><span class="instruction-number">6.</span> Se desejar, decore o bolo com chocolate granulado ou raspas de chocolate.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="recipe">
+        <div class="ingredients">
+            <h2>Observações e Itens Opcionais:</h2>
+            <ul>
+                <li>Você pode adicionar 1 xícara de gotas de chocolate na massa para um bolo ainda mais chocolatudo.</li>
+                <li>Experimente servir o bolo com uma calda de chocolate ou chantilly.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="music-player">
+    <h2>Ouça música enquanto cozinha</h2>
+    <audio id="audio-player" controls>
+        <source src="/R4.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <div class="controls">
+        <button id="prev-btn"><i class="fas fa-backward"></i></button>
+        <button id="play-btn"><i class="fas fa-play"></i></button>
+        <button id="next-btn"><i class="fas fa-forward"></i></button>
+    </div>
+</div>
+
+<button class="toggle-btn" onclick="toggleMusicPlayer()"><i class="fas fa-music"></i></button>
+
+<script src="https://kit.fontawesome.com/a076d05399.js "></script>
+<script src="/assets/javascript/pages/recipes.js"></script>
+
+</body>
+</html>

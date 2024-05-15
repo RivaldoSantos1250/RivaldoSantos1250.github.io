@@ -50,13 +50,19 @@
             object-fit: cover;
         }
 
-        .recipe-content {
-            padding: 20px;
+        .recipe-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
         }
 
         .recipe-title {
-            margin: 0 0 10px;
+            margin: 0;
             font-size: 20px;
+            font-weight: bold; /* Adiciona negrito ao título da receita */
         }
 
         .recipe-title a {
@@ -71,21 +77,15 @@
         .recipe-description {
             margin: 0;
             font-size: 16px;
-        }
-
-        .recipe-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px 20px;
+            color: #666; /* Altera a cor do texto da descrição da receita */
         }
 
         /* Animação de fade-in para os resultados */
         #search-results.fade-in {
             opacity: 1;
         }
+
+        
     </style>
 </head>
 <body>
@@ -145,51 +145,108 @@
             }
         });
 
-        function searchRecipes(query) {
-            // Conjunto de dados de exemplo das receitas
-            var recipes = [
-                { nome: "Receita 1", descricao: "Descrição da Receita 1", imagem: "OIG4.jpg", link: "receita1.html" },
-                { nome: "Receita 2", descricao: "Descrição da Receita 2", imagem: "OIG4.jpg", link: "receita2.html" },
-                { nome: "ze", descricao: "Descrição da Receita ze", imagem: "ze.jpg", link: "ze.html" }, // Receita "ze"
-            ];
+       // Função para calcular a distância de edição (Levenshtein Distance) entre duas strings
+function levenshteinDistance(a, b) {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
 
-            // Filtra as receitas que correspondem à consulta
-            var results = recipes.filter(function(recipe) {
-                return recipe.nome.toLowerCase().includes(query);
-            });
+    var matrix = [];
 
-            // Exibe os resultados na página
-            displayResults(results);
-        }
+    // Inicialização da matriz
+    var i;
+    for (i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
 
-        function displayResults(results) {
-            var resultsContainer = document.getElementById('search-results');
-            resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+    for (i = 0; i <= a.length; i++) {
+        matrix[0][i] = i;
+    }
 
-            if (results.length > 0) {
-                results.forEach(function(recipe) {
-                    var recipeHTML = '<div class="recipe">';
-                    recipeHTML += '<img src="' + recipe.imagem + '" alt="' + recipe.nome + '">';
-                    recipeHTML += '<div class="recipe-info">';
-                    recipeHTML += '<h3 class="recipe-title"><a href="' + recipe.link + '">' + recipe.nome + '</a></h3>';
-                    recipeHTML += '<p class="recipe-description">' + recipe.descricao + '</p>';
-                    recipeHTML += '</div></div>';
-                    resultsContainer.innerHTML += recipeHTML;
-                });
-
-                // Adiciona a classe de animação para fade-in dos resultados
-                resultsContainer.classList.add('fade-in');
+    // Cálculo da distância de edição
+    for (i = 1; i <= b.length; i++) {
+        for (var j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) == a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
             } else {
-                displayNoResults();
+                matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, // Substituição
+                    Math.min(matrix[i][j - 1] + 1, // Inserção
+                        matrix[i - 1][j] + 1)); // Deleção
             }
         }
+    }
 
-        function displayNoResults() {
-            var resultsContainer = document.getElementById('search-results');
-            resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-            // Adiciona a classe de animação para fade-in dos resultados
-            resultsContainer.classList.add('fade-in');
-        }
+    return matrix[b.length][a.length];
+}
+
+// Função para verificar se a consulta está associada a uma palavra-chave doce
+function isAssociatedWithSweet(queryLower, recipeNameLower) {
+    // Lista de palavras-chave associadas a receitas doces
+    var sweetKeywords = ["sobremesa", "guloseima", "doce", "sobremesas", "guloseimas", "doces"];
+
+    // Verifica se a consulta ou o nome da receita contém palavras-chave associadas a receitas doces
+    return sweetKeywords.some(function(keyword) {
+        return queryLower.includes(keyword) || recipeNameLower.includes(keyword);
+    });
+}
+
+// Função para pesquisar receitas
+function searchRecipes(query) {
+    // Conjunto de dados de exemplo das receitas
+    var recipes = [
+        { nome: "Pudim de Leite Condensado", descricao: "Receita deliciosa de pudim de leite condensado.", imagem: "/assets/img/pudim.jpg", link: "assets/pages/pudim.html" },
+        { nome: "Bolo de Chocolate", descricao: "Um bolo delicioso e fofinho de chocolate.", imagem: "bolo.jpg", link: "bolo.html" },
+        { nome: "Torta de Maçã", descricao: "Uma torta deliciosa recheada com maçãs frescas.", imagem: "torta.jpg", link: "torta.html" },
+        { nome: "Pudim de Caramelo Salgado", descricao: "Uma versão deliciosa do pudim clássico com um toque de caramelo salgado.", imagem: "pudim-salgado.jpg", link: "pudim-salgado.html" },
+    ];
+
+    // Converta a consulta de pesquisa e o nome de todas as receitas para minúsculas
+    var queryLower = query.toLowerCase();
+
+    // Filtra as receitas que correspondem à consulta
+    var results = recipes.filter(function(recipe) {
+        // Converta o nome e a descrição da receita para minúsculas
+        var recipeNameLower = recipe.nome.toLowerCase();
+        var recipeDescriptionLower = recipe.descricao.toLowerCase();
+
+        // Verifique se o nome ou a descrição da receita contém a consulta de pesquisa
+        return recipeNameLower.includes(queryLower) || recipeDescriptionLower.includes(queryLower) || isAssociatedWithSweet(queryLower, recipeNameLower);
+        // Além de verificar se o nome ou descrição contém a consulta, também verificamos se a consulta está associada a uma palavra-chave doce.
+    });
+
+    // Exiba os resultados na página
+    displayResults(results);
+}
+
+// Função para exibir os resultados da pesquisa
+function displayResults(results) {
+    var resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+
+    if (results.length > 0) {
+        results.forEach(function(recipe) {
+            var recipeHTML = '<div class="recipe">';
+            recipeHTML += '<a href="' + recipe.link + '">';
+            recipeHTML += '<img src="' + recipe.imagem + '" alt="' + recipe.nome + '">';
+            recipeHTML += '<div class="recipe-info">';
+            recipeHTML += '<h3 class="recipe-title">' + recipe.nome + '</h3>';
+            recipeHTML += '<p class="recipe-description">' + recipe.descricao + '</p>';
+            recipeHTML += '</div></a></div>';
+            resultsContainer.innerHTML += recipeHTML;
+        });
+
+        // Adiciona a classe de animação para fade-in dos resultados
+        resultsContainer.classList.add('fade-in');
+    } else {
+        displayNoResults();
+    }
+}
+
+function displayNoResults() {
+    var resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+    // Adiciona a classe de animação para fade-in dos resultados
+    resultsContainer.classList.add('fade-in');
+}
     </script>
 
 </body>
