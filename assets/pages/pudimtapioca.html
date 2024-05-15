@@ -6,9 +6,45 @@
     <title>Receita de Pudim de Tapioca</title>
     <link rel="stylesheet" href="/assets/styles/pages recipes/recipes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/assets/styles/header.css">
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <h1>TiaNaCozinha</h1>
+        </div>
+        
+        <nav>
+            <ul id="main-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Receitas</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            <div class="search-container">
+                <form class="search-form" action="resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
+            
+        </nav>
+        <div class="mobile-search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
 
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Receitas</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </div>
 <div class="container">
     <h1>Receita de Pudim de Tapioca</h1>
 
@@ -55,6 +91,16 @@
     </div>
 
 </div>
+<footer>
+    <p>Siga-nos nas redes sociais:</p>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
+</footer>
 
 <div class="music-player">
     <h2>Ouça música enquanto cozinha</h2>
@@ -73,6 +119,7 @@
 
 <script src="https://kit.fontawesome.com/a076d05399.js "></script>
 <script src="/assets/javascript/pages/recipes.js"></script>
+<script src="/assets/javascript/script.js"></script>
 
 </body>
 </html>
