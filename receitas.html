@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Receitas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/styles/header.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: nowrap;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .filters {
+            flex: 0 0 220px;
+            padding: 20px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .filters h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .filters form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filters label {
+            margin-top: 15px;
+            font-size: 1em;
+            color: #666;
+        }
+
+        .filters select, .filters button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .filters button {
+            margin-top: 20px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .filters button:hover {
+            background-color: #218838;
+        }
+
+        .recipes {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .recipes h1 {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .recipe-card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .recipe-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .recipe-card h3 {
+            margin: 15px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .recipe-card p {
+            margin: 15px;
+            color: #666;
+        }
+
+        /* Classes para tamanhos variados */
+        .size-small {
+            flex: 1 1 calc(25% - 20px);
+        }
+
+        .size-medium {
+            flex: 1 1 calc(33.333% - 20px);
+        }
+
+        .size-large {
+            flex: 1 1 calc(50% - 20px);
+        }
+
+        .filter-toggle {
+            display: none;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-toggle:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .size-small, .size-medium {
+                flex: 1 1 calc(50% - 20px);
+            }
+            .size-large {
+                flex: 1 1 calc(100% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                flex-direction: column;
+            }
+            .filters {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform: translateX(-100%);
+                z-index: 1000;
+                background-color: rgba(255, 255, 255, 0.95);
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            }
+            .filters.show {
+                transform: translateX(0);
+            }
+            .recipes {
+                flex: 1;
+                width: 100%;
+            }
+            .recipe-card {
+                flex: 1 1 100%;
+            }
+            .filter-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .filter-toggle {
+                display: block;
+            }
+            
+            .filters {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.9);
+                padding: 20px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            .filters.show {
+                transform: translateX(0%);
+            }
+
+            .filter-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1100;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/index.html"><h1>TiaNaCozinha</h1></a>
+        </div>
+        
+        <nav>
+            <ul id="main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="receitas.html">Receitas</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            <div class="search-container">
+                <form class="search-form" action="resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
+            
+        </nav>
+        <div class="mobile-search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="receitas.html">Receitas</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <aside class="filters" id="filters">
+            <h2>Filtros</h2>
+            <form id="filterForm">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria">
+                    <option value="todas">Todas</option>
+                    <option value="sobremesas">Sobremesas</option>
+                    <option value="pratos-principais">Pratos Principais</option>
+                    <option value="entradas">Entradas</option>
+                </select>
+                <button type="submit">Filtrar</button>
+                <button type="button" id="clearFilterBtn">Limpar Filtro</button>
+            </form>
+        </aside>
+        <main class="recipes" id="recipes">
+            <h1>Receitas</h1>
+            <button id="filterToggle" class="filter-toggle">Mostrar Filtros</button>
+            <div class="recipe-card" data-categoria="sobremesas">
+                <img src="path/to/image1.jpg" alt="Imagem da Receita 1">
+                <h3>Nome da Receita 1</h3>
+                <p>Descrição breve da Receita 1.</p>
+            </div>
+            <div class="recipe-card" data-categoria="pratos-principais">
+                <img src="path/to/image2.jpg" alt="Imagem da Receita 2">
+                <h3>Nome da Receita 2</h3>
+                <p>Descrição breve da Receita 2.</p>
+            </div>
+            <div class="recipe-card" data-categoria="entradas">
+                <img src="path/to/image3.jpg" alt="Imagem da Receita 3">
+                <h3>Nome da Receita 3</h3>
+                <p>Descrição breve da Receita 3.</p>
+            </div>
+            <!-- Adicione mais cartões de receita conforme necessário -->
+        </main>
+    </div>
+    <footer>
+        <p>Siga-nos nas redes sociais:</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            const filterForm = document.getElementById('filterForm');
+            const recipeCards = document.querySelectorAll('.recipe-card');
+            const sizes = ['size-small', 'size-medium', 'size-large'];
+            const filterToggle = document.getElementById('filterToggle');
+            const filters = document.querySelector('.filters');
+            const clearFilterBtn = document.getElementById('clearFilterBtn');
+            const categoriaSelect = document.getElementById('categoria');
+
+            function applyRandomSizes() {
+                recipeCards.forEach(card => {
+                    sizes.forEach(size => card.classList.remove(size));
+                    const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+                    card.classList.add(randomSize);
+                });
+            }
+
+            function clearFilters() {
+                // Resetar seleção da categoria
+                categoriaSelect.value = 'todas';
+
+                // Exibir todas as receitas
+                recipeCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+
+                // Aplicar tamanhos aleatórios
+                applyRandomSizes();
+            }
+
+            filterForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const selectedCategory = categoriaSelect.value;
+
+                recipeCards.forEach(card => {
+                    const recipeCategory = card.getAttribute('data-categoria');
+                    if (selectedCategory === 'todas' || recipeCategory === selectedCategory) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                applyRandomSizes();
+                filters.classList.remove('show');
+                filterToggle.textContent = 'Mostrar Filtros';
+            });
+
+            filterToggle.addEventListener('click', function() {
+                filters.classList.toggle('show');
+                filterToggle.textContent = filters.classList.contains('show') ? 'Esconder Filtros' : 'Mostrar Filtros';
+            });
+
+            clearFilterBtn.addEventListener('click', function() {
+                clearFilters();
+            });
+
+            applyRandomSizes();
+        });
+    </script>
+    <script src="assets/javascript/script.js"></script>
+</body>
+</html>
