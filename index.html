@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="assets/styles/header.css">
     <title>TiaNaCozinha</title>
     <style>
-
-.loading-overlay {
+        .loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -233,6 +232,13 @@
             color: #666;
         }
 
+        .recipe a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
         .recipe:hover {
             transform: scale(1.05);
             /* Aumenta o tamanho ao passar o mouse */
@@ -250,15 +256,15 @@
         }
     </style>
 
-<script>
-    // Simulação de um tempo de carregamento para demonstração
-    setTimeout(function() {
-        // Quando o carregamento estiver completo, remova a classe "loading" do body
-        document.body.classList.add('loaded');
-        // Remova o overlay de carregamento
-        document.getElementById('loadingOverlay').style.display = 'none';
-    }, 1000); // Tempo de carregamento simulado de 3 segundos
-</script>
+    <script>
+        // Simulação de um tempo de carregamento para demonstração
+        setTimeout(function() {
+            // Quando o carregamento estiver completo, remova a classe "loading" do body
+            document.body.classList.add('loaded');
+            // Remova o overlay de carregamento
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }, 1000); // Tempo de carregamento simulado de 3 segundos
+    </script>
 </head>
 
 <body>
@@ -326,12 +332,15 @@
 
     <div class="trending-section">
         <h2>Receitas em Destaque</h2>
+       
         <div class="recipe">
-            <img src="assets/img/pudim-tapioca.jpg" alt="Miniatura Receita 1">
-          <a href="assets/pages/pudimtapioca.html">  <div class="recipe-info">
-                <h3 class="recipe-title">Pudim de Tapioca</h3>
-                <p class="recipe-description">Descrição curta da Receita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></a>
-            </div>
+            <a href="assets/pages/pudimtapioca.html">
+                <img src="assets/img/pudim-tapioca.jpg" alt="Miniatura Receita 1">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Pudim de Tapioca</h3>
+                    <p class="recipe-description">Uma sobremesa clássica que une a leveza da tapioca com o toque cremoso do leite de coco e a doçura do leite condensado.</p>
+                </div>
+            </a>
         </div>
         <div class="recipe">
             <img src="OIG4.znW.jpg" alt="Miniatura Receita 2">
@@ -379,87 +388,84 @@
     <script>
         // Função para alternar o menu móvel e controlar a animação do ícone do menu hamburguer
 
-// Dados das categorias
-var categories = [
-    {
-        name: "Café da Manhã",
-        image: "/assets/img/categories/cafemanha.jpg"
-    },
-    {
-        name: "Petiscos e Entradas",
-        image: "/assets/img/categories/pestiscos.jpg"
-    },
-    {
-        name: "Saladas",
-        image: "/assets/img/categories/salada.jpg"
-    },
-    {
-        name: "Prato Principal",
-        image: "/assets/img/categories/pratoprincipal.jpg"
-    },
-    {
-        name: "Sobremesas",
-        image: "/assets/img/categories/sobreme.jpg"
-    },
-    {
-        name: "Sopas e Caldos",
-        image: "/assets/img/categories/sopas.jpg"
-    },
-    {
-        name: "Drinques",
-        image: "/assets/img/categories/drinques.jpg"
-    },
-    {
-        name: "Vegetariano",
-        image: "/assets/img/categories/vegetariano.jpg"
-    },
-];
+        // Dados das categorias
+        var categories = [
+            {
+                name: "Café da Manhã",
+                image: "/assets/img/categories/cafemanha.jpg"
+            },
+            {
+                name: "Petiscos e Entradas",
+                image: "/assets/img/categories/pestiscos.jpg"
+            },
+            {
+                name: "Saladas",
+                image: "/assets/img/categories/salada.jpg"
+            },
+            {
+                name: "Prato Principal",
+                image: "/assets/img/categories/pratoprincipal.jpg"
+            },
+            {
+                name: "Sobremesas",
+                image: "/assets/img/categories/sobreme.jpg"
+            },
+            {
+                name: "Sopas e Caldos",
+                image: "/assets/img/categories/sopas.jpg"
+            },
+            {
+                name: "Drinques",
+                image: "/assets/img/categories/drinques.jpg"
+            },
+            {
+                name: "Vegetariano",
+                image: "/assets/img/categories/vegetariano.jpg"
+            },
+        ];
 
-var currentCategoryIndex = 0;
-var categoryList = document.getElementById("category-list");
+        var currentCategoryIndex = 0;
+        var categoryList = document.getElementById("category-list");
 
-// Função para exibir as categorias
-function showCategories() {
-    var startIndex = currentCategoryIndex;
-    var endIndex = Math.min(currentCategoryIndex + 4, categories.length);
+        // Função para exibir as categorias
+        function showCategories() {
+            var startIndex = currentCategoryIndex;
+            var endIndex = Math.min(currentCategoryIndex + 4, categories.length);
 
-    categoryList.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
+            categoryList.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
 
-    for (var i = startIndex; i < endIndex; i++) {
-        var category = categories[i];
-        var listItem = document.createElement("li");
-        listItem.classList.add("category-item");
-        listItem.innerHTML = `
-            <img src="${category.image}" alt="${category.name}">
-            <p>${category.name}</p>
-        `;
-        categoryList.appendChild(listItem);
-    }
-}
+            for (var i = startIndex; i < endIndex; i++) {
+                var category = categories[i];
+                var listItem = document.createElement("li");
+                listItem.classList.add("category-item");
+                listItem.innerHTML = `
+                    <img src="${category.image}" alt="${category.name}">
+                    <p>${category.name}</p>
+                `;
+                categoryList.appendChild(listItem);
+            }
+        }
 
-// Função para exibir as próximas categorias
-function nextCategories() {
-    currentCategoryIndex += 4;
-    if (currentCategoryIndex >= categories.length) {
-        currentCategoryIndex = 0;
-    }
-    showCategories();
-}
+        // Função para exibir as próximas categorias
+        function nextCategories() {
+            currentCategoryIndex += 4;
+            if (currentCategoryIndex >= categories.length) {
+                currentCategoryIndex = 0;
+            }
+            showCategories();
+        }
 
-// Função para exibir as categorias anteriores
-function prevCategories() {
-    currentCategoryIndex -= 4;
-    if (currentCategoryIndex < 0) {
-        currentCategoryIndex = Math.max(0, categories.length - 4);
-    }
-    showCategories();
-}
+        // Função para exibir as categorias anteriores
+        function prevCategories() {
+            currentCategoryIndex -= 4;
+            if (currentCategoryIndex < 0) {
+                currentCategoryIndex = Math.max(0, categories.length - 4);
+            }
+            showCategories();
+        }
 
-// Chama a função para exibir as categorias
-showCategories();
-
-
-
+        // Chama a função para exibir as categorias
+        showCategories();
     </script>
 </body>
 
