@@ -72,3 +72,17 @@ function toggleSearch() {
     var searchContainer = document.querySelector('.search-container');
     searchContainer.classList.toggle('active');
 }
+
+
+
+
+$(window).on('scroll', function () {
+    const header = $('header');
+    const scrollPosition = $(window).scrollTop();
+
+    if (scrollPosition <= header.outerHeight()) {
+        header.css('box-shadow', 'none');
+    } else {
+        header.css('box-shadow', '5px 1px 5px rgba(50, 22, 50, 0.20)');
+    }
+});
