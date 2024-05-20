@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato e Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/header.css">
+    <style>
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container-contact {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .contact-h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, textarea {
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007bff;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        #submit {
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/index.html"><h1>TiaNaCozinha</h1></a>
+        </div>
+        
+        <nav>
+            <ul id="main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="receitas.html">Receitas</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <div class="search-container">
+                <form class="search-form" action="resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
+            
+        </nav>
+        <div class="mobile-search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="receitas.html">Receitas</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </div>
+<main>
+    <div class="container-contact">
+        <h1 class="contact-h1">Fale Conosco ou Deixe seu Feedback</h1>
+        <form action="https://api.staticforms.xyz/submit" method="post">
+        <input type="hidden" name="accessKey" value="6c40ab38-4d8c-43ba-b324-041a06091d95">
+        <input type="hidden" name="redirectTo" value="https://rivaldosantos1250.github.io/thanks.html">
+        <input type="hidden" name="replyTo" value="email">
+
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button id="submit" type="submit">Enviar</button>
+            
+        </form>
+    </div>
+</main>
+    <footer>
+        <p>Siga-nos nas redes sociais:</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
