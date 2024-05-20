@@ -7,8 +7,106 @@
     <link rel="stylesheet" href="/assets/styles/pages recipes/recipes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/assets/styles/header.css">
+    <style>
+        .music-player-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .music-player-wrapper.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .music-player {
+            background-color: #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .music-player h2 {
+            margin-top: 0;
+            color: #fff;
+        }
+        .music-player audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .music-player .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .music-player button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .music-player button:hover {
+            transform: scale(1.2);
+        }
+        .toggle-btn {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            background-color: #ffbb00;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
-<body>
+<body> 
     <header>
         <div class="logo">
           <a href="/index.html"><h1>TiaNaCozinha</h1></a>
@@ -45,79 +143,125 @@
             <li><a href="#">Contato</a></li>
         </ul>
     </div>
-<div class="container">
-    <h1>Receita de Pudim de Tapioca</h1>
+    <div class="container">
+        <h1>Receita de Pudim de Tapioca</h1>
 
-    <div class="recipe">
-        <img src="/assets/img/pudim-tapioca.jpg" alt="Pudim de Tapioca">
-        <div class="details">
-            <h3>Informações da Receita</h3>
-            <div class="recipe-info">
-                <i class="far fa-clock"></i>
-                <p>Tempo de Preparo: 2h</p>
+        <div class="recipe">
+            <img src="/assets/img/pudim-tapioca.jpg" alt="Pudim de Tapioca">
+            <div class="details">
+                <h3>Informações da Receita</h3>
+                <div class="recipe-info">
+                    <i class="far fa-clock"></i>
+                    <p>Tempo de Preparo: 2h</p>
+                </div>
+                <div class="recipe-info">
+                    <i class="fas fa-utensils"></i>
+                    <p>Porções: 12 porções</p>
+                </div>
             </div>
-            <div class="recipe-info">
-                <i class="fas fa-utensils"></i>
-                <p>Porções: 12 porções</p>
+        </div>
+
+        <div class="recipe">
+            <div class="ingredients">
+                <h2>Ingredientes:</h2>
+                <ul>
+                    <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="tapioca"><label class="custom-checkbox" for="tapioca"></label><span>500g de tapioca granulada</span></li>
+                    <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="milk"><label class="custom-checkbox" for="milk"></label><span>1 litro e meio de leite</span></li>
+                    <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-milk"><label class="custom-checkbox" for="coconut-milk"></label><span>1 vidro de leite de coco</span></li>
+                    <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="condensed-milk"><label class="custom-checkbox" for="condensed-milk"></label><span>1 lata de leite condensado</span></li>
+                    <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="sugar"><label class="custom-checkbox" for="sugar"></label><span>1 xícara de chá de açúcar</span></li>
+                    <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-flakes"><label class="custom-checkbox" for="coconut-flakes"></label><span>Coco ralado desidratado a gosto</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="recipe">
+            <div class="ingredients">
+                <h2>Modo de Preparo:</h2>
+                <ol>
+                    <li class="instruction"><span class="instruction-number">1.</span> É importante hidratar a tapioca com leite antes de preparar o pudim para que a massa fique bem macia e molhadinha.</li>
+                    <li class="instruction"><span class="instruction-number">2.</span> Em um recipiente, coloque 500 gramas de tapioca granulada e 1 litro e meio de leite. Misture.</li>
+                    <li class="instruction"><span class="instruction-number">3.</span> Em seguida, adicione 1 vidro de leite de coco, 1 lata de leite condensado e 1 xícara de chá de açúcar. Misture novamente.</li>
+                    <li class="instruction"><span class="instruction-number">4.</span> Transfira a mistura para uma forma e leve para gelar por 2 horas.</li>
+                    <li class="instruction"><span class="instruction-number">5.</span> Desenforme e finalize com coco desidratado ralado a gosto.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <p>Siga-nos nas redes sociais:</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="music-player-wrapper" id="music-player-wrapper">
+        <div class="music-player">
+            <h2>Ouça música enquanto cozinha</h2>
+            <audio id="audio-player" controls>
+                <source src="https://simulatorradio.stream/stream" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <div class="controls">
+                <button id="play-btn"><i class="fas fa-play"></i></button>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fas fa-bars"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="changeRadio('https://simulatorradio.stream/stream')">Sim Radio</a>
+                        <a href="#" onclick="changeRadio('http://radiotrucker.com/pt/play/200201/hunter-fm-pop')">Rádio 1</a>
+                        <a href="#" onclick="changeRadio('/assets/sound/R1.mp3')">Rádio 2</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="recipe">
-        <div class="ingredients">
-            <h2>Ingredientes:</h2>
-            <ul>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="tapioca"><label class="custom-checkbox" for="tapioca"></label><span>500g de tapioca granulada</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="milk"><label class="custom-checkbox" for="milk"></label><span>1 litro e meio de leite</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-milk"><label class="custom-checkbox" for="coconut-milk"></label><span>1 vidro de leite de coco</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="condensed-milk"><label class="custom-checkbox" for="condensed-milk"></label><span>1 lata de leite condensado</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="sugar"><label class="custom-checkbox" for="sugar"></label><span>1 xícara de chá de açúcar</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-flakes"><label class="custom-checkbox" for="coconut-flakes"></label><span>Coco ralado desidratado a gosto</span></li>
-            </ul>
-        </div>
-    </div>
+    <button class="toggle-btn" onclick="toggleMusicPlayer()"><i class="fas fa-music"></i></button>
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const playBtn = document.getElementById('play-btn');
+        const musicPlayerWrapper = document.getElementById('music-player-wrapper');
 
-    <div class="recipe">
-        <div class="ingredients">
-            <h2>Modo de Preparo:</h2>
-            <ol>
-                <li class="instruction"><span class="instruction-number">1.</span> É importante hidratar a tapioca com leite antes de preparar o pudim para que a massa fique bem macia e molhadinha.</li>
-                <li class="instruction"><span class="instruction-number">2.</span> Em um recipiente, coloque 500 gramas de tapioca granulada e 1 litro e meio de leite. Misture.</li>
-                <li class="instruction"><span class="instruction-number">3.</span> Em seguida, adicione 1 vidro de leite de coco, 1 lata de leite condensado e 1 xícara de chá de açúcar. Misture novamente.</li>
-                <li class="instruction"><span class="instruction-number">4.</span> Transfira a mistura para uma forma e leve para gelar por 2 horas.</li>
-                <li class="instruction"><span class="instruction-number">5.</span> Desenforme e finalize com coco desidratado ralado a gosto.</li>
-            </ol>
-        </div>
-    </div>
+        function loadMusic(src) {
+            audioPlayer.src = src;
+        }
 
-</div>
-<footer>
-    <p>Siga-nos nas redes sociais:</p>
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
-</footer>
+        function playMusic() {
+            audioPlayer.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }
 
-<div class="music-player">
-    <h2>Ouça música enquanto cozinha</h2>
-    <audio id="audio-player" controls>
-        <source src="https://simulatorradio.stream/stream" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <div class="controls">
-        <button id="play-btn"><i class="fas fa-play"></i></button>
-    </div>
-</div>
+        function pauseMusic() {
+            audioPlayer.pause();
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
 
-<button class="toggle-btn" onclick="toggleMusicPlayer()"><i class="fas fa-music"></i></button>
+        function toggleMusicPlayer() {
+            musicPlayerWrapper.classList.toggle('active');
+        }
 
-<script src="https://kit.fontawesome.com/a076d05399.js "></script>
-<script src="/assets/javascript/pages/recipes.js"></script>
-<script src="/assets/javascript/script.js"></script>
+        playBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                playMusic();
+            } else {
+                pauseMusic();
+            }
+        });
 
+        function changeRadio(url) {
+            loadMusic(url);
+            playMusic();
+        }
+
+        loadMusic('https://simulatorradio.stream/stream');
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="/assets/javascript/pages/recipes.js"></script>
+    <script src="/assets/javascript/script.js"></script>
 </body>
 </html>
