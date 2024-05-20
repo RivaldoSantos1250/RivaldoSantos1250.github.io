@@ -20,7 +20,7 @@
         const currentRadioEl = document.getElementById('currentRadio');
         const currentTimeEl = document.getElementById('currentTime');
         const durationEl = document.getElementById('duration');
-        const seekBar = document.getElementById('seekBar');
+        
         const volumeControl = document.getElementById('volumeControl');
         const radioMenu = document.getElementById('radioMenu');
         const radioCloseBtn = document.getElementById('radioCloseBtn');
@@ -31,7 +31,7 @@
         playPauseBtn.addEventListener('click', togglePlayPause);
         radioSelectBtn.addEventListener('click', toggleRadioMenu);
         radioCloseBtn.addEventListener('click', closeRadioMenu);
-        seekBar.addEventListener('input', seek);
+        
         musicIcon.addEventListener('click', togglePlayerVisibility);
     
         volumeControl.addEventListener('input', () => {
