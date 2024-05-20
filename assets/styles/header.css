@@ -9,7 +9,7 @@ body {
 
 header {
     position: sticky;
-    background-color: #333;
+    background-color: #ffa805;
     color: #fff;
     padding: 20px;
     display: flex;
@@ -33,7 +33,13 @@ header {
 }
 
 .logo h1 {
+    font-size: 25px;
     margin: 0;
+    color: #ffffff;
+}
+
+.logo a {
+    text-decoration: none;
 }
 
 nav ul {
@@ -53,8 +59,9 @@ nav ul li:hover {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
+    font-size: 25px;
 }
 
 .menu-icon {
@@ -75,7 +82,7 @@ transform: translateY(8px) rotate(45deg); /* Adicionamos as transformações par
 }
 
 .menu-icon.open .bar:nth-child(2) {
-opacity: 0; /* Ocultamos a segunda barra quando o menu está aberto */
+opacity: 0; 
 }
 
 .menu-icon.open .bar:nth-child(3) {
@@ -88,7 +95,7 @@ transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações p
     top: 60px;
     left: 0;
     width: 100%;
-    background-color: #333;
+    background-color: #ffa805;
     z-index: 99;
     padding: 10px 0;
 }
@@ -161,7 +168,7 @@ transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações p
 
 .search-button {
     padding: 10px 20px;
-    background-color: #ffcc00;
+    background-color: #FFA805;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -170,13 +177,13 @@ transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações p
 }
 
 .search-button:hover {
-    background-color: #f0c300;
+    background-color: #ff9305;
 }
 
 .search-container {
 display: none;
 position: fixed;
-top: 60px; /* Ajuste conforme necessário para a altura do seu cabeçalho */
+top: 60px; 
 left: 0;
 width: 100%;
 background-color: #fff;
@@ -214,7 +221,7 @@ footer {
     text-align: center;
     margin: 0 10px;
     border-radius: 50%;
-    background-color: #ffcc00;
+    background-color: #FFC107;
     color: #333;
     font-size: 20px;
     transition: background-color 0.3s, color 0.3s;
@@ -223,7 +230,7 @@ footer {
 
 .social-icons a:hover {
     background-color: #fff;
-    color: #ffcc00;
+    color: #FFC107;
 }
 
 /* Estilos responsivos */
