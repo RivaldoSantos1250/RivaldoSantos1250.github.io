@@ -31,27 +31,32 @@
         }
 
         html, body {
+            height: 100%;
             width: 100%;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f0f0f0;
             color: #333;
+            flex: 1;
         }
 
         .container {
             display: flex;
+            flex: 1;
+            flex-direction: column;
             flex-wrap: nowrap;
-            max-width: 1200px;
+            width: 100%;
             margin: auto;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             position: relative;
-            
         }
 
         .filters {
@@ -199,25 +204,25 @@
         }
 
         footer {
-    padding: 30px; /* ajuste o preenchimento conforme necessário */
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
-footer p {
-    margin: 10px 0; /* ajuste a margem conforme necessário */
-}
+        footer p {
+            margin: 10px 0;
+        }
 
-.social-icons a {
-    margin: 0 10px; /* ajuste o espaçamento entre ícones conforme necessário */
-   
-    text-decoration: none;
-    font-size: 1.5em; /* ajuste o tamanho dos ícones conforme necessário */
-}
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
 
-                  
+    </style>
     </style>
 </head>
 <body>
