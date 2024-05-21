@@ -17,8 +17,6 @@ header {
     align-items: center;
     top: 0;
     z-index: 99;
-    
-    
 }
 
 @keyframes fadeInHeader {
@@ -208,6 +206,7 @@ footer {
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    bottom: 0;
 }
 
 .social-icons {
