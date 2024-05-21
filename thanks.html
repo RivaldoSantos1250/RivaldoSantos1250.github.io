@@ -53,5 +53,14 @@
         <p>Sua mensagem é muito importante para nós!</p>
         <a href="index.html">Voltar para a Página Inicial</a>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  var disclaimer =  document.querySelector("img[alt='www.000webhost.com']");
+   if(disclaimer){
+       disclaimer.remove();
+   }  
+ });
+    </script>
 </body>
 </html>
