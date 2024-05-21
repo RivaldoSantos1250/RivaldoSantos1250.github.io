@@ -1,14 +1,56 @@
 function toggleMenu() {
     var mobileMenu = document.getElementById("mobile-menu");
     var menuIcon = document.querySelector(".menu-icon");
+    var searchContainer = document.querySelector('.search-container');
 
-    // Verifica se o menu está visível ou não e alterna sua exibição
     if (mobileMenu.style.display === "block") {
-        mobileMenu.style.display = "none";
-        menuIcon.classList.remove("open"); // Remove a classe 'open' para voltar ao ícone do menu hamburguer
+        mobileMenu.classList.remove("slide-down");
+        mobileMenu.classList.add("slide-up");
+        setTimeout(function() {
+            mobileMenu.style.display = "none";
+        }, 300);
+        menuIcon.classList.remove("open");
     } else {
+        if (searchContainer.classList.contains('active')) {
+            searchContainer.classList.remove('slide-down');
+            searchContainer.classList.add('slide-up');
+            setTimeout(function() {
+                searchContainer.style.display = "none";
+                searchContainer.classList.remove('active');
+            }, 300);
+        }
         mobileMenu.style.display = "block";
-        menuIcon.classList.add("open"); // Adiciona a classe 'open' para mostrar o ícone "X" do menu aberto
+        mobileMenu.classList.remove("slide-up");
+        mobileMenu.classList.add("slide-down");
+        menuIcon.classList.add("open");
+    }
+}
+
+function toggleSearch() {
+    var searchContainer = document.querySelector('.search-container');
+    var mobileMenu = document.getElementById("mobile-menu");
+
+    if (searchContainer.classList.contains('active')) {
+        searchContainer.classList.remove('slide-down');
+        searchContainer.classList.add('slide-up');
+        setTimeout(function() {
+            searchContainer.style.display = "none";
+            searchContainer.classList.remove('active');
+        }, 300);
+    } else {
+        if (mobileMenu.style.display === "block") {
+            mobileMenu.classList.remove("slide-down");
+            mobileMenu.classList.add("slide-up");
+            setTimeout(function() {
+                mobileMenu.style.display = "none";
+            }, 300);
+            var menuIcon = document.querySelector(".menu-icon");
+            menuIcon.classList.remove("open");
+        }
+        searchContainer.style.display = "block";
+        searchContainer.classList.remove('slide-up');
+        searchContainer.classList.add('slide-down');
+        searchContainer.classList.add('active');
     }
 }
 
@@ -26,52 +68,6 @@ window.addEventListener('resize', function () {
         }
     }
 });
-
-// Função para pesquisar receitas
-function searchRecipes(query) {
-    // Conjunto de dados de exemplo das receitas
-    var recipes = [
-        { nome: "Receita 1", descricao: "Descrição da Receita 1" },
-        { nome: "Receita 2", descricao: "Descrição da Receita 2" },
-        { nome: "ze", descricao: "Descrição da Receita ze" }, // Receita "ze"
-    ];
-
-    // Criar uma expressão regular para a consulta, ignorando a diferença entre maiúsculas e minúsculas
-    var regex = new RegExp(query, 'i');
-
-    // Filtra as receitas que correspondem à consulta
-    var results = recipes.filter(function(recipe) {
-        // Verifique se o nome da receita corresponde à expressão regular
-        return regex.test(recipe.nome);
-    });
-
-    // Exiba os resultados na página
-    displayResults(results);
-}
-
-// Função para exibir os resultados da pesquisa
-function displayResults(results) {
-    var resultsContainer = document.getElementById('search-results');
-    resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
-
-    if (results.length > 0) {
-        results.forEach(function(recipe) {
-            var recipeHTML = '<div>';
-            recipeHTML += '<h3>' + recipe.nome + '</h3>';
-            recipeHTML += '<p>' + recipe.descricao + '</p>';
-            recipeHTML += '</div>';
-            resultsContainer.innerHTML += recipeHTML;
-        });
-    } else {
-        resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-    }
-}
-
-// Função para alternar a exibição do campo de pesquisa
-function toggleSearch() {
-    var searchContainer = document.querySelector('.search-container');
-    searchContainer.classList.toggle('active');
-}
 
 
 

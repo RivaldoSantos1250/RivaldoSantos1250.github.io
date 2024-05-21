@@ -63,36 +63,31 @@
             margin: 0;
             font-size: 20px;
             font-weight: bold; /* Adiciona negrito ao título da receita */
-        }
-
-        .recipe-title a {
-            color: #333;
             text-decoration: none;
+            color: #333;
+            text-decoration: none; /* remova o sublinhado padrão */
+            transition: color 0.3s ease; /* adicione uma transição suave */
         }
 
-        .recipe-title a:hover {
-            color: #ffcc00;
-        }
+        
 
         .recipe-description {
             margin: 0;
             font-size: 16px;
-            color: #666; /* Altera a cor do texto da descrição da receita */
+            color: #4d4c4c; /* Altera a cor do texto da descrição da receita */
         }
 
         /* Animação de fade-in para os resultados */
         #search-results.fade-in {
             opacity: 1;
         }
-
-        
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">
-            <a href="/index.html"><h1>TiaNaCozinha</h1></a>
+            <a href="/index.html"><h1>Cozinha da Tia</h1></a>
         </div>
         
         <nav>
@@ -101,13 +96,6 @@
                 <li><a href="receitas.html">Receitas</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
-            <div class="search-container">
-                <form class="search-form" action="resultados-pesquisa.html" method="GET">
-                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-                    <button class="search-button" type="submit">Pesquisar</button>
-                </form>
-            </div>
-            
         </nav>
         <div class="mobile-search-icon" onclick="toggleSearch()">
             <i class="fas fa-search"> BUSCAR</i>
@@ -118,12 +106,19 @@
             <div class="bar"></div>
         </div>
     </header>
-
+    
+    <div class="search-container">
+        <form class="search-form" action="resultados-pesquisa.html" method="GET">
+            <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+            <button class="search-button" type="submit">Pesquisar</button>
+        </form>
+    </div>
+    
     <div class="mobile-menu" id="mobile-menu">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="recipes.html">Receitas</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="contato.html">Contato</a></li>
         </ul>
     </div>
 
@@ -134,43 +129,42 @@
     <script src="assets/javascript/script.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var params = new URLSearchParams(window.location.search);
-            var query = params.get('q');
+      document.addEventListener('DOMContentLoaded', function() {
+    var params = new URLSearchParams(window.location.search);
+    var query = params.get('q');
 
-            if (query !== null && query !== '') {
-                searchRecipes(query);
-            } else {
-                displayNoResults();
-            }
-        });
+    if (query !== null && query !== '') {
+        searchRecipes(query);
+    } else {
+        displayNoResults();
+    }
+});
 
-       // Função para calcular a distância de edição (Levenshtein Distance) entre duas strings
+// Função para remover caracteres especiais de uma string
+function cleanString(str) {
+    return str.replace(/[^\w\s]/gi, '').toLowerCase();
+}
+
 function levenshteinDistance(a, b) {
     if (a.length === 0) return b.length;
     if (b.length === 0) return a.length;
 
     var matrix = [];
 
-    // Inicialização da matriz
-    var i;
-    for (i = 0; i <= b.length; i++) {
+    for (var i = 0; i <= b.length; i++) {
         matrix[i] = [i];
     }
 
-    for (i = 0; i <= a.length; i++) {
-        matrix[0][i] = i;
+    for (var j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
     }
 
-    // Cálculo da distância de edição
-    for (i = 1; i <= b.length; i++) {
+    for (var i = 1; i <= b.length; i++) {
         for (var j = 1; j <= a.length; j++) {
             if (b.charAt(i - 1) == a.charAt(j - 1)) {
                 matrix[i][j] = matrix[i - 1][j - 1];
             } else {
-                matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, // Substituição
-                    Math.min(matrix[i][j - 1] + 1, // Inserção
-                        matrix[i - 1][j] + 1)); // Deleção
+                matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
             }
         }
     }
@@ -178,49 +172,65 @@ function levenshteinDistance(a, b) {
     return matrix[b.length][a.length];
 }
 
-// Função para verificar se a consulta está associada a uma palavra-chave doce
-function isAssociatedWithSweet(queryLower, recipeNameLower) {
-    // Lista de palavras-chave associadas a receitas doces
+function isAssociatedWithSweet(queryLower) {
     var sweetKeywords = ["sobremesa", "guloseima", "doce", "sobremesas", "guloseimas", "doces"];
-
-    // Verifica se a consulta ou o nome da receita contém palavras-chave associadas a receitas doces
     return sweetKeywords.some(function(keyword) {
-        return queryLower.includes(keyword) || recipeNameLower.includes(keyword);
+        return queryLower.includes(keyword);
     });
 }
 
-// Função para pesquisar receitas
+function isAssociatedWithDrink(queryLower) {
+    var drinkKeywords = ["drink", "bebida", "coquetel", "cocktail"];
+    return drinkKeywords.some(function(keyword) {
+        return queryLower.includes(keyword);
+    });
+}
+
+function isAssociatedWithBreakfast(queryLower) {
+    var breakfastKeywords = ["breakfast", "café da manhã", "manhã", "morning"];
+    return breakfastKeywords.some(function(keyword) {
+        return queryLower.includes(keyword);
+    });
+}
+
 function searchRecipes(query) {
-    // Conjunto de dados de exemplo das receitas
     var recipes = [
         { nome: "Pudim de Tapioca Granulada", descricao: "Uma receita deliciosa de pudim de tapioca.", imagem: "/assets/img/pudim-tapioca.jpg", link: "assets/pages/pudimtapioca.html" },
-        //{ nome: "Bolo de Chocolate", descricao: "Um bolo delicioso e fofinho de chocolate.", imagem: "bolo.jpg", link: "bolo.html" },
-        //{ nome: "Torta de Maçã", descricao: "Uma torta deliciosa recheada com maçãs frescas.", imagem: "torta.jpg", link: "torta.html" },
-        //{ nome: "Pudim de Caramelo Salgado", descricao: "Uma versão deliciosa do pudim clássico com um toque de caramelo salgado.", imagem: "pudim-salgado.jpg", link: "pudim-salgado.html" },
+        { nome: "Pudim de Leite Condensado", descricao: "Perfeito para qualquer ocasião, nosso pudim é uma escolha deliciosa que vai deixar você querendo mais.", imagem: "/assets/img/pudim-leite-condensado.jpg", link: "assets/pages/pudim.html" },
+        { nome: "Panqueca de Aveia e Banana", descricao: "As panquecas de aveia e banana são uma opção saudável e deliciosa para o café da manhã ou lanche.", imagem: "/assets/img/panqueca-aveia-banana.jpg", link: "assets/pages/panquecas-veia-banana.html" },
+        { nome: "Mojito Clássico", descricao: "Conhecido por sua refrescância e sabor equilibrado entre o doce.", imagem: "/assets/img/mojito.jpg", link: "assets/pages/mojito.html" },
+        
+        { nome: "Brownie de Caneca", descricao: "Um brownie na caneca oferece a promessa da gratificação instantânea, entregando essa amada delícia de chocolate em apenas questão de minutos.", imagem: "/assets/img/brownie.jpg", link: "assets/pages/brownie-caneca.html" },
+        
     ];
 
-    // Converta a consulta de pesquisa e o nome de todas as receitas para minúsculas
-    var queryLower = query.toLowerCase();
+    var queryLower = cleanString(query);
 
-    // Filtra as receitas que correspondem à consulta
     var results = recipes.filter(function(recipe) {
-        // Converta o nome e a descrição da receita para minúsculas
-        var recipeNameLower = recipe.nome.toLowerCase();
-        var recipeDescriptionLower = recipe.descricao.toLowerCase();
+        var recipeNameLower = cleanString(recipe.nome);
+        var recipeDescriptionLower = cleanString(recipe.descricao);
 
-        // Verifique se o nome ou a descrição da receita contém a consulta de pesquisa
-        return recipeNameLower.includes(queryLower) || recipeDescriptionLower.includes(queryLower) || isAssociatedWithSweet(queryLower, recipeNameLower);
-        // Além de verificar se o nome ou descrição contém a consulta, também verificamos se a consulta está associada a uma palavra-chave doce.
+        if (isAssociatedWithDrink(queryLower)) {
+            return recipeNameLower.includes('mojito') || recipeNameLower.includes('mimosa');
+        }
+
+        if (isAssociatedWithBreakfast(queryLower)) {
+            return recipeNameLower.includes('panqueca') || recipeNameLower.includes('café');
+        }
+
+        if (isAssociatedWithSweet(queryLower)) {
+            return recipeNameLower.includes('pudim') || recipeDescriptionLower.includes('brownie');
+        }
+
+        return recipeNameLower.includes(queryLower) || recipeDescriptionLower.includes(queryLower);
     });
 
-    // Exiba os resultados na página
     displayResults(results);
 }
 
-// Função para exibir os resultados da pesquisa
 function displayResults(results) {
     var resultsContainer = document.getElementById('search-results');
-    resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+    resultsContainer.innerHTML = '';
 
     if (results.length > 0) {
         results.forEach(function(recipe) {
@@ -234,7 +244,6 @@ function displayResults(results) {
             resultsContainer.innerHTML += recipeHTML;
         });
 
-        // Adiciona a classe de animação para fade-in dos resultados
         resultsContainer.classList.add('fade-in');
     } else {
         displayNoResults();
@@ -244,9 +253,10 @@ function displayResults(results) {
 function displayNoResults() {
     var resultsContainer = document.getElementById('search-results');
     resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-    // Adiciona a classe de animação para fade-in dos resultados
     resultsContainer.classList.add('fade-in');
 }
+
+
     </script>
 
 </body>

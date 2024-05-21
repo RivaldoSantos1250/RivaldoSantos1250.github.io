@@ -107,6 +107,10 @@
             background-color: #218838;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         .recipes {
             flex: 1;
             padding: 20px;
@@ -130,6 +134,7 @@
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            
         }
 
         .recipe-card:hover {
@@ -237,12 +242,7 @@
                 <li><a href="receitas.html">Receitas</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
-            <div class="search-container">
-                <form class="search-form" action="resultados-pesquisa.html" method="GET">
-                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-                    <button class="search-button" type="submit">Pesquisar</button>
-                </form>
-            </div>
+            
         </nav>
         <div class="mobile-search-icon" onclick="toggleSearch()">
             <i class="fas fa-search"> BUSCAR</i>
@@ -253,7 +253,12 @@
             <div class="bar"></div>
         </div>
     </header>
-
+<div class="search-container">
+                <form class="search-form" action="resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
     <div class="mobile-menu" id="mobile-menu">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -286,20 +291,39 @@
             <h1>Receitas</h1>
             <button id="filterToggle" class="filter-toggle">Mostrar Filtros</button>
             <div class="recipe-card" data-categoria="sobremesas">
-                <img src="/assets/img/pudim-tapioca.jpg" alt="Imagem da Receita 1">
+                <a href="assets/pages/pudimtapioca.html">
+                <img src="/assets/img/pudim-tapioca.jpg" alt="Pudim de Tapioca">
                 <h3>Pudim de tapioca</h3>
                 <p>Feito a partir de ingredientes simples, como tapioca granulada, leite, leite de coco, açúcar.</p>
-            </div>
-            <div class="recipe-card" data-categoria="prato-principal">
-                <img src="path/to/image2.jpg" alt="Imagem da Receita 2">
-                <h3>Nome da Receita 2</h3>
-                <p>Descrição breve da Receita 2.</p>
-            </div>
+            </div></a>
+
+            <div class="recipe-card" data-categoria="sobremesas">
+
+               <a href="assets/pages/pudim.html"> <img src="/assets/img/pudim-leite-condensado.jpg" alt="Pudim">
+                <h3>Pudim de Leite Condensado</h3>
+                <p>Perfeito para qualquer ocasião, nosso pudim é uma escolha deliciosa que vai deixar você querendo mais.</p>
+            </div></a>
+
+            <div class="recipe-card" data-categoria="sobremesas">
+                <a href="assets/pages/brownie-caneca.html">
+                <img src="assets/img/brownie.jpg" alt="brownie">
+                <h3>brownie de caneca</h3>
+                <p>Um brownie na caneca oferece a promessa da gratificação instantânea, entregando essa amada delícia de chocolate em apenas questão de minutos.</p>
+            </div></a>
+
+            <div class="recipe-card" data-categoria="drinques">
+                <a href="assets/pages/mojito.html">
+                <img src="/assets/img/mojito.jpg" alt="drinques">
+                <h3>Mojito Clássico</h3>
+                <p>Conhecido por sua refrescância e sabor equilibrado entre o doce.</p>
+            </div></a>
+            
             <div class="recipe-card" data-categoria="café-da-manhã">
-                <img src="path/to/image3.jpg" alt="Imagem da Receita 3">
-                <h3>Nome da Receita 3</h3>
-                <p>Descrição breve da Receita 3.</p>
-            </div>
+                <a href="assets/pages/panquecas-veia-banana.html">
+                <img src="/assets/img/panqueca-aveia-banana.jpg" alt="Panqueca">
+                <h3>Panqueca de Aveia e Banana</h3>
+                <p>As panquecas de aveia e banana são uma opção saudável e deliciosa para o café da manhã ou lanche.</p>
+            </div></a>
         </main>
     </div>
     <footer>

@@ -28,7 +28,7 @@
 <body>
     <header>
         <div class="logo">
-          <a href="/index.html"><h1>TiaNaCozinha</h1></a>
+          <a href="/index.html"><h1>Cozinha da Tia</h1></a>
         </div>
         
         <nav>
@@ -37,12 +37,7 @@
                 <li><a href="/receitas.html">Receitas</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
-            <div class="search-container">
-                <form class="search-form" action="/resultados-pesquisa.html" method="GET">
-                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-                    <button class="search-button" type="submit">Pesquisar</button>
-                </form>
-            </div>
+            
             
         </nav>
         <div class="mobile-search-icon" onclick="toggleSearch()">
@@ -54,7 +49,12 @@
             <div class="bar"></div>
         </div>
     </header>
-
+<div class="search-container">
+                <form class="search-form" action="/resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
     <div class="mobile-menu" id="mobile-menu">
         <ul>
             <li><a href="/index.html">Home</a></li>

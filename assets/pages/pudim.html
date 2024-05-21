@@ -3,17 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receita de Pudim de Leite Condensado</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/assets/styles/pages recipes/recipes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/assets/styles/header.css">
+    <title>Pudim de Leite Condensado</title>
 </head>
 <body>
-
+    <header>
+        <div class="logo">
+          <a href="/index.html"><h1>Cozinha da Tia</h1></a>
+        </div>
+        
+        <nav>
+            <ul id="main-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/receitas.html">Receitas</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            
+            
+        </nav>
+        <div class="mobile-search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"> BUSCAR</i>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+<div class="search-container">
+                <form class="search-form" action="/resultados-pesquisa.html" method="GET">
+                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+                    <button class="search-button" type="submit">Pesquisar</button>
+                </form>
+            </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/receitas.html">Receitas</a></li>
+            <li><a href="/contato.html">Contato</a></li>
+        </ul>
+    </div>
 <div class="container">
-    <h1>Receita de Pudim de Leite Condensado</h1>
+    <h1>Pudim de Leite Condensado</h1>
 
     <div class="recipe">
-        <img src="https://via.placeholder.com/300" alt="Pudim de Leite Condensado">
+        <img src="/assets/img/pudim-leite-condensado.jpg" alt="Pudim de Tapioca">
         <div class="details">
             <h3>Informações da Receita</h3>
             <div class="recipe-info">
@@ -31,12 +84,12 @@
         <div class="ingredients">
             <h2>Ingredientes:</h2>
             <ul>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="sugar"><label class="custom-checkbox" for="sugar"></label><span>1 xícara de açúcar</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="water"><label class="custom-checkbox" for="water"></label><span>1/4 de xícara de água</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="condensed-milk"><label class="custom-checkbox" for="condensed-milk"></label><span>1 lata de leite condensado</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="milk"><label class="custom-checkbox" for="milk"></label><span>A mesma medida de leite (usar a lata de leite condensado como medida)</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="eggs"><label class="custom-checkbox" for="eggs"></label><span>3 ovos inteiros</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="vanilla"><label class="custom-checkbox" for="vanilla"></label><span>1 colher de chá de essência de baunilha (opcional)</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="tapioca"><label class="custom-checkbox" for="tapioca"></label><span>1 xícara de açúcar</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="milk"><label class="custom-checkbox" for="milk"></label><span>1/4 de xícara de água</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-milk"><label class="custom-checkbox" for="coconut-milk"></label><span>1 lata de leite condensado</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="condensed-milk"><label class="custom-checkbox" for="condensed-milk"></label><span>A mesma medida de leite (usar a lata de leite condensado como medida)</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="sugar"><label class="custom-checkbox" for="sugar"></label><span>3 ovos inteiros</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-flakes"><label class="custom-checkbox" for="coconut-flakes"></label><span>1 colher de chá de essência de baunilha (opcional)</span></li>
             </ul>
         </div>
     </div>
@@ -64,28 +117,59 @@
             </ul>
         </div>
     </div>
-</div>
-</div>
 
-<div class="music-player">
-    <h2>Ouça música enquanto cozinhe</h2>
-    <audio id="audio-player" controls >
-        <source src="music1.mp3" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <div class="controls">
-        <button id="prev-btn"><i class="fas fa-backward"></i></button>
-        <button id="play-btn"><i class="fas fa-play"></i></button>
-        <button id="next-btn"><i class="fas fa-forward"></i></button>
+</div>
+<footer>
+    <p>Siga-nos nas redes sociais:</p>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
-</div>
+    <p>&copy; 2024 TiaNaCozinha. Todos os direitos reservados.</p>
+</footer>
+    <div class="player-container" id="playerContainer" style="display: none;">
+        <audio id="audioPlayer" src=""></audio>
+        <div class="controls">
+            <button id="playPauseBtn" class="btn">Play</button>
+            <button id="radioSelectBtn" class="btn">Selecionar Rádio</button>
+            <span id="currentRadio" class="time">Rádio Atual: Hunter Pop</span>
+            <span id="currentTime" class="time">0:00</span> / 
+            <span id="duration" class="time">Pausado</span>
+        </div>
+        <div class="volume-control">
+            <label for="volumeControl">Volume:</label>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
 
+        </div>  
+        <div id="radioMenu" class="radio-menu">
+            <div class="radio-option">
+                <label for="Hunter Pop" class="radio-label">Rádio Hunter Pop</label>
+                <input type="radio" id="Hunter Pop" name="radios" value="https://live.hunter.fm/pop_high" checked>
+            </div>
+            <div class="radio-option">
+                <label for="Hunter Rock" class="radio-label">Rádio Hunter Rock</label>
+                <input type="radio" id="Hunter Rock" name="radios" value="https://live.hunter.fm/rock_high">
+            </div>
+            <div class="radio-option">
+                <label for="Hunter 80s" class="radio-label">Rádio Hunter 80s</label>
+                <input type="radio" id="Hunter 80s" name="radios" value="https://live.hunter.fm/80s_high">
+            </div>
+            <div class="radio-option">
+                <label for="Hunter Brasil" class="radio-label">Rádio Hunter Brasil</label>
+                <input type="radio" id="Hunter Brasil" name="radios" value="https://live.hunter.fm/hitsbrasil_high">
+            </div>
+            <button id="radioCloseBtn" class="radio-close-btn">Fechar</button>
+        </div>
+    </div>
 
-
-<button class="toggle-btn" onclick="toggleMusicPlayer()"><i class="fas fa-music"></i></button>
-
+    <button id="musicIcon" class="music-icon">
+        🎵
+    </button>
 <script src="https://kit.fontawesome.com/a076d05399.js "></script>
-<script src="/assets/javascript/pages/recipes.js"></script>>
+<script src="/assets/javascript/pages/recipes.js"></script>
+<script src="/assets/javascript/script.js"></script>
 
 </body>
 </html>

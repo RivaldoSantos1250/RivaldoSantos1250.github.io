@@ -6,7 +6,6 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-
 header {
     position: sticky;
     background-color: #ffa805;
@@ -16,7 +15,7 @@ header {
     justify-content: space-between;
     align-items: center;
     top: 0;
-    z-index: 99;
+    z-index: 999;
 }
 
 @keyframes fadeInHeader {
@@ -24,7 +23,6 @@ header {
         opacity: 0;
         transform: translateY(-20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -69,23 +67,23 @@ nav ul li a {
 }
 
 .menu-icon .bar {
-width: 25px;
-height: 3px;
-background-color: #fff;
-margin: 5px;
-transition: transform 0.3s ease; /* Adicionamos a transição aqui */
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: transform 0.3s ease;
 }
 
 .menu-icon.open .bar:nth-child(1) {
-transform: translateY(8px) rotate(45deg); /* Adicionamos as transformações para o ícone "X" aqui */
+    transform: translateY(8px) rotate(45deg);
 }
 
 .menu-icon.open .bar:nth-child(2) {
-opacity: 0; 
+    opacity: 0;
 }
 
 .menu-icon.open .bar:nth-child(3) {
-transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações para o ícone "X" aqui */
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 .mobile-menu {
@@ -97,6 +95,16 @@ transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações p
     background-color: #ffa805;
     z-index: 99;
     padding: 10px 0;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.mobile-menu.slide-down {
+    animation-name: slideDown;
+}
+
+.mobile-menu.slide-up {
+    animation-name: slideUp;
 }
 
 .mobile-menu ul {
@@ -124,12 +132,28 @@ transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações p
     color: #ffcc00;
 }
 
-@media screen and (max-width: 768px) {
-
-    .logo h1 {
-    font-size: 20px;
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo h1 {
+        font-size: 20px;
+    }
 
     nav ul {
         display: none;
@@ -154,6 +178,7 @@ transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações p
 .search-form {
     align-items: center;
     text-align: center;
+    
 }
 
 .search-input {
@@ -180,27 +205,38 @@ transform: translateY(-8px) rotate(-45deg); /* Adicionamos as transformações p
 }
 
 .search-container {
-display: none;
-position: fixed;
-top: 60px; 
-left: 0;
-width: 100%;
-background-color: #fff;
-z-index: 1000;
-padding: 10px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
 }
 
-.search-container.active {
-display: block;
+.search-container.slide-down {
+    animation-name: slideDown;
+}
+
+.search-container.slide-up {
+    animation-name: slideUp;
 }
 
 .fa-search {
     cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+    .search-input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
 footer {
     background-color: #333;
     color: #fff;
@@ -233,11 +269,3 @@ footer {
     color: #FFC107;
 }
 
-/* Estilos responsivos */
-@media screen and (max-width: 600px) {
-    .search-input {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-}
