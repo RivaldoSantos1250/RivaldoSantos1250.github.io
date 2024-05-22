@@ -152,7 +152,14 @@ p {
         <p>&copy; 2024 CozinhadaTia. Todos os direitos reservados.</p>
         <p><a href="privacy-policy.html">Política de Privacidade</a></p>
     </footer>
-
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    var disclaimer =  document.querySelector("img[alt='www.000webhost.com']");
+     if(disclaimer){
+         disclaimer.remove();
+     }  
+   });
+</script>
     <script src="assets/javascript/script.js"></script>
 </body>
 </html>
