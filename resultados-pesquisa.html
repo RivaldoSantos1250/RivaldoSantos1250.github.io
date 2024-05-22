@@ -1,9 +1,26 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="assets/styles/header.css">
     <title>Resultados da Pesquisa</title>
     <style>
@@ -24,7 +41,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            padding: 20px;
             opacity: 0; /* Inicia com opacidade 0 */
             transition: opacity 0.5s ease; /* Adiciona uma transição suave */
         }
@@ -81,11 +97,25 @@
         #search-results.fade-in {
             opacity: 1;
         }
+       
+        .container1 {
+            height: calc(100vh - 80px);
+            
+        }  
+
+        .social-icons a {
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    
+    }
+
     </style>
 
     <script src="assets/javascript/loader.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7017375467592415"
      crossorigin="anonymous"></script>
+     <script src="assets/javascript/pages/cookie.js"></script>
 </head>
 <body>
 
@@ -125,10 +155,27 @@
             <li><a href="contato.html">Contato</a></li>
         </ul>
     </div>
-
+    <div class="container1">
     <h1>Resultados da Pesquisa</h1>
     
     <div id="search-results"></div>
+
+    <div id="cookieConsent">
+        Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você aceita o uso de cookies. Veja nossa <a href="privacy-policy.html" target="_blank">política de privacidade</a>.
+        <button onclick="acceptCookies()">Aceitar</button>
+    </div>
+</div>
+    <footer>
+        <p>Siga-nos nas redes sociais:</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 CozinhadaTia. Todos os direitos reservados.</p>
+        <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+    </footer>
 
     <script src="assets/javascript/script.js"></script>
 
