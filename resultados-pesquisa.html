@@ -252,6 +252,8 @@ function searchRecipes(query) {
         { nome: "Mojito Clássico", descricao: "Conhecido por sua refrescância e sabor equilibrado entre o doce.", imagem: "/assets/img/mojito.jpg", link: "assets/pages/mojito.html" },
         
         { nome: "Brownie de Caneca", descricao: "Um brownie na caneca oferece a promessa da gratificação instantânea, entregando essa amada delícia de chocolate em apenas questão de minutos.", imagem: "/assets/img/brownie.jpg", link: "assets/pages/brownie-caneca.html" },
+
+        { nome: "Brigadeiro de Micro-ondas", descricao: "O Brigadeiro de Micro-ondas é uma versão prática e rápida de um dos doces mais queridos do Brasil.", imagem: "/assets/img/brigadeiro-microondas", link: "assets/pages/brigadeiro-microondas.html" },
         
     ];
 
@@ -270,7 +272,7 @@ function searchRecipes(query) {
         }
 
         if (isAssociatedWithSweet(queryLower)) {
-            return recipeNameLower.includes('pudim') || recipeDescriptionLower.includes('brownie');
+            return recipeNameLower.includes('pudim') || recipeDescriptionLower.includes('brownie') || recipeNameLower.includes('brigadeiro');
         }
 
         return recipeNameLower.includes(queryLower) || recipeDescriptionLower.includes(queryLower);

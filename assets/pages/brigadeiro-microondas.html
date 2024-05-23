@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/assets/styles/pages recipes/recipes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/assets/styles/header.css">
-    <title>Pudim de Leite Condensado</title>
+    <title>Brigadeiro de Micro-ondas</title>
     <script src="assets/javascript/loader.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7017375467592415"
      crossorigin="anonymous"></script>
@@ -41,8 +41,6 @@
                 <li><a href="/receitas.html">Receitas</a></li>
                 <li><a href="/contato.html">Contato</a></li>
             </ul>
-            
-            
         </nav>
         <div class="mobile-search-icon" onclick="toggleSearch()">
             <i class="fas fa-search"> BUSCAR</i>
@@ -54,32 +52,32 @@
         </div>
     </header>
 <div class="search-container">
-                <form class="search-form" action="/resultados-pesquisa.html" method="GET">
-                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-                    <button class="search-button" type="submit">Pesquisar</button>
-                </form>
-            </div>
-    <div class="mobile-menu" id="mobile-menu">
-        <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/receitas.html">Receitas</a></li>
-            <li><a href="/contato.html">Contato</a></li>
-        </ul>
-    </div>
+    <form class="search-form" action="/resultados-pesquisa.html" method="GET">
+        <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
+        <button class="search-button" type="submit">Pesquisar</button>
+    </form>
+</div>
+<div class="mobile-menu" id="mobile-menu">
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/receitas.html">Receitas</a></li>
+        <li><a href="/contato.html">Contato</a></li>
+    </ul>
+</div>
 <div class="container">
-    <h1>Pudim de Leite Condensado</h1>
+    <h1>Brigadeiro de Micro-ondas</h1>
 
     <div class="recipe">
-        <img src="/assets/img/pudim-leite-condensado.jpg" alt="Pudim de Tapioca">
+        <img src="/assets/img/brigadeiro-microondas.jpg" alt="Brigadeiro de Micro-ondas">
         <div class="details">
             <h3>Informações da Receita</h3>
             <div class="recipe-info">
                 <i class="far fa-clock"></i>
-                <p>Tempo de Preparo: 1h 30min</p>
+                <p>Tempo de Preparo: 10min</p>
             </div>
             <div class="recipe-info">
                 <i class="fas fa-utensils"></i>
-                <p>Porções: 8 porções</p>
+                <p>Porções: 20 brigadeiros</p>
             </div>
         </div>
     </div>
@@ -88,12 +86,10 @@
         <div class="ingredients">
             <h2>Ingredientes:</h2>
             <ul>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="tapioca"><label class="custom-checkbox" for="tapioca"></label><span>1 xícara de açúcar</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="milk"><label class="custom-checkbox" for="milk"></label><span>1/4 de xícara de água</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-milk"><label class="custom-checkbox" for="coconut-milk"></label><span>1 lata de leite condensado</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="condensed-milk"><label class="custom-checkbox" for="condensed-milk"></label><span>A mesma medida de leite (usar a lata de leite condensado como medida)</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="sugar"><label class="custom-checkbox" for="sugar"></label><span>3 ovos inteiros</span></li>
-                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="coconut-flakes"><label class="custom-checkbox" for="coconut-flakes"></label><span>1 colher de chá de essência de baunilha (opcional)</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="condensed-milk"><label class="custom-checkbox" for="condensed-milk"></label><span>1 lata de leite condensado</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="cocoa"><label class="custom-checkbox" for="cocoa"></label><span>2 colheres de sopa de chocolate em pó</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="butter"><label class="custom-checkbox" for="butter"></label><span>1 colher de sopa de manteiga</span></li>
+                <li class="ingredient" onclick="toggleIngredient(this)"><input type="checkbox" class="checkbox" id="sprinkles"><label class="custom-checkbox" for="sprinkles"></label><span>Chocolate granulado para decorar</span></li>
             </ul>
         </div>
     </div>
@@ -102,12 +98,11 @@
         <div class="ingredients">
             <h2>Modo de Preparo:</h2>
             <ol>
-                <li class="instruction"><span class="instruction-number">1.</span> Em uma panela, coloque o açúcar e a água. Leve ao fogo médio-baixo, sem mexer, até obter uma calda dourada.</li>
-                <li class="instruction"><span class="instruction-number">2.</span> Despeje o caramelo em uma forma para pudim e reserve.</li>
-                <li class="instruction"><span class="instruction-number">3.</span> No liquidificador, coloque o leite condensado, o leite, os ovos e a essência de baunilha. Bata tudo até obter uma mistura homogênea.</li>
-                <li class="instruction"><span class="instruction-number">4.</span> Despeje a mistura na forma caramelizada e cubra com papel alumínio.</li>
-                <li class="instruction"><span class="instruction-number">5.</span> Asse em banho-maria por aproximadamente 1 hora e 30 minutos a 180°C.</li>
-                <li class="instruction"><span class="instruction-number">6.</span> Deixe esfriar, leve à geladeira por pelo menos 4 horas e desenforme.</li>
+                <li class="instruction"><span class="instruction-number">1.</span> Em uma tigela própria para micro-ondas, misture o leite condensado, o chocolate em pó e a manteiga.</li>
+                <li class="instruction"><span class="instruction-number">2.</span> Leve ao micro-ondas por 6 a 8 minutos, mexendo a cada 2 minutos para não queimar.</li>
+                <li class="instruction"><span class="instruction-number">3.</span> Quando a mistura estiver desgrudando do fundo da tigela, retire do micro-ondas e deixe esfriar.</li>
+                <li class="instruction"><span class="instruction-number">4.</span> Com as mãos untadas de manteiga, faça bolinhas e passe-as no chocolate granulado.</li>
+                <li class="instruction"><span class="instruction-number">5.</span> Coloque os brigadeiros em forminhas de papel e sirva.</li>
             </ol>
         </div>
     </div>
@@ -116,8 +111,8 @@
         <div class="ingredients">
             <h2>Observações e Itens Opcionais:</h2>
             <ul>
-                <li>Você pode adicionar 1 colher de chá de essência de baunilha para dar um sabor extra.</li>
-                <li>Se desejar, decore o pudim com raspas de chocolate ou frutas cristalizadas antes de servir.</li>
+                <li>Você pode substituir o chocolate em pó por cacau em pó para um sabor mais intenso.</li>
+                <li>Experimente adicionar uma pitada de sal para realçar os sabores.</li>
             </ul>
         </div>
     </div>
@@ -146,7 +141,6 @@
         <div class="volume-control">
             <label for="volumeControl">Volume:</label>
             <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
-
         </div>  
         <div id="radioMenu" class="radio-menu">
             <div class="radio-option">
