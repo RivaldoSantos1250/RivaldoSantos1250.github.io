@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receitas - Cozinha da Tia</title>
+    <title>Todas as Receitas - Cozinha da Tia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/receitas-page.css">
     <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
 </head>
 <body>
 
+<div class="page-wrapper">
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">Cozinha da Tia</a>
@@ -26,88 +28,33 @@
              <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
         </div>
     </header>
-    
-    <div id="search-overlay" class="search-overlay">
-        <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
-        <form action="resultados-pesquisa.html" method="GET">
-            <input type="search" name="q" placeholder="Buscar em receitas..." aria-label="Campo de busca" required>
-            <button type="submit" class="btn">Buscar</button>
-        </form>
-    </div>
 
     <main class="container page-content">
-        <header class="page-header">
+        <header class="page-header fade-in-section">
             <h1>Nossas Receitas</h1>
             <p>Explore um mundo de sabores e encontre sua próxima receita favorita.</p>
         </header>
 
-        <div class="filter-container">
-            <label for="category-filter">Filtrar por Categoria:</label>
-            <select id="category-filter" aria-label="Filtro de categoria">
-                <option value="todas">Todas</option>
-                <option value="café-da-manhã">Café da Manhã</option>
-                <option value="prato-principal">Prato Principal</option>
-                <option value="sobremesas">Sobremesas</option>
-                <option value="drinques">Drinques</option>
-            </select>
+        <div class="filters-and-search-container fade-in-section">
+            <div id="category-filters" class="category-filters">
+                </div>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar pelo nome da receita...">
+                <i class="fas fa-search"></i>
+            </div>
         </div>
 
-        <div id="recipe-list" class="recipe-grid">
-            <div class="recipe-card" data-categoria="sobremesas">
-                <a href="receita.html?id=pudim-tapioca">
-                    <img src="/assets/img/pudim-tapioca.jpg" alt="Pudim de Tapioca" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Pudim de Tapioca</h3>
-                        <p>Uma delícia cremosa com sabor de infância.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="recipe-card" data-categoria="sobremesas">
-                <a href="receita.html?id=pudim-leite-condensado">
-                    <img src="/assets/img/pudim-leite-condensado.jpg" alt="Pudim de Leite Condensado" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Pudim de Leite Condensado</h3>
-                        <p>A sobremesa clássica que nunca decepciona.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="recipe-card" data-categoria="sobremesas">
-                <a href="receita.html?id=brownie-caneca">
-                    <img src="assets/img/brownie.jpg" alt="Brownie de Caneca" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Brownie de Caneca</h3>
-                        <p>Rápido, fácil e irresistivelmente chocolatudo.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="recipe-card" data-categoria="sobremesas">
-                <a href="receita.html?id=brigadeiro-microondas">
-                    <img src="assets/img/brigadeiro-microondas.jpg" alt="Brigadeiro de Micro-ondas" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Brigadeiro de Micro-ondas</h3>
-                        <p>O docinho mais amado do Brasil, pronto em minutos.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="recipe-card" data-categoria="drinques">
-                <a href="receita.html?id=mojito-classico">
-                    <img src="/assets/img/mojito.jpg" alt="Mojito Clássico" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Mojito Clássico</h3>
-                        <p>Refrescante e perfeito para celebrar.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="recipe-card" data-categoria="café-da-manhã">
-                <a href="receita.html?id=panqueca-aveia-banana">
-                    <img src="/assets/img/panqueca-aveia-banana.jpg" alt="Panqueca de Aveia e Banana" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Panqueca de Aveia e Banana</h3>
-                        <p>Comece o dia com energia e sabor.</p>
-                    </div>
-                </a>
-            </div>
+        <div class="ad-placeholder fade-in-section">
+            <span>Espaço para Publicidade</span>
         </div>
+        <div id="recipe-list" class="recipe-grid fade-in-section">
+            </div>
+
+        <div id="no-results" class="no-results-message" style="display: none;">
+            <i class="fas fa-sad-tear"></i>
+            <p>Nenhuma receita encontrada com esses critérios.</p>
+        </div>
+
     </main>
 
     <footer class="main-footer">
@@ -123,14 +70,22 @@
             </div>
         </div>
     </footer>
+</div>
 
+    <div id="search-overlay" class="search-overlay">
+         <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
+        <form action="resultados-pesquisa.html" method="GET">
+            <input type="search" name="q" placeholder="Buscar em receitas..." aria-label="Campo de busca" required>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
+    </div>
     <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
-    
     <div id="cookieConsent" class="cookie-consent">
         <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="privacy-policy.html">Saiba mais</a>.</p>
         <button id="acceptCookies" class="btn">Entendi!</button>
     </div>
 
+    <script src="assets/javascript/dados-receitas.js"></script>
     <script src="assets/javascript/main.js"></script>
     <script src="assets/javascript/recipes.js"></script>
 </body>

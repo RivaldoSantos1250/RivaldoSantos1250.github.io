@@ -1,0 +1,113 @@
+/*
+================================================
+ESTILOS PARA A PÁGINA DE LISTAGEM DE RECEITAS
+================================================
+*/
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filters-and-search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+@media(min-width: 768px) {
+    .filters-and-search-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Filtros com Botões */
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-btn {
+    background-color: var(--surface-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: var(--border-color);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+/* Caixa de Busca */
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-right: 40px; /* Espaço para o ícone */
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+}
+
+.search-box i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+}
+
+/* Mensagem de "Nenhum Resultado" */
+.no-results-message {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--secondary-color);
+}
+
+.no-results-message i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/*
+================================================
+NOVO ESTILO PARA O ESPAÇO DE PUBLICIDADE
+================================================
+*/
+
+.ad-placeholder {
+    width: 100%;
+    max-width: 728px; /* Largura comum para banners */
+    height: 90px;     /* Altura comum para banners */
+    background-color: var(--border-color);
+    margin: 0 auto 50px auto; /* Centraliza e adiciona espaço abaixo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius);
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}

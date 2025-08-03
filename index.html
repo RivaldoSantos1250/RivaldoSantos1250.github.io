@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cozinha da Tia - Receitas Deliciosas</title>
-    <meta name="description" content="Encontre as melhores receitas caseiras, fáceis e deliciosas no Cozinha da Tia. Pratos para todas as ocasiões.">
+    <title>Cozinha da Tia - O Sabor da Comida de Casa</title>
+    <meta name="description" content="Explore um mundo de sabores com receitas caseiras, dicas de cozinha e a inspiração que você precisa para cozinhar pratos incríveis.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/styles/main.css">
     <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
@@ -12,22 +12,136 @@
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="container">
-            <a href="index.html" class="logo">Cozinha da Tia</a>
-            <nav class="main-nav">
-                <a href="index.html" class="active">Home</a>
-                <a href="receitas.html">Receitas</a>
-                <a href="contato.html">Contato</a>
-            </nav>
-            <div class="header-icons">
-                <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
-                <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+    <div class="page-wrapper">
+        <header class="main-header">
+            <div class="container">
+                <a href="index.html" class="logo">Cozinha da Tia</a>
+                <nav class="main-nav">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="receitas.html">Receitas</a>
+                    <a href="contato.html">Contato</a>
+                </nav>
+                <div class="header-icons">
+                    <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                    <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+                </div>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
             </div>
-            <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
-        </div>
-    </header>
+        </header>
 
+        <main>
+            <section class="hero-section">
+                <div class="container">
+                    <h1 class="fade-in-section">O Sabor que Abraça</h1>
+                    <p class="fade-in-section">Receitas que transformam ingredientes em momentos inesquecíveis.</p>
+                    <a href="receitas.html" class="btn fade-in-section">Explorar Receitas</a>
+                </div>
+            </section>
+
+            <section class="ingredient-search-section container fade-in-section">
+                <h2>O que tem na sua geladeira?</h2>
+                <p>Nos diga um ingrediente e nós te damos a receita perfeita!</p>
+                <form class="ingredient-search-form" action="resultados-pesquisa.html" method="GET">
+                    <input type="text" name="q" placeholder="Ex: Chocolate, frango, batata..." aria-label="Buscar por ingrediente" required>
+                    <button type="submit" class="btn"><i class="fas fa-search"></i> Encontrar Receita</button>
+                </form>
+            </section>
+
+            <section class="featured-recipes container fade-in-section">
+                <h2>Populares da Semana</h2>
+                <div class="recipe-grid">
+                    <a href="receita.html?id=pudim-leite-condensado" class="recipe-card">
+                        <div class="card-image-container"><img src="assets/img/pudim-leite-condensado.jpg" alt="Pudim de Leite Condensado" loading="lazy"></div>
+                        <div class="recipe-card-content">
+                            <span class="recipe-difficulty facil">Fácil</span>
+                            <h3>Pudim de Leite Condensado</h3>
+                            <p>A sobremesa clássica que nunca decepciona.</p>
+                        </div>
+                    </a>
+                    <a href="receita.html?id=panqueca-aveia-banana" class="recipe-card">
+                        <div class="card-image-container"><img src="assets/img/panqueca-aveia-banana.jpg" alt="Panqueca de Aveia" loading="lazy"></div>
+                        <div class="recipe-card-content">
+                            <span class="recipe-difficulty facil">Fácil</span>
+                            <h3>Panqueca de Aveia e Banana</h3>
+                            <p>Comece o dia com uma opção saudável e deliciosa.</p>
+                        </div>
+                    </a>
+                    <a href="receita.html?id=mojito-classico" class="recipe-card">
+                        <div class="card-image-container"><img src="assets/img/mojito.jpg" alt="Mojito Clássico" loading="lazy"></div>
+                        <div class="recipe-card-content">
+                            <span class="recipe-difficulty facil">Fácil</span>
+                            <h3>Mojito Clássico</h3>
+                            <p>Refrescante e perfeito para celebrar momentos.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            
+            <section class="recipe-of-the-day-section fade-in-section">
+                <div class="container">
+                    <div id="rotd-container" class="recipe-of-the-day-content">
+                        <div class="rotd-image">
+                            <div id="rotd-image-placeholder"></div>
+                        </div>
+                        <div class="rotd-text">
+                            <span>Receita do Dia</span>
+                            <h2 id="rotd-title">Carregando receita...</h2>
+                            <p id="rotd-description"></p>
+                            <a href="#" id="rotd-link" class="btn">Ver Receita Completa</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tips-section container fade-in-section">
+                <h2>Dicas da Tia</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Temperos Frescos</h3>
+                        <p>Congele ervas frescas como salsinha e cebolinha em formas de gelo com azeite para tê-las sempre à mão.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-egg"></i>
+                        <h3>O Ponto do Ovo</h3>
+                        <p>Para saber se um ovo está fresco, coloque-o em um copo com água. Se afundar, está bom para consumo. Se boiar, descarte.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-blender"></i>
+                        <h3>Bolos Mais Fofos</h3>
+                        <p>Peneirar a farinha de trigo antes de adicionar à massa faz toda a diferença para um bolo mais leve e aerado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="newsletter-section fade-in-section">
+                <div class="container">
+                    <h2>Receba Nossas Novidades</h2>
+                    <p>Cadastre-se para receber receitas exclusivas e dicas diretamente no seu e-mail.</p>
+                    <form class="newsletter-form" action="#" method="POST">
+                        <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+                        <button type="submit" class="btn">Inscrever-se</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                     <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
     <div id="search-overlay" class="search-overlay">
         <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
         <form action="resultados-pesquisa.html" method="GET">
@@ -36,108 +150,6 @@
         </form>
     </div>
 
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>O Sabor da Comida de Casa</h1>
-                <p>Receitas que aquecem o coração e reúnem a família.</p>
-                <a href="receitas.html" class="btn">Ver Todas as Receitas</a>
-            </div>
-        </section>
-
-        <section class="featured-recipes container">
-            <h2>Receitas em Destaque</h2>
-            <div class="recipe-grid">
-                
-                <a href="receita.html?id=pudim-tapioca" class="recipe-card">
-                    <img src="assets/img/pudim-tapioca.jpg" alt="Pudim de Tapioca" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Pudim de Tapioca Granulada</h3>
-                        <p>Uma sobremesa clássica e cremosa.</p>
-                    </div>
-                </a>
-
-                <a href="receita.html?id=pudim-leite-condensado" class="recipe-card">
-                    <img src="assets/img/pudim-leite-condensado.jpg" alt="Pudim de Leite Condensado" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Pudim de Leite Condensado</h3>
-                        <p>A sobremesa clássica que nunca decepciona.</p>
-                    </div>
-                </a>
-
-                <a href="receita.html?id=panqueca-aveia-banana" class="recipe-card">
-                    <img src="assets/img/panqueca-aveia-banana.jpg" alt="Panqueca de Aveia e Banana" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Panqueca de Aveia e Banana</h3>
-                        <p>Uma opção saudável para o seu café da manhã.</p>
-                    </div>
-                </a>
-
-                <a href="receita.html?id=mojito-classico" class="recipe-card">
-                    <img src="assets/img/mojito.jpg" alt="Mojito Clássico" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Mojito Clássico</h3>
-                        <p>Refrescante e perfeito para celebrar momentos.</p>
-                    </div>
-                </a>
-
-                <a href="receita.html?id=brigadeiro-microondas" class="recipe-card">
-                    <img src="assets/img/brigadeiro-microondas.jpg" alt="Brigadeiro de Micro-ondas" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Brigadeiro de Micro-ondas</h3>
-                        <p>O docinho mais amado, pronto em minutos.</p>
-                    </div>
-                </a>
-
-                <a href="receita.html?id=brownie-caneca" class="recipe-card">
-                    <img src="assets/img/brownie.jpg" alt="Brownie de Caneca" loading="lazy">
-                    <div class="recipe-card-content">
-                        <h3>Brownie de Caneca</h3>
-                        <p>Aquele docinho rápido para matar a vontade.</p>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-         <section class="categories-section container">
-            <h2>Categorias</h2>
-            <div class="category-grid">
-                <a href="receitas.html?filtro=café-da-manhã" class="category-card">
-                    <i class="fas fa-coffee"></i>
-                    <span>Café da Manhã</span>
-                </a>
-                <a href="receitas.html?filtro=prato-principal" class="category-card">
-                    <i class="fas fa-utensils"></i>
-                    <span>Prato Principal</span>
-                </a>
-                <a href="receitas.html?filtro=sobremesas" class="category-card">
-                    <i class="fas fa-ice-cream"></i>
-                    <span>Sobremesas</span>
-                </a>
-                <a href="receitas.html?filtro=drinques" class="category-card">
-                    <i class="fas fa-martini-glass-citrus"></i>
-                    <span>Drinques</span>
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-                 <p><a href="privacy-policy.html">Política de Privacidade</a></p>
-            </div>
-        </div>
-    </footer>
-
     <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
 
     <div id="cookieConsent" class="cookie-consent">
@@ -145,6 +157,7 @@
         <button id="acceptCookies" class="btn">Entendi!</button>
     </div>
 
+    <script src="assets/javascript/dados-receitas.js"></script>
     <script src="assets/javascript/main.js"></script>
 </body>
 </html>
