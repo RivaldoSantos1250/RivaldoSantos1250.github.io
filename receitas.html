@@ -1,428 +1,137 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Receitas</title>
-    <link rel="stylesheet" href="assets/styles/header.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/img/favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            height: 100%;
-            width: 100%;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            flex: 1;
-        }
-
-        .container {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            width: 100%;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .filters {
-            flex: 0 0 220px;
-            padding: 20px;
-            background-color: #fff;
-            border-right: 1px solid #ddd;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .filters h2 {
-            margin-top: 0;
-            font-size: 1.5em;
-            color: #333;
-        }
-
-        .filters form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .filters label {
-            margin-top: 15px;
-            font-size: 1em;
-            color: #666;
-        }
-
-        .filters select, .filters button {
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        .filters button {
-            margin-top: 20px;
-            background-color: #28a745;
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s;
-        }
-
-        .filters button:hover {
-            background-color: #218838;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .recipes {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            position: relative;
-        }
-
-        .recipes h1 {
-            text-align: center;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .recipe-card {
-            width: 300px; /* largura fixa */
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            
-        }
-
-        .recipe-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .recipe-card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .recipe-card h3 {
-            margin: 15px;
-            font-size: 1.2em;
-            color: #333;
-        }
-
-        .recipe-card p {
-            margin: 15px;
-            color: #666;
-        }
-
-        .filter-toggle {
-            display: none;
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1100;
-        }
-
-        .filter-toggle:hover {
-            background-color: #0056b3;
-        }
-
-        @media (max-width: 768px) {
-            .recipe-card {
-                width: 80%; /* largura total no mobile */
-            }
-
-            .filter-toggle {
-                display: block;
-            }
-
-            .filters {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(255, 255, 255, 0.9);
-                padding: 20px;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-                z-index: 1000;
-                overflow-y: auto;
-            }
-
-            .filters.show {
-                transform: translateX(0%);
-            }
-        }
-
-        footer {
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer p {
-            margin: 10px 0;
-        }
-
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-            text-decoration: none;
-            font-size: 1.5em;
-        }
-
-    </style>
-    <script type='text/javascript' src='//defroststringbenignity.com/18/48/c8/1848c82ceec1760bfbd924a7871a8bf8.js'></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7017375467592415"
-    crossorigin="anonymous"></script>
-    <script src="assets/javascript/pages/cookie.js"></script>
-    <script src="assets/javascript/loader.js"></script>
+    <title>Receitas - Cozinha da Tia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="/index.html"><h1>TiaNaCozinha</h1></a>
-        </div>
-        
-        <nav>
-            <ul id="main-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="receitas.html">Receitas</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-            
-        </nav>
-        <div class="mobile-search-icon" onclick="toggleSearch()">
-            <i class="fas fa-search"> BUSCAR</i>
-        </div>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Cozinha da Tia</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="receitas.html" class="active">Receitas</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+            <div class="header-icons">
+                 <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+            </div>
+             <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
         </div>
     </header>
-<div class="search-container">
-                <form class="search-form" action="resultados-pesquisa.html" method="GET">
-                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-                    <button class="search-button" type="submit">Pesquisar</button>
-                </form>
-            </div>
-    <div class="mobile-menu" id="mobile-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="receitas.html">Receitas</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
-    </div>
-    <script async="async" data-cfasync="false" src="//defroststringbenignity.com/97e104269781ffe710d5cacb587bfac0/invoke.js"></script>
-<div id="container-97e104269781ffe710d5cacb587bfac0"></div>
-    <div class="container">
-        <aside class="filters" id="filters">
-            <h2>Filtros</h2>
-            <form id="filterForm">
-                <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria">
-                    <option value="todas">Todas</option>
-                    <option value="café-da-manhã">Café da Manhã</option>
-                    <option value="petiscos-e-entradas">Pestiscos e Entradas</option>
-                    <option value="saladas">Saladas</option>
-                    <option value="prato-principal">Prato Principal</option>
-                    <option value="sobremesas">Sobremesas</option>
-                    <option value="sopas-e-caldos">Sopas e Caldos</option>
-                    <option value="drinques">Drinques</option>
-                    <option value="vegetariano">Vegetariano</option>
-                </select>
-                <button type="submit">Filtrar</button>
-                <button type="button" id="clearFilterBtn">Limpar Filtro</button>
-            </form>
-        </aside>
-        <main class="recipes" id="recipes">
-            <h1>Receitas</h1>
-            <button id="filterToggle" class="filter-toggle">Mostrar Filtros</button>
-            <div class="recipe-card" data-categoria="sobremesas">
-                <a href="assets/pages/pudimtapioca.html">
-                <img src="/assets/img/pudim-tapioca.jpg" alt="Pudim de Tapioca">
-                <h3>Pudim de tapioca</h3>
-                <p>Feito a partir de ingredientes simples, como tapioca granulada, leite, leite de coco, açúcar.</p>
-            </div></a>
-
-            <div class="recipe-card" data-categoria="sobremesas">
-
-               <a href="assets/pages/pudim.html"> <img src="/assets/img/pudim-leite-condensado.jpg" alt="Pudim">
-                <h3>Pudim de Leite Condensado</h3>
-                <p>Perfeito para qualquer ocasião, nosso pudim é uma escolha deliciosa que vai deixar você querendo mais.</p>
-            </div></a>
-
-            <div class="recipe-card" data-categoria="sobremesas">
-                <a href="assets/pages/brownie-caneca.html">
-                <img src="assets/img/brownie.jpg" alt="brownie">
-                <h3>brownie de caneca</h3>
-                <p>Um brownie na caneca oferece a promessa da gratificação instantânea, entregando essa amada delícia de chocolate em apenas questão de minutos.</p>
-            </div></a>
-
-            <div class="recipe-card" data-categoria="sobremesas">
-                <a href="assets/pages/brigadeiro-microondas.html">
-                <img src="assets/img/brigadeiro-microondas.jpg" alt="brownie">
-                <h3>Brigadeiro de Micro-ondas</h3>
-                <p>O Brigadeiro de Micro-ondas é uma versão prática e rápida de um dos doces mais queridos do Brasil.</p>
-            </div></a>
-
-            <div class="recipe-card" data-categoria="drinques">
-                <a href="assets/pages/mojito.html">
-                <img src="/assets/img/mojito.jpg" alt="drinques">
-                <h3>Mojito Clássico</h3>
-                <p>Conhecido por sua refrescância e sabor equilibrado entre o doce.</p>
-            </div></a>
-            
-            <div class="recipe-card" data-categoria="café-da-manhã">
-                <a href="assets/pages/panquecas-veia-banana.html">
-                <img src="/assets/img/panqueca-aveia-banana.jpg" alt="Panqueca">
-                <h3>Panqueca de Aveia e Banana</h3>
-                <p>As panquecas de aveia e banana são uma opção saudável e deliciosa para o café da manhã ou lanche.</p>
-            </div></a>
-        </main>
+    
+    <div id="search-overlay" class="search-overlay">
+        <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
+        <form action="resultados-pesquisa.html" method="GET">
+            <input type="search" name="q" placeholder="Buscar em receitas..." aria-label="Campo de busca" required>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
     </div>
 
-    <div id="cookieConsent">
-        Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você aceita o uso de cookies. Veja nossa <a href="privacy-policy.html" target="_blank">política de privacidade</a>.
-        <button onclick="acceptCookies()">Aceitar</button>
-    </div>
-    <footer>
-        <p>Siga-nos nas redes sociais:</p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+    <main class="container page-content">
+        <header class="page-header">
+            <h1>Nossas Receitas</h1>
+            <p>Explore um mundo de sabores e encontre sua próxima receita favorita.</p>
+        </header>
+
+        <div class="filter-container">
+            <label for="category-filter">Filtrar por Categoria:</label>
+            <select id="category-filter" aria-label="Filtro de categoria">
+                <option value="todas">Todas</option>
+                <option value="café-da-manhã">Café da Manhã</option>
+                <option value="prato-principal">Prato Principal</option>
+                <option value="sobremesas">Sobremesas</option>
+                <option value="drinques">Drinques</option>
+            </select>
         </div>
-        <p>&copy; 2024 CozinhadaTia. Todos os direitos reservados.</p>
-        <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+
+        <div id="recipe-list" class="recipe-grid">
+            <div class="recipe-card" data-categoria="sobremesas">
+                <a href="receita.html?id=pudim-tapioca">
+                    <img src="/assets/img/pudim-tapioca.jpg" alt="Pudim de Tapioca" loading="lazy">
+                    <div class="recipe-card-content">
+                        <h3>Pudim de Tapioca</h3>
+                        <p>Uma delícia cremosa com sabor de infância.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="recipe-card" data-categoria="sobremesas">
+                <a href="receita.html?id=pudim-leite-condensado">
+                    <img src="/assets/img/pudim-leite-condensado.jpg" alt="Pudim de Leite Condensado" loading="lazy">
+                    <div class="recipe-card-content">
+                        <h3>Pudim de Leite Condensado</h3>
+                        <p>A sobremesa clássica que nunca decepciona.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="recipe-card" data-categoria="sobremesas">
+                <a href="receita.html?id=brownie-caneca">
+                    <img src="assets/img/brownie.jpg" alt="Brownie de Caneca" loading="lazy">
+                    <div class="recipe-card-content">
+                        <h3>Brownie de Caneca</h3>
+                        <p>Rápido, fácil e irresistivelmente chocolatudo.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="recipe-card" data-categoria="sobremesas">
+                <a href="receita.html?id=brigadeiro-microondas">
+                    <img src="assets/img/brigadeiro-microondas.jpg" alt="Brigadeiro de Micro-ondas" loading="lazy">
+                    <div class="recipe-card-content">
+                        <h3>Brigadeiro de Micro-ondas</h3>
+                        <p>O docinho mais amado do Brasil, pronto em minutos.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="recipe-card" data-categoria="drinques">
+                <a href="receita.html?id=mojito-classico">
+                    <img src="/assets/img/mojito.jpg" alt="Mojito Clássico" loading="lazy">
+                    <div class="recipe-card-content">
+                        <h3>Mojito Clássico</h3>
+                        <p>Refrescante e perfeito para celebrar.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="recipe-card" data-categoria="café-da-manhã">
+                <a href="receita.html?id=panqueca-aveia-banana">
+                    <img src="/assets/img/panqueca-aveia-banana.jpg" alt="Panqueca de Aveia e Banana" loading="lazy">
+                    <div class="recipe-card-content">
+                        <h3>Panqueca de Aveia e Banana</h3>
+                        <p>Comece o dia com energia e sabor.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+             <div class="footer-content">
+                <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                 <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+            </div>
+        </div>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterForm = document.getElementById('filterForm');
-            const recipeCards = document.querySelectorAll('.recipe-card');
-            const filterToggle = document.getElementById('filterToggle');
-            const filters = document.querySelector('.filters');
-            const clearFilterBtn = document.getElementById('clearFilterBtn');
-            const categoriaSelect = document.getElementById('categoria');
 
-            function clearFilters() {
-                categoriaSelect.value = 'todas';
-                recipeCards.forEach(card => {
-                    card.style.display = 'block';
-                });
-            }
+    <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+    
+    <div id="cookieConsent" class="cookie-consent">
+        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="privacy-policy.html">Saiba mais</a>.</p>
+        <button id="acceptCookies" class="btn">Entendi!</button>
+    </div>
 
-            function applyFilter(selectedCategory) {
-                recipeCards.forEach(card => {
-                    const recipeCategory = card.getAttribute('data-categoria');
-                    if (selectedCategory === 'todas' || recipeCategory === selectedCategory) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                filters.classList.remove('show');
-                filterToggle.textContent = 'Mostrar Filtros';
-            }
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlFilter = urlParams.get('filtro');
-            if (urlFilter) {
-                categoriaSelect.value = urlFilter;
-                applyFilter(urlFilter);
-            }
-
-            filterForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const selectedCategory = categoriaSelect.value;
-
-                const queryParams = new URLSearchParams(window.location.search);
-                if (selectedCategory !== 'todas') {
-                    queryParams.set('filtro', selectedCategory);
-                } else {
-                    queryParams.delete('filtro');
-                }
-                history.replaceState(null, null, '?' + queryParams.toString());
-
-                applyFilter(selectedCategory);
-            });
-
-            filterToggle.addEventListener('click', function() {
-                filters.classList.toggle('show');
-                filterToggle.textContent = filters.classList.contains('show') ? 'Esconder Filtros' : 'Mostrar Filtros';
-            });
-
-            clearFilterBtn.addEventListener('click', function() {
-                clearFilters();
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-    var disclaimer =  document.querySelector("img[alt='www.000webhost.com']");
-     if(disclaimer){
-         disclaimer.remove();
-     }  
-   });
-    </script>
-    <script src="assets/javascript/script.js"></script>
+    <script src="assets/javascript/main.js"></script>
+    <script src="assets/javascript/recipes.js"></script>
 </body>
 </html>
