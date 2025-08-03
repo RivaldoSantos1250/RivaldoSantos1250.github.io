@@ -11,45 +11,69 @@
     <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
 </head>
 <body>
+
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">Cozinha da Tia</a>
             <nav class="main-nav">
                 <a href="index.html">Home</a>
-                <a href="receitas.html">Receitas</a>
+                <a href="receitas.html" class="active">Receitas</a>
                 <a href="contato.html">Contato</a>
             </nav>
             <div class="header-icons">
+                 <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
                 <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
             </div>
-             <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <main class="container page-content">
-        <article id="recipe-container" class="recipe-container">
-            <div id="recipe-placeholder">
-                <h1>Carregando receita...</h1>
-            </div>
-        </article>
-    </main>
-    
-    <footer class="main-footer">
-        <div class="container">
-             <div class="footer-content">
-                <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-                 <p><a href="privacy-policy.html">Política de Privacidade</a></p>
-            </div>
-        </div>
-    </footer>
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <button id="mobile-menu-close-btn" class="icon-btn close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
 
-    <script src="assets/javascript/main.js"></script>
+    <div class="page-wrapper">
+        <main class="container page-content">
+            <article id="recipe-placeholder" class="recipe-container">
+                <h1>Carregando receita...</h1>
+            </article>
+        </main>
+        
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                     <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+        <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
+        <form action="receitas.html" method="GET">
+            <input type="search" name="q" placeholder="Buscar em receitas..." aria-label="Campo de busca" required>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
+    </div>
+    <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+    <div id="cookieConsent" class="cookie-consent">
+        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="privacy-policy.html">Saiba mais</a>.</p>
+        <button id="acceptCookies" class="btn">Entendi!</button>
+    </div>
+
     <script src="assets/javascript/dados-receitas.js"></script>
+    <script src="assets/javascript/main.js"></script>
     <script src="assets/javascript/receita-dinamica.js"></script>
 </body>
 </html>

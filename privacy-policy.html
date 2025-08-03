@@ -3,163 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="assets/img/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/img/favicon/manifest.json">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="assets/styles/header.css">
     <title>Política de Privacidade - Cozinha da Tia</title>
-    <style>
-        .privacy-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    }
-
-.privacy-header, .privacy-section, .privacy-footer {
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.privacy-title {
-    color: #333;
-}
-
-.privacy-subtitle {
-    color: #333;
-}
-
-strong {
-    font-weight: bold;
-}
-
-p {
-    color: #666;
-    line-height: 1.6;
-}
-
-.privacy-footer {
-    background-color: #ddd;
-}
-
-    </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7017375467592415"
-    crossorigin="anonymous"></script>
-<script src="assets/javascript/pages/cookie.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/legal-page.css">
+    <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="/index.html"><h1>Cozinha da Tia</h1></a>
-        </div>
-        
-        <nav>
-            <ul id="main-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="receitas.html">Receitas</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-            
-            
-        </nav>
-        <div class="mobile-search-icon" onclick="toggleSearch()">
-            <i class="fas fa-search"> BUSCAR</i>
-        </div>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Cozinha da Tia</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="receitas.html">Receitas</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+            <div class="header-icons">
+                 <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
     </header>
-<div class="search-container">
-                <form class="search-form" action="resultados-pesquisa.html" method="GET">
-                    <input class="search-input" type="text" name="q" placeholder="Pesquisar...">
-                    <button class="search-button" type="submit">Pesquisar</button>
-                </form>
+
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <button id="mobile-menu-close-btn" class="icon-btn close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <main class="container page-content">
+
+            <div class="legal-container">
+                <h1>Política de Privacidade</h1>
+                <p>No "Cozinha da Tia", respeitamos a sua privacidade em relação a qualquer informação sua que possamos coletar. Esta política de privacidade descreve como coletamos e utilizamos os seus dados pessoais quando visita o nosso website.</p>
+                
+                <section>
+                    <h2>1. Coleta de Informações</h2>
+                    <p><strong>Dados Pessoais:</strong> No decorrer da interação com nosso site, é possível que solicitemos informações pessoais, tais como nome de usuário e endereço de e-mail, especialmente quando você opta por nos enviar feedback ou utilizar nosso formulário de contato. Estas informações são estritamente utilizadas para aprimorar sua experiência no site e para responder a suas consultas de forma eficiente.</p>
+                </section>
+                
+                <section>
+                    <h2>2. Uso das Informações</h2>
+                    <p><strong>Melhoria do Site:</strong> As informações coletadas são utilizadas para compreender melhor suas preferências e oferecer um serviço aprimorado, incluindo melhorias no conteúdo e na funcionalidade do site.</p>
+                    <p><strong>Comunicação:</strong> Seu endereço de e-mail pode ser utilizado para responder às suas consultas, fornecer suporte ao cliente e enviar informações relevantes sobre o site, como atualizações e promoções. Você pode optar por não receber essas comunicações a qualquer momento.</p>
+                </section>
+                
+                <section>
+                    <h2>3. Compartilhamento de Dados</h2>
+                    <p><strong>Política de Não Compartilhamento:</strong> Comprometemo-nos a não compartilhar seus dados pessoais com terceiros, ressalvadas as situações em que tal medida seja exigida por lei.</p>
+                </section>
+                
+                <section>
+                    <h2>4. Cookies</h2>
+                    <p><strong>Gerenciamento de Cookies:</strong> Utilizamos cookies e tecnologias similares para personalizar sua experiência de navegação, lembrar suas preferências e otimizar nossos serviços. Você tem controle sobre o uso de cookies através das configurações do seu navegador.</p>
+                </section>
+                
+                <section>
+                    <h2>5. Segurança das Informações</h2>
+                    <p><strong>Proteção:</strong> Implementamos medidas de segurança apropriadas para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição.</p>
+                </section>
+                
+                <section>
+                    <h2>6. Links para Terceiros</h2>
+                    <p><strong>Referências Externas:</strong> Nosso site pode conter links para plataformas de terceiros. Esta Política de Privacidade não se aplica a esses sites, e encorajamos a revisão das políticas de privacidade respectivas antes de compartilhar quaisquer informações pessoais.</p>
+                </section>
+                
+                <section>
+                    <p><strong>Contato e Esclarecimentos:</strong> Em caso de dúvidas ou preocupações acerca desta Política de Privacidade ou do tratamento de suas informações pessoais, estamos à disposição para fornecer esclarecimentos adicionais. Entre em contato através do formulário disponível em nosso site.</p>
+                    <p>Esta política é efetiva a partir de Maio de 2024 por Cozinha da Tia.</p>
+                </section>
             </div>
-    <div class="mobile-menu" id="mobile-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="receitas.html">Receitas</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                     <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+                </div>
+            </div>
+        </footer>
     </div>
-    
-    <div class="privacy-container">
-        <section class="privacy-header">
-            <h1 class="privacy-title">Política de Privacidade</h1>
-            <p>No "Cozinha da Tia", respeitamos a sua privacidade em relação a qualquer informação sua que possamos coletar. Esta política de privacidade descreve como coletamos e utilizamos os seus dados pessoais quando visita o nosso website.</p>
-        </section>
-        <section class="privacy-section">
-            <h2 class="privacy-subtitle">1. Coleta de Informações:</h2>
-            <p><strong>Dados Pessoais:</strong> No decorrer da interação com nosso site, é possível que solicitemos informações pessoais, tais como nome de usuário e endereço de e-mail, especialmente quando você opta por nos enviar feedback ou utilizar nosso formulário de contato. Estas informações são estritamente utilizadas para aprimorar sua experiência no site e para responder a suas consultas de forma eficiente.</p>
-        </section>
-        <section class="privacy-section">
-            <h2 class="privacy-subtitle">2. Uso das Informações:</h2>
-            <p><strong>Melhoria do Site:</strong> As informações coletadas são utilizadas para compreender melhor suas preferências e oferecer um serviço aprimorado, incluindo melhorias no conteúdo e na funcionalidade do site.</p>
-            <p><strong>Comunicação:</strong> Seu endereço de e-mail pode ser utilizado para responder às suas consultas, fornecer suporte ao cliente e enviar informações relevantes sobre o site, como atualizações e promoções. Você pode optar por não receber essas comunicações a qualquer momento.</p>
-        </section>
-        <section class="privacy-section">
-            <h2 class="privacy-subtitle">3. Compartilhamento de Dados:</h2>
-            <p><strong>Política de Não Compartilhamento:</strong> Comprometemo-nos a não compartilhar seus dados pessoais com terceiros, ressalvadas as situações em que tal medida seja exigida por lei.</p>
-        </section>
-        <section class="privacy-section">
-            <h2 class="privacy-subtitle">4. Cookies:</h2>
-            <p><strong>Gerenciamento de Cookies:</strong> Utilizamos cookies e tecnologias similares para personalizar sua experiência de navegação, lembrar suas preferências e otimizar nossos serviços. Você tem controle sobre o uso de cookies através das configurações do seu navegador.</p>
-        </section>
-        <section class="privacy-section">
-            <h2 class="privacy-subtitle">5. Segurança das Informações:</h2>
-            <p><strong>Proteção:</strong> Implementamos medidas de segurança apropriadas para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição.</p>
-        </section>
-        <section class="privacy-section">
-            <h2 class="privacy-subtitle">6. Links para Terceiros:</h2>
-            <p><strong>Referências Externas:</strong> Nosso site pode conter links para plataformas de terceiros. Esta Política de Privacidade não se aplica a esses sites, e encorajamos a revisão das políticas de privacidade respectivas antes de compartilhar quaisquer informações pessoais.</p>
-        </section>
-        <section class="privacy-footer">
-            <p><strong>Contato e Esclarecimentos:</strong> Em caso de dúvidas ou preocupações acerca desta Política de Privacidade ou do tratamento de suas informações pessoais, estamos à disposição para fornecer esclarecimentos adicionais. Entre em contato através do formulário disponível em nosso site.</p>
-            <p>Esta política é efetiva a partir de Maio de 2024 por Cozinha da Tia.</p>
-        </section>
+
+    <div id="search-overlay" class="search-overlay">
+        <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
+        <form action="receitas.html" method="GET">
+            <input type="search" name="q" placeholder="Buscar em receitas..." aria-label="Campo de busca" required>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
     </div>
-    <div id="cookieConsent">
-        Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você aceita o uso de cookies. Veja nossa <a href="privacy-policy.html" target="_blank">política de privacidade</a>.
-        <button onclick="acceptCookies()">Aceitar</button>
+    <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+    <div id="cookieConsent" class="cookie-consent">
+        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="privacy-policy.html">Saiba mais</a>.</p>
+        <button id="acceptCookies" class="btn">Entendi!</button>
     </div>
-    <footer>
-        <p>Siga-nos nas redes sociais:</p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>&copy; 2024 CozinhadaTia. Todos os direitos reservados.</p>
-        <p><a href="privacy-policy.html">Política de Privacidade</a></p>
-    </footer>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    var disclaimer =  document.querySelector("img[alt='www.000webhost.com']");
-     if(disclaimer){
-         disclaimer.remove();
-     }  
-   });
-</script>
-    <script src="assets/javascript/script.js"></script>
+
+    <script src="assets/javascript/dados-receitas.js"></script>
+    <script src="assets/javascript/main.js"></script>
 </body>
 </html>

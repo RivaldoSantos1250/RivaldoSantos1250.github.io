@@ -12,23 +12,32 @@
 </head>
 <body>
 
-    <div class="page-wrapper">
-        <header class="main-header">
-            <div class="container">
-                <a href="index.html" class="logo">Cozinha da Tia</a>
-                <nav class="main-nav">
-                    <a href="index.html" class="active">Home</a>
-                    <a href="receitas.html">Receitas</a>
-                    <a href="contato.html">Contato</a>
-                </nav>
-                <div class="header-icons">
-                    <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
-                    <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
-                </div>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Cozinha da Tia</a>
+            <nav class="main-nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="receitas.html">Receitas</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+            <div class="header-icons">
+                <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
                 <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
             </div>
-        </header>
+        </div>
+    </header>
 
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <button id="mobile-menu-close-btn" class="icon-btn close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
         <main>
             <section class="hero-section">
                 <div class="container">
@@ -41,7 +50,7 @@
             <section class="ingredient-search-section container fade-in-section">
                 <h2>O que tem na sua geladeira?</h2>
                 <p>Nos diga um ingrediente e nós te damos a receita perfeita!</p>
-                <form class="ingredient-search-form" action="resultados-pesquisa.html" method="GET">
+                <form class="ingredient-search-form" action="receitas.html" method="GET">
                     <input type="text" name="q" placeholder="Ex: Chocolate, frango, batata..." aria-label="Buscar por ingrediente" required>
                     <button type="submit" class="btn"><i class="fas fa-search"></i> Encontrar Receita</button>
                 </form>
@@ -144,7 +153,7 @@
     
     <div id="search-overlay" class="search-overlay">
         <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
-        <form action="resultados-pesquisa.html" method="GET">
+        <form action="receitas.html" method="GET">
             <input type="search" name="q" placeholder="O que você quer cozinhar hoje?" aria-label="Campo de busca" required>
             <button type="submit" class="btn">Buscar</button>
         </form>

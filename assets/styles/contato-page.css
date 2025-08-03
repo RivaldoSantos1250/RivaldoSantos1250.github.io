@@ -1,0 +1,70 @@
+/*
+================================================
+NOVO DESIGN MODERNO PARA A PÁGINA DE CONTATO
+================================================
+*/
+
+/* Remove estilos antigos que não serão mais usados */
+.contact-wrapper, .contact-content {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    gap: 0;
+    display: block; /* Reseta o grid anterior */
+}
+
+/* Opções de Contato em Cartões */
+.contact-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background-color: var(--surface-color);
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.contact-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.contact-card h3 {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.contact-card a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* CORREÇÃO AQUI: Garante que o texto do botão seja branco */
+.contact-card a.btn {
+    color: #fff;
+}
+
+.contact-card .social-links {
+    justify-content: center;
+}

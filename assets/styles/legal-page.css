@@ -1,0 +1,36 @@
+/* Estilos para páginas de texto (Política de Privacidade, etc.) */
+
+.legal-container {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 30px 40px;
+    margin-top: 40px;
+    box-shadow: var(--box-shadow);
+}
+
+.legal-container h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: left;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.legal-container h2 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.legal-container p {
+    color: var(--secondary-color);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.legal-container strong {
+    color: var(--text-color);
+}
