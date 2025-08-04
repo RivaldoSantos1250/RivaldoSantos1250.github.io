@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envie sua Receita - Cozinha da Tia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/enviar-receita.css">
+    <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Cozinha da Tia</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="receitas.html">Receitas</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+            <div class="header-icons">
+                 <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <button id="mobile-menu-close-btn" class="icon-btn close-btn">×</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <main class="container page-content">
+            
+            <header class="page-header fade-in-section">
+                <h1>Compartilhe sua Receita</h1>
+                <p>Tem uma receita especial que todos deveriam conhecer? Preencha o formulário abaixo e ela poderá aparecer no nosso site!</p>
+            </header>
+
+            <div class="submission-form-container fade-in-section">
+                <form id="recipeForm" action="https://api.staticforms.xyz/submit" method="post">
+                    <input type="hidden" name="accessKey" value="sf_n5lhaecn31bdl1akb1knhe7h">
+                    <input type="hidden" name="redirectTo" value="thanks.html">
+                    <input type="hidden" name="subject" value="Nova Receita Enviada - Cozinha da Tia">
+
+                    <fieldset>
+                        <legend>Sobre Você</legend>
+                        <div class="form-group">
+                            <label for="userName">Seu Nome</label>
+                            <input type="text" id="userName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Seu E-mail (não será publicado)</label>
+                            <input type="email" id="userEmail" name="email" required>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Sobre a Receita</legend>
+                        <div class="form-group">
+                            <label for="recipeName">Nome da Receita</label>
+                            <input type="text" id="recipeName" name="recipeName" required>
+                        </div>
+                        <div class="form-group-grid">
+                            <div class="form-group">
+                                <label for="recipeCategory">Categoria</label>
+                                <select id="recipeCategory" name="category" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="café-da-manhã">Café da Manhã</option>
+                                    <option value="prato-principal">Prato Principal</option>
+                                    <option value="sobremesas">Sobremesas</option>
+                                    <option value="drinques">Drinques</option>
+                                    <option value="lanches">Lanches</option>
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label for="prepTime">Tempo de Preparo</label>
+                                <input type="text" id="prepTime" name="prepTime" placeholder="Ex: 45min" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ingredients">Ingredientes (um por linha)</label>
+                            <textarea id="ingredients" name="ingredients" rows="8" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructions">Modo de Preparo (um passo por linha)</label>
+                            <textarea id="instructions" name="instructions" rows="10" required></textarea>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="btn">Enviar minha Receita</button>
+                </form>
+            </div>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>© 2025 Cozinha da Tia. Todos os direitos reservados.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                     <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Elementos de Overlay -->
+    <div id="search-overlay" class="search-overlay"></div>
+    <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+    <div id="cookieConsent" class="cookie-consent"></div>
+
+    <script src="assets/javascript/dados-receitas.js"></script>
+    <script src="assets/javascript/main.js"></script>
+</body>
+</html>

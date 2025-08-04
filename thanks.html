@@ -1,93 +1,79 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="assets/img/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/img/favicon/manifest.json">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="assets/styles/header.css">
-    <title>Obrigado pelo Contato</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        .container h1 {
-            font-size: 3em;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-        .container p {
-            font-size: 1.5em;
-            margin: 20px 0 30px;
-        }
-        .container a {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            color: #fff;
-            background-color: #007bff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .container a:hover {
-            background-color: #0056b3;
-        }
-    </style>
-    <script src="assets/javascript/pages/cookie.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7017375467592415"
-    crossorigin="anonymous"></script>
+    <title>Obrigado por Enviar! - Cozinha da Tia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/thanks-page.css">
+    <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
 </head>
 <body>
-    <div class="container">
-        <h1>Obrigado pelo Contato!</h1>
-        <p>Sua mensagem é muito importante para nós!</p>
-        <a href="index.html">Voltar para a Página Inicial</a>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Cozinha da Tia</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="receitas.html">Receitas</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+            <div class="header-icons">
+                 <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <button id="mobile-menu-close-btn" class="icon-btn close-btn">×</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="contato.html">Contato</a>
+        </nav>
     </div>
 
-    <div id="cookieConsent">
-        Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você aceita o uso de cookies. Veja nossa <a href="privacy-policy.html" target="_blank">política de privacidade</a>.
-        <button onclick="acceptCookies()">Aceitar</button>
+    <div class="page-wrapper">
+        <main class="container page-content">
+            
+            <div class="thank-you-container fade-in-section">
+                <div class="thank-you-card">
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1>Receita Enviada!</h1>
+                    <p>Obrigado por compartilhar sua delícia conosco! Nossa equipe vai analisar sua receita com muito carinho e ela poderá ser a próxima a brilhar no site.</p>
+                    <a href="index.html" class="btn">Voltar para a Página Inicial</a>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>© 2025 Cozinha da Tia. Todos os direitos reservados.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                     <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-  var disclaimer =  document.querySelector("img[alt='www.000webhost.com']");
-   if(disclaimer){
-       disclaimer.remove();
-   }  
- });
-    </script>
+    <!-- Elementos de Overlay -->
+    <div id="search-overlay" class="search-overlay"></div>
+    <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+    <div id="cookieConsent" class="cookie-consent"></div>
+
+    <script src="assets/javascript/dados-receitas.js"></script>
+    <script src="assets/javascript/main.js"></script>
 </body>
 </html>
