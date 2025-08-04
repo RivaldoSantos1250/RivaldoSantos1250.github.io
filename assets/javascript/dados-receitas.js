@@ -24,7 +24,7 @@ const receitas = [
     {
         id: "pudim-leite-condensado",
         titulo: "Pudim de Leite Condensado",
-        imagem: "/assets/img/pudim-leite-condensado.jpg",
+        imagem: "/assets/img/pudim-leite-condensado.webp",
         tempoPreparo: "1h 30min",
         porcoes: "8 porções",
         categoria: "sobremesas",
