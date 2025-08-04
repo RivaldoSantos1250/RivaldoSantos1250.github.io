@@ -7,7 +7,7 @@
     <meta name="description" content="Explore um mundo de sabores com as melhores receitas caseiras. Encontre pratos fáceis, sobremesas, dicas de cozinha e a inspiração que você precisa para cozinhar.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/styles/main.css">
-    <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="assets/styles/receitas-page.css"> <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
 </head>
 <body>
@@ -58,32 +58,8 @@
 
             <section class="featured-recipes container fade-in-section">
                 <h2>Populares da Semana</h2>
-                <div class="recipe-grid">
-                    <a href="receita.html?id=pudim-leite-condensado" class="recipe-card">
-                        <div class="card-image-container"><img src="assets/img/pudim-leite-condensado.webp" alt="Pudim de Leite Condensado" loading="lazy"></div>
-                        <div class="recipe-card-content">
-                            <span class="recipe-difficulty facil">Fácil</span>
-                            <h3>Pudim de Leite Condensado</h3>
-                            <p>A sobremesa clássica que nunca decepciona.</p>
-                        </div>
-                    </a>
-                    <a href="receita.html?id=panqueca-aveia-banana" class="recipe-card">
-                        <div class="card-image-container"><img src="assets/img/panqueca-aveia-banana.webp" alt="Panqueca de Aveia" loading="lazy"></div>
-                        <div class="recipe-card-content">
-                            <span class="recipe-difficulty facil">Fácil</span>
-                            <h3>Panqueca de Aveia e Banana</h3>
-                            <p>Comece o dia com uma opção saudável e deliciosa.</p>
-                        </div>
-                    </a>
-                    <a href="receita.html?id=mojito-classico" class="recipe-card">
-                        <div class="card-image-container"><img src="assets/img/mojito.webp" alt="Mojito Clássico" loading="lazy"></div>
-                        <div class="recipe-card-content">
-                            <span class="recipe-difficulty facil">Fácil</span>
-                            <h3>Mojito Clássico</h3>
-                            <p>Refrescante e perfeito para celebrar momentos.</p>
-                        </div>
-                    </a>
-                </div>
+                <div id="featured-recipe-list" class="recipe-grid">
+                    </div>
             </section>
 
             <div class="ad-placeholder fade-in-section">
@@ -126,10 +102,6 @@
                     </div>
                 </div>
             </section>
-
-            <div class="ad-placeholder square fade-in-section">
-                <span>Publicidade</span>
-            </div>
 
             <section class="newsletter-section fade-in-section">
                 <div class="container">

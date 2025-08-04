@@ -22,12 +22,65 @@ function initRecipeOfTheDay() {
     const linkEl = document.getElementById('rotd-link');
 
     if (imagePlaceholder && titleEl && descriptionEl && linkEl) {
-        const descriptionSummary = recipeOfTheDay.modoPreparo.slice(0, 2).join(' ');
+        const descriptionSummary = recipeOfTheDay.historia || recipeOfTheDay.modoPreparo.slice(0, 2).join(' ');
         imagePlaceholder.innerHTML = `<img src="${recipeOfTheDay.imagem}" alt="Receita do Dia: ${recipeOfTheDay.titulo}" loading="lazy">`;
         titleEl.textContent = recipeOfTheDay.titulo;
-        descriptionEl.textContent = descriptionSummary;
+        descriptionEl.textContent = descriptionSummary.substring(0, 150) + '...';
         linkEl.href = `receita.html?id=${recipeOfTheDay.id}`;
     }
+}
+
+// --- NOVA FUNÇÃO PARA OS POPULARES DA SEMANA ---
+function initFeaturedRecipes() {
+    const container = document.getElementById('featured-recipe-list');
+    if (!container) return;
+
+    const allRecipes = window.todasAsReceitas || [];
+    if (allRecipes.length === 0) return;
+
+    // Defina aqui os IDs das 3 receitas que você quer destacar
+    const featuredIds = ['pudim-leite-condensado', 'brownie-caneca', 'feijoada-completa'];
+    
+    const featuredRecipes = featuredIds.map(id => allRecipes.find(r => r.id === id)).filter(Boolean);
+
+    function getDifficultyClass(difficulty) {
+        if (!difficulty) return '';
+        const d = difficulty.toLowerCase();
+        if (d === 'fácil') return 'facil';
+        if (d === 'médio') return 'medio';
+        if (d === 'difícil') return 'dificil';
+        return '';
+    }
+
+    function createFeaturedCard(recipe) {
+        const difficultyClass = getDifficultyClass(recipe.dificuldade);
+        return `
+            <a href="receita.html?id=${recipe.id}" class="recipe-card" data-categoria="${recipe.categoria || ''}">
+                <div class="card-image-container">
+                    <img src="${recipe.imagem}" alt="${recipe.titulo}" loading="lazy">
+                    <span class="card-category-badge">${recipe.categoria || 'Sem Categoria'}</span>
+                </div>
+                <div class="recipe-card-content">
+                    <h3>${recipe.titulo}</h3>
+                    <div class="recipe-card-footer">
+                        <div class="recipe-meta-item">
+                           <span class="difficulty-badge ${difficultyClass}">${recipe.dificuldade || 'N/A'}</span>
+                        </div>
+                        <div class="recipe-meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>${recipe.tempoPreparo || 'N/A'}</span>
+                        </div>
+                         <div class="recipe-meta-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>${recipe.porcoes || 'N/A'}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        `;
+    }
+    
+    container.innerHTML = featuredRecipes.map(createFeaturedCard).join('');
 }
 
 
@@ -37,25 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- CORREÇÃO DO HEADER ---
     const header = document.querySelector('.main-header');
     if (header) {
-        // Verifica se a página atual é a home page (termina com / ou /index.html)
         const isHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html');
 
         const handleHeaderStyle = () => {
-            // Condição para o header ficar sólido
             const shouldBeScrolled = window.scrollY > 50;
 
             if (isHomePage) {
-                // Na home, o header muda de estilo com o scroll
                 header.classList.toggle('scrolled', shouldBeScrolled);
             } else {
-                // Em outras páginas, o header já começa com o estilo "scrolled"
                 header.classList.add('scrolled');
             }
         };
-
-        // Aplica o estilo correto assim que a página carrega
         handleHeaderStyle();
-        // Adiciona o listener de scroll para continuar monitorando (essencial para a home)
         window.addEventListener('scroll', handleHeaderStyle);
     }
 
@@ -155,8 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- INICIALIZA A RECEITA DO DIA ---
+    // --- INICIALIZA AS FUNÇÕES DA PÁGINA ---
     if (typeof initRecipeOfTheDay === 'function') {
         initRecipeOfTheDay();
+    }
+    if (typeof initFeaturedRecipes === 'function') {
+        initFeaturedRecipes();
     }
 });
