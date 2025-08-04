@@ -1,177 +1,290 @@
-/* Estilo Moderno para a Página de Receita */
+/*
+================================================
+ESTILOS MODERNOS PARA A PÁGINA DE RECEITA
+================================================
+*/
 
 :root {
     --recipe-bg: var(--surface-color);
     --recipe-border: var(--border-color);
     --recipe-text-secondary: var(--secondary-color);
     --checkbox-color: var(--primary-color);
+    --star-color: #fdd835; /* Amarelo para estrelas */
 }
 
-.recipe-content-wrapper {
-    max-width: 960px;
-    margin: 40px auto;
-    background-color: var(--recipe-bg);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    overflow: hidden;
-}
-
-/* Hero (Imagem Principal) */
-.recipe-hero img {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-}
-
-/* Título e Detalhes */
-.recipe-title-section {
-    padding: 30px 40px;
-    text-align: center;
-}
-
-.recipe-title-section h1 {
-    font-size: 2.8rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.recipe-meta {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px 40px;
-    color: var(--recipe-text-secondary);
-    font-size: 1rem;
-}
-
-.meta-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.meta-item i {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
-/* Corpo principal (Ingredientes e Instruções) */
-.recipe-main-content {
+/* Estrutura Principal */
+.recipe-layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 20px 40px 40px;
+    margin-top: 40px;
 }
 
-@media (min-width: 768px) {
-    .recipe-main-content {
-        grid-template-columns: 1fr 2fr;
+/* Layout para telas maiores (desktop) */
+@media (min-width: 992px) {
+    .recipe-layout {
+        grid-template-columns: 2fr 1fr; /* Coluna principal maior, coluna lateral menor */
+        gap: 50px;
     }
 }
 
-.recipe-section h2 {
-    font-size: 1.6rem;
+/* Coluna Principal (imagem, instruções, etc) */
+.recipe-main-column {
+    order: 1;
+}
+
+/* Coluna Lateral (ingredientes, ferramentas) */
+.recipe-sidebar-column {
+    order: 2;
+}
+
+@media (min-width: 992px) {
+    .recipe-sidebar-column {
+        position: sticky;
+        top: 100px; /* Distância do header */
+        height: calc(100vh - 120px);
+        overflow-y: auto;
+        padding-right: 15px; /* Para a barra de rolagem não sobrepor o conteúdo */
+    }
+}
+
+
+/* --- SEÇÕES DA PÁGINA --- */
+
+.recipe-hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    box-shadow: var(--box-shadow);
+}
+
+.recipe-title {
+    font-size: 2.8rem;
     color: var(--primary-color);
     margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+/* Barra de Metadados (tempo, porções, etc) */
+.recipe-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 30px;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-top: 1px solid var(--recipe-border);
+    border-bottom: 1px solid var(--recipe-border);
+}
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--recipe-text-secondary);
+}
+.meta-item i {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    width: 25px;
+    text-align: center;
+}
+.meta-item strong {
+    color: var(--text-color);
+    font-weight: 600;
+}
+.meta-item .author-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Cabeçalho de Seção (h2) */
+.section-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--recipe-border);
-    text-align: left;
-}
-
-/* Lista de Ingredientes Interativa */
-.ingredients-list {
-    list-style: none;
-    padding: 0;
-}
-
-.ingredient-item {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-
-.ingredient-item input[type="checkbox"] {
-    display: none; /* Esconde o checkbox padrão */
-}
-
-/* Estilo da caixa de seleção customizada */
-.ingredient-item .checkbox-custom {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--checkbox-color);
-    border-radius: 4px;
-    margin-right: 15px;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-.ingredient-item .checkbox-custom i {
-    color: white;
-    font-size: 12px;
-    opacity: 0;
-    transform: scale(0.5);
-    transition: opacity 0.2s, transform 0.2s;
-}
-
-.ingredient-item .ingredient-text {
-    transition: opacity 0.3s, text-decoration 0.3s;
-}
-
-/* Estilo QUANDO a caixa está marcada */
-.ingredient-item input[type="checkbox"]:checked + .checkbox-custom {
-    background-color: var(--checkbox-color);
-    border-color: var(--checkbox-color);
-}
-
-.ingredient-item input[type="checkbox"]:checked + .checkbox-custom i {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.ingredient-item input[type="checkbox"]:checked ~ .ingredient-text {
-    opacity: 0.6;
-    text-decoration: line-through;
-}
-
-/* Lista de Instruções */
-.instructions-list {
-    list-style: none;
-    padding: 0;
-    counter-reset: instructions-counter; /* Inicia o contador */
-}
-
-.instructions-list li {
-    counter-increment: instructions-counter; /* Incrementa o contador a cada LI */
-    margin-bottom: 20px;
-    line-height: 1.7;
-    display: flex;
     gap: 15px;
 }
 
+/* Nota do Autor */
+.author-note-box {
+    background-color: var(--background-color);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 40px;
+}
+.author-note-box p {
+    font-style: italic;
+    color: var(--recipe-text-secondary);
+    line-height: 1.8;
+}
+
+/* Lista de Instruções (Modo de Preparo) */
+.instructions-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: instructions-counter;
+}
+.instructions-list li {
+    counter-increment: instructions-counter;
+    display: flex;
+    gap: 18px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
 .instructions-list li::before {
-    content: counter(instructions-counter); /* Exibe o número do contador */
+    content: counter(instructions-counter);
     background-color: var(--primary-color);
-    color: white;
-    font-weight: bold;
-    min-width: 30px;
-    height: 30px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Seção de observações */
-.recipe-notes {
-    padding: 0 40px 40px;
-    border-top: 1px solid var(--recipe-border);
-    margin: 20px 0 0;
+/* Seções da Barra Lateral */
+.sidebar-section {
+    background-color: var(--recipe-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
 }
-.recipe-notes ul {
-    list-style-type: '- ';
-    padding-left: 20px;
+
+/* Checklist de Ingredientes */
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+}
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--recipe-border);
+    cursor: pointer;
+    font-size: 1rem;
+}
+.ingredient-item:last-child {
+    border-bottom: none;
+}
+.ingredient-item input[type="checkbox"] {
+    display: none;
+}
+.ingredient-item .checkbox-custom {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--checkbox-color);
+    border-radius: 4px;
+    margin-right: 18px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+.ingredient-item .checkbox-custom i {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s;
+}
+.ingredient-item .ingredient-text {
+    transition: all 0.3s;
+}
+.ingredient-item input[type="checkbox"]:checked + .checkbox-custom {
+    background-color: var(--checkbox-color);
+}
+.ingredient-item input[type="checkbox"]:checked + .checkbox-custom i {
+    opacity: 1;
+    transform: scale(1);
+}
+.ingredient-item input[type="checkbox"]:checked ~ .ingredient-text {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+/* Ferramentas e Informações Nutricionais */
+.tools-list, .nutrition-list {
+    list-style: none;
+    padding: 0;
+}
+.tools-list li, .nutrition-list-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+.tools-list i {
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+.nutrition-list-item strong {
+    flex-basis: 120px;
+}
+
+/* Avaliação e Compartilhamento */
+.rating-stars {
+    display: flex;
+    gap: 5px;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+.rating-stars i {
+    color: var(--recipe-border);
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+.rating-stars i:hover {
+    transform: scale(1.1);
+}
+.rating-stars i.active,
+.rating-stars:hover i {
+    color: var(--star-color);
+}
+.rating-stars:hover i:hover ~ i {
+    color: var(--recipe-border);
+}
+
+.share-buttons {
+    display: flex;
+    gap: 15px;
+}
+.share-btn {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+.share-btn:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Spinner de Carregamento */
+.loading-spinner {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--secondary-color);
+}
+.loading-spinner i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
