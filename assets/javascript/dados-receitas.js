@@ -3,7 +3,7 @@
 BANCO DE DADOS DE RECEITAS
 ============================================================
 AVISO: As novas receitas estão usando uma imagem temporária 
-chamada 'placeholder.jpg'. Lembre-se de criar as imagens 
+chamada 'placeholder.webp'. Lembre-se de criar as imagens 
 para cada nova receita e atualizar o caminho no campo 'imagem'.
 ============================================================
 */
@@ -13,7 +13,7 @@ const receitas = [
     {
         id: "pudim-tapioca",
         titulo: "Pudim de Tapioca",
-        imagem: "/assets/img/pudim-tapioca.jpg",
+        imagem: "/assets/img/pudim-tapioca.webp",
         tempoPreparo: "2h",
         porcoes: "12 porções",
         categoria: "sobremesas",
@@ -35,7 +35,7 @@ const receitas = [
     {
         id: "brownie-caneca",
         titulo: "Brownie de Caneca",
-        imagem: "/assets/img/brownie.jpg",
+        imagem: "/assets/img/brownie.webp",
         tempoPreparo: "5min",
         porcoes: "1 porção",
         categoria: "sobremesas",
@@ -57,7 +57,7 @@ const receitas = [
     {
         id: "mojito-classico",
         titulo: "Mojito Clássico",
-        imagem: "/assets/img/mojito.jpg",
+        imagem: "/assets/img/mojito.webp",
         tempoPreparo: "10min",
         porcoes: "1 porção",
         categoria: "drinques",
@@ -68,7 +68,7 @@ const receitas = [
     {
         id: "panqueca-aveia-banana",
         titulo: "Panquecas de Aveia e Banana",
-        imagem: "/assets/img/panqueca-aveia-banana.jpg",
+        imagem: "/assets/img/panqueca-aveia-banana.webp",
         tempoPreparo: "20min",
         porcoes: "4 porções",
         categoria: "café-da-manhã",
@@ -81,7 +81,7 @@ const receitas = [
     {
         id: "feijoada-completa",
         titulo: "Feijoada Completa",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "3h",
         porcoes: "8 porções",
         categoria: "prato-principal",
@@ -92,7 +92,7 @@ const receitas = [
     {
         id: "moqueca-baiana",
         titulo: "Moqueca Baiana",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "50min",
         porcoes: "6 porções",
         categoria: "prato-principal",
@@ -103,7 +103,7 @@ const receitas = [
     {
         id: "strogonoff-de-frango",
         titulo: "Strogonoff de Frango",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "30min",
         porcoes: "4 porções",
         categoria: "prato-principal",
@@ -114,7 +114,7 @@ const receitas = [
     {
         id: "lasanha-a-bolonhesa",
         titulo: "Lasanha à Bolonhesa",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h 30min",
         porcoes: "8 porções",
         categoria: "prato-principal",
@@ -125,7 +125,7 @@ const receitas = [
     {
         id: "coxinha-de-frango",
         titulo: "Coxinha de Frango",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h",
         porcoes: "20 unidades",
         categoria: "lanches",
@@ -136,7 +136,7 @@ const receitas = [
     {
         id: "pao-de-queijo-mineiro",
         titulo: "Pão de Queijo Mineiro",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "40min",
         porcoes: "30 unidades",
         categoria: "café-da-manhã",
@@ -147,7 +147,7 @@ const receitas = [
     {
         id: "mousse-de-maracuja",
         titulo: "Mousse de Maracujá",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "15min",
         porcoes: "6 porções",
         categoria: "sobremesas",
@@ -158,7 +158,7 @@ const receitas = [
     {
         id: "bolo-de-cenoura-com-chocolate",
         titulo: "Bolo de Cenoura com Chocolate",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h",
         porcoes: "12 porções",
         categoria: "lanches",
@@ -169,7 +169,7 @@ const receitas = [
     {
         id: "caipirinha-tradicional",
         titulo: "Caipirinha Tradicional",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "5min",
         porcoes: "1 porção",
         categoria: "drinques",
@@ -180,7 +180,7 @@ const receitas = [
     {
         id: "escondidinho-de-carne-seca",
         titulo: "Escondidinho de Carne Seca",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h 20min",
         porcoes: "6 porções",
         categoria: "prato-principal",
@@ -191,7 +191,7 @@ const receitas = [
     {
         id: "vatapa",
         titulo: "Vatapá",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h",
         porcoes: "8 porções",
         categoria: "prato-principal",
@@ -202,7 +202,7 @@ const receitas = [
     {
         id: "galinhada-com-pequi",
         titulo: "Galinhada com Pequi",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h 15min",
         porcoes: "6 porções",
         categoria: "prato-principal",
@@ -213,7 +213,7 @@ const receitas = [
     {
         id: "pave-de-biscoito",
         titulo: "Pavê de Biscoito com Chocolate",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "30min",
         porcoes: "10 porções",
         categoria: "sobremesas",
@@ -224,7 +224,7 @@ const receitas = [
     {
         id: "bolinho-de-chuva",
         titulo: "Bolinho de Chuva da Vovó",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "25min",
         porcoes: "30 unidades",
         categoria: "lanches",
@@ -235,7 +235,7 @@ const receitas = [
     {
         id: "empadao-de-frango",
         titulo: "Empadão de Frango Cremoso",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h 30min",
         porcoes: "8 porções",
         categoria: "lanches",
@@ -246,7 +246,7 @@ const receitas = [
     {
         id: "arroz-carreteiro",
         titulo: "Arroz Carreteiro",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "50min",
         porcoes: "6 porções",
         categoria: "prato-principal",
@@ -257,7 +257,7 @@ const receitas = [
     {
         id: "torta-holandesa",
         titulo: "Torta Holandesa",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "40min",
         porcoes: "12 porções",
         categoria: "sobremesas",
@@ -268,7 +268,7 @@ const receitas = [
     {
         id: "quindim",
         titulo: "Quindim",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h",
         porcoes: "12 unidades",
         categoria: "sobremesas",
@@ -279,7 +279,7 @@ const receitas = [
     {
         id: "bobo-de-camarao",
         titulo: "Bobó de Camarão",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "1h",
         porcoes: "6 porções",
         categoria: "prato-principal",
@@ -290,7 +290,7 @@ const receitas = [
     {
         id: "baiao-de-dois",
         titulo: "Baião de Dois",
-        imagem: "/assets/img/placeholder.jpg",
+        imagem: "/assets/img/placeholder.webp",
         tempoPreparo: "50min",
         porcoes: "6 porções",
         categoria: "prato-principal",
