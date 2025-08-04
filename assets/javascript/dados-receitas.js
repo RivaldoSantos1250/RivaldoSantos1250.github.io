@@ -117,22 +117,6 @@ const receitas = [
         infoNutricional: { calorias: "850 kcal", carboidratos: "60g", proteinas: "45g", gorduras: "48g" },
         observacoes: ["A laranja no cozimento é um truque antigo para deixar a feijoada mais leve."]
     },
-    {
-        id: "moqueca-baiana",
-        titulo: "Moqueca Baiana com Dendê",
-        imagem: "/assets/img/moqueca.jpg",
-        autor: { nome: "Tia Lúcia", avatar: "/assets/img/tia-avatar.png" },
-        historia: "A moqueca é a alma da Bahia em uma panela. O segredo é a generosidade nos temperos e a qualidade dos ingredientes. Um bom peixe, leite de coco fresco e o toque inconfundível do azeite de dendê. Faço em panela de barro para manter o calor e o charme.",
-        tempoPreparo: "50min",
-        porcoes: "6 porções",
-        categoria: "Prato Principal",
-        dificuldade: "Médio",
-        ingredientes: [ "1 kg de postas de peixe branco (cação ou robalo)", "500g de camarões frescos", "2 cebolas em rodelas", "1 pimentão vermelho em rodelas", "1 pimentão amarelo em rodelas", "4 tomates maduros em rodelas", "1 maço de coentro", "500 ml de leite de coco", "3 colheres de sopa de azeite de dendê", "Suco de 2 limões", "Sal e pimenta do reino a gosto" ],
-        modoPreparo: [ "Tempere o peixe e os camarões com sal, pimenta e limão.", "Em uma panela de barro, monte camadas: cebola, pimentões, tomates e o peixe.", "Regue com metade do leite de coco. Cozinhe em fogo médio por 15 minutos.", "Adicione os camarões, o restante do leite de coco e o azeite de dendê.", "Cozinhe por mais 10 minutos, sem mexer muito para não desmanchar o peixe.", "Finalize com coentro e cebolinha picados. Sirva com arroz e pirão." ],
-        ferramentas: ["Panela de barro (ideal)", "Tigela para temperar"],
-        infoNutricional: { calorias: "550 kcal", carboidratos: "15g", proteinas: "40g", gorduras: "35g" },
-        observacoes: ["O pirão pode ser feito engrossando o próprio caldo da moqueca com farinha de mandioca."]
-    },
 	{
 		id: "strogonoff-de-frango",
 		titulo: "Strogonoff de Frango Cremoso",
@@ -230,22 +214,6 @@ const receitas = [
 		observacoes: ["Peneirar a farinha antes de usar ajuda a deixar o bolo ainda mais fofinho."]
 	},
     {
-		id: "caipirinha-tradicional",
-		titulo: "A Verdadeira Caipirinha Brasileira",
-		imagem: "/assets/img/caipirinha.jpg",
-		autor: { nome: "Tia Lúcia", avatar: "/assets/img/tia-avatar.png" },
-		historia: "A caipirinha é o drinque brasileiro mais famoso no mundo, e sua beleza está na simplicidade. O segredo é usar um bom limão taiti, uma cachaça de qualidade e macerar com carinho, sem amargar. É o acompanhamento perfeito para uma feijoada ou um churrasco.",
-		tempoPreparo: "5min",
-		porcoes: "1 copo",
-		categoria: "Drinques",
-        dificuldade: "Fácil",
-		ingredientes: [ "1 limão taiti com casca", "2 colheres de sopa de açúcar branco", "60 ml de cachaça de boa qualidade", "Gelo em cubos a gosto" ],
-		modoPreparo: [ "Lave bem o limão. Corte as pontas e depois corte-o em 8 pedaços, retirando a parte branca do meio, que amarga a bebida.", "Em um copo baixo e resistente, coloque os pedaços de limão e o açúcar.", "Com um macerador, amasse suavemente para extrair o suco e misturar com o açúcar.", "Complete o copo com gelo até a boca.", "Despeje a cachaça por cima, mexa bem com uma colher e sirva imediatamente." ],
-		ferramentas: ["Copo de caipirinha", "Macerador", "Faca"],
-		infoNutricional: { calorias: "220 kcal", carboidratos: "20g", proteinas: "0g", gorduras: "0g" },
-		observacoes: ["Experimente com outras frutas como morango, maracujá ou tangerina para criar variações deliciosas."]
-	},
-    {
 		id: "escondidinho-de-carne-seca",
 		titulo: "Escondidinho de Carne Seca com Mandioca",
 		imagem: "/assets/img/escondidinho.jpg",
@@ -260,38 +228,6 @@ const receitas = [
 		ferramentas: ["Panela de pressão", "Espremedor de batatas", "Refratário"],
 		infoNutricional: { calorias: "580 kcal", carboidratos: "55g", proteinas: "35g", gorduras: "25g" },
 		observacoes: ["Se o purê ficar muito duro, adicione um pouco mais de leite."]
-	},
-    {
-		id: "vatapa",
-		titulo: "Vatapá Baiano Cremoso",
-		imagem: "/assets/img/vatapa.jpg",
-		autor: { nome: "Tia Lúcia", avatar: "/assets/img/tia-avatar.png" },
-		historia: "Vatapá é um prato complexo e cheio de sabor, um ícone da Bahia. Minha receita é adaptada para ser mais prática, mas sem perder a essência. O pão amanhecido ajuda a dar a cremosidade característica. É um prato forte, ideal para servir com acarajé ou arroz branco.",
-		tempoPreparo: "1h",
-		porcoes: "8 porções",
-		categoria: "Prato Principal",
-        dificuldade: "Difícil",
-		ingredientes: [ "300g de camarão seco", "200g de castanha de caju moída", "100g de amendoim torrado e moído", "4 pães franceses amanhecidos", "1 litro de leite de coco", "2 cebolas grandes", "Pedaço de gengibre ralado", "Azeite de dendê a gosto", "500g de camarão fresco limpo" ],
-		modoPreparo: [ "Deixe o pão de molho no leite de coco.", "Bata no liquidificador o pão amolecido com o leite de coco, a cebola, o amendoim, a castanha e o gengibre.", "Leve essa mistura ao fogo, adicione o camarão seco (previamente lavado) e cozinhe, mexendo sempre para não grudar.", "Quando engrossar, adicione umas 4 colheres de azeite de dendê e cozinhe por mais alguns minutos.", "Por fim, adicione os camarões frescos e cozinhe apenas até ficarem rosados.", "Sirva quente." ],
-		ferramentas: ["Liquidificador", "Panela grande"],
-		infoNutricional: { calorias: "650 kcal", carboidratos: "30g", proteinas: "30g", gorduras: "45g" },
-		observacoes: ["A quantidade de dendê é a gosto, mas é ele que dá a cor e o sabor característico."]
-	},
-    {
-		id: "galinhada-com-pequi",
-		titulo: "Galinhada com Pequi à Moda Goiana",
-		imagem: "/assets/img/galinhada.jpg",
-		autor: { nome: "Tia Lúcia", avatar: "/assets/img/tia-avatar.png" },
-		historia: "A galinhada é o prato perfeito para reunir os amigos. Esta versão com pequi tem o gostinho do cerrado brasileiro. O segredo é fritar bem o frango para ele ficar dourado e usar o açafrão-da-terra para dar aquela cor linda ao arroz. O perfume do pequi cozinhando é inesquecível.",
-		tempoPreparo: "1h 15min",
-		porcoes: "6 porções",
-		categoria: "Prato Principal",
-        dificuldade: "Médio",
-		ingredientes: [ "1 frango inteiro cortado em pedaços", "2 xícaras de arroz", "1 cebola grande picada", "4 dentes de alho picados", "12 pequis cozidos em conserva", "1 colher de sopa de açafrão-da-terra (cúrcuma)", "Cheiro-verde picado (salsa e cebolinha)", "Pimenta bode a gosto" ],
-		modoPreparo: [ "Tempere o frango com sal, pimenta e alho.", "Em uma panela grande, frite os pedaços de frango em óleo quente até dourarem bem. Reserve.", "Na mesma panela, refogue a cebola. Adicione o arroz e o açafrão, e refogue por mais 2 minutos.", "Volte o frango para a panela, adicione os pequis e cubra com água quente (cerca de 4 xícaras).", "Tempere com sal e pimenta bode. Cozinhe em fogo baixo, com a panela semi-tampada, até o arroz secar.", "Desligue o fogo e finalize com cheiro-verde abundante por cima." ],
-		ferramentas: ["Panela grande e funda"],
-		infoNutricional: { calorias: "680 kcal", carboidratos: "70g", proteinas: "40g", gorduras: "28g" },
-		observacoes: ["Cuidado ao comer o pequi: ele tem espinhos no caroço e deve ser 'roído' com cuidado, nunca mordido."]
 	},
     {
 		id: "pave-de-biscoito",
@@ -405,22 +341,6 @@ const receitas = [
 		infoNutricional: { calorias: "480 kcal", carboidratos: "45g", proteinas: "30g", gorduras: "20g" },
 		observacoes: ["Se o bobó ficar muito grosso, você pode adicionar um pouco mais de leite de coco ou água."]
 	},
-    {
-		id: "baiao-de-dois",
-		titulo: "Baião de Dois Cearense",
-		imagem: "/assets/img/baiao.jpg",
-		autor: { nome: "Tia Lúcia", avatar: "/assets/img/tia-avatar.png" },
-		historia: "O Baião de Dois é um prato completo, uma mistura deliciosa de arroz e feijão fradinho cozidos juntos. Essa versão cearense fica ainda mais rica com a adição de carne seca, linguiça e queijo coalho em cubos. É um prato que sustenta e conforta, com o gostinho do sertão.",
-		tempoPreparo: "50min",
-		porcoes: "6 porções",
-		categoria: "Prato Principal",
-        dificuldade: "Fácil",
-		ingredientes: [ "2 xícaras de arroz", "1 xícara de feijão fradinho (cozido al dente)", "200g de carne seca dessalgada e desfiada", "150g de linguiça paio em rodelas", "200g de queijo coalho em cubos", "1 cebola grande picada", "Coentro e cebolinha a gosto", "Nata ou manteiga de garrafa para finalizar" ],
-		modoPreparo: [ "Em uma panela, frite a linguiça e a carne seca na própria gordura.", "Adicione a cebola e refogue até ficar transparente.", "Acrescente o arroz e refogue por mais 2 minutos.", "Junte o feijão fradinho cozido e cubra com água quente (cerca de 4 xícaras). Tempere com sal, se necessário.", "Cozinhe em fogo baixo até a água secar.", "Desligue o fogo e misture o queijo coalho em cubos (que vai derreter com o calor), o coentro e a cebolinha.", "Sirva com uma colher de nata ou um fio de manteiga de garrafa por cima." ],
-		ferramentas: ["Panela grande"],
-		infoNutricional: { calorias: "720 kcal", carboidratos: "85g", proteinas: "35g", gorduras: "28g" },
-		observacoes: ["Cozinhe o feijão fradinho sem desmanchar, ele deve estar 'al dente' para o prato ficar perfeito."]
-	}
 ];
 
 // Disponibiliza a variável globalmente
