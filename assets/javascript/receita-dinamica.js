@@ -15,15 +15,50 @@ document.addEventListener('DOMContentLoaded', () => {
         document.title = "Receita não encontrada | Cozinha da Tia";
         return;
     }
-
+    
+    // --- SEO: Adicionar Meta Description e Dados Estruturados (JSON-LD) ---
     document.title = `${receita.titulo} | Cozinha da Tia`;
+    
+    // Meta Description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', `Aprenda a fazer ${receita.titulo}. Ingredientes: ${receita.ingredientes.slice(0, 3).join(', ')}...`);
 
-    // Função para gerar a lista de ingredientes com checkboxes
+    // Dados Estruturados (JSON-LD)
+    const schema = {
+        "@context": "https://schema.org/",
+        "@type": "Recipe",
+        "name": receita.titulo,
+        "image": window.location.origin + receita.imagem,
+        "description": `Receita completa de ${receita.titulo}. Uma delícia da Cozinha da Tia.`,
+        "prepTime": `PT${receita.tempoPreparo.replace('h', 'H').replace('min', 'M')}`,
+        "recipeYield": receita.porcoes,
+        "recipeCategory": receita.categoria,
+        "recipeIngredient": receita.ingredientes,
+        "recipeInstructions": receita.modoPreparo.map((step, index) => {
+            return {
+                "@type": "HowToStep",
+                "text": step
+            };
+        })
+    };
+    
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+    
+    // --- Fim da Lógica de SEO ---
+
     const criarListaIngredientes = (ingredientes) => {
         return ingredientes.map((item, index) => `
-            <li class="ingredient-item" onclick="document.getElementById('ingredient-${index}').click()">
-                <input type="checkbox" id="ingredient-${index}">
-                <span class="checkbox-custom"><i class="fas fa-check"></i></span>
+            <li class="ingredient-item" onclick="document.getElementById('ingredient-${index}').click()" tabindex="0">
+                <input type="checkbox" id="ingredient-${index}" tabindex="-1">
+                <span class="checkbox-custom" aria-hidden="true"><i class="fas fa-check"></i></span>
                 <span class="ingredient-text">${item}</span>
             </li>
         `).join('');
@@ -50,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h1>${receita.titulo}</h1>
                 <div class="recipe-meta">
                     <div class="meta-item">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
                         <span>${receita.tempoPreparo}</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-utensils"></i>
+                        <i class="fas fa-utensils" aria-hidden="true"></i>
                         <span>${receita.porcoes}</span>
                     </div>
                 </div>
@@ -80,4 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
     recipeContainer.innerHTML = recipeHTML;
+    
+    // Adiciona listener para a tecla Enter nos ingredientes para acessibilidade
+    document.querySelectorAll('.ingredient-item').forEach(item => {
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                item.click();
+            }
+        });
+    });
 });

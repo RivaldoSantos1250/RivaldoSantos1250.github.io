@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://rivaldosantos1250.github.io/index.html</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/receitas.html</loc>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/contato.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/enviar-receita.html</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/privacy-policy.html</loc>
+  <priority>0.50</priority>
+</url>
+
+<url>
+  <loc>https://rivaldosantos1250.github.io/receita.html?id=pudim-tapioca</loc>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/receita.html?id=pudim-leite-condensado</loc>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/receita.html?id=brownie-caneca</loc>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/receita.html?id=brigadeiro-microondas</loc>
+</url>
+</urlset>

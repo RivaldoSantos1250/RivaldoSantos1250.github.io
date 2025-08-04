@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cozinha da Tia - O Sabor da Comida de Casa</title>
-    <meta name="description" content="Explore um mundo de sabores com receitas caseiras, dicas de cozinha e a inspiração que você precisa para cozinhar pratos incríveis.">
+    <meta name="description" content="Explore um mundo de sabores com as melhores receitas caseiras. Encontre pratos fáceis, sobremesas, dicas de cozinha e a inspiração que você precisa para cozinhar.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/styles/main.css">
     <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
@@ -28,8 +28,8 @@
         </div>
     </header>
 
-    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
-        <button id="mobile-menu-close-btn" class="icon-btn close-btn">&times;</button>
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay" aria-hidden="true">
+        <button id="mobile-menu-close-btn" class="icon-btn close-btn" aria-label="Fechar menu">&times;</button>
         <nav class="mobile-nav">
             <a href="index.html">Home</a>
             <a href="receitas.html">Receitas</a>
@@ -52,7 +52,7 @@
                 <p>Nos diga um ingrediente e nós te damos a receita perfeita!</p>
                 <form class="ingredient-search-form" action="receitas.html" method="GET">
                     <input type="text" name="q" placeholder="Ex: Chocolate, frango, batata..." aria-label="Buscar por ingrediente" required>
-                    <button type="submit" class="btn"><i class="fas fa-search"></i> Encontrar Receita</button>
+                    <button type="submit" class="btn"><i class="fas fa-search" aria-hidden="true"></i> Encontrar Receita</button>
                 </form>
             </section>
 
@@ -86,7 +86,6 @@
                 </div>
             </section>
 
-            <!-- ===== ESPAÇO PARA PUBLICIDADE 1 ===== -->
             <div class="ad-placeholder fade-in-section">
                 <span>Publicidade</span>
             </div>
@@ -128,7 +127,6 @@
                 </div>
             </section>
 
-            <!-- ===== ESPAÇO PARA PUBLICIDADE 2 ===== -->
             <div class="ad-placeholder square fade-in-section">
                 <span>Publicidade</span>
             </div>
@@ -161,8 +159,7 @@
         </footer>
     </div>
     
-    <!-- Elementos de Overlay -->
-    <div id="search-overlay" class="search-overlay">
+    <div id="search-overlay" class="search-overlay" role="dialog" aria-modal="true" aria-hidden="true">
         <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
         <form action="receitas.html" method="GET">
             <input type="search" name="q" placeholder="O que você quer cozinhar hoje?" aria-label="Campo de busca" required>

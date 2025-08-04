@@ -30,36 +30,32 @@ function initRecipeOfTheDay() {
     }
 }
 
-
 // Listener principal que executa quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- LÓGICA PARA O HEADER MODERNO ---
     const header = document.querySelector('.main-header');
     if (header) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
     }
 
-    // --- LÓGICA PARA O NOVO MENU MOBILE ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
     if (mobileMenuBtn && mobileNavOverlay && mobileMenuCloseBtn) {
         mobileMenuBtn.addEventListener('click', () => {
             mobileNavOverlay.classList.add('active');
+            mobileNavOverlay.setAttribute('aria-hidden', 'false');
+            mobileMenuCloseBtn.focus();
         });
         mobileMenuCloseBtn.addEventListener('click', () => {
             mobileNavOverlay.classList.remove('active');
+            mobileNavOverlay.setAttribute('aria-hidden', 'true');
+            mobileMenuBtn.focus();
         });
     }
 
-    // --- LÓGICA PARA O TEMA ESCURO/CLARO ---
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         const currentTheme = localStorage.getItem('theme');
@@ -78,20 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA PARA O OVERLAY DE BUSCA (CORRIGIDA) ---
     const searchIcon = document.getElementById('search-icon');
     const searchOverlay = document.getElementById('search-overlay');
     const closeSearch = document.getElementById('close-search');
-    if (searchIcon && searchOverlay && closeSearch) {
+    const searchInput = searchOverlay ? searchOverlay.querySelector('input[type="search"]') : null;
+    if (searchIcon && searchOverlay && closeSearch && searchInput) {
        searchIcon.addEventListener('click', () => {
            searchOverlay.classList.add('active');
+           searchOverlay.setAttribute('aria-hidden', 'false');
+           searchInput.focus();
        });
        closeSearch.addEventListener('click', () => {
            searchOverlay.classList.remove('active');
+           searchOverlay.setAttribute('aria-hidden', 'true');
+           searchIcon.focus();
        });
     }
 
-    // --- LÓGICA PARA O BOTÃO "SCROLL TO TOP" ---
     const scrollToTopBtn = document.getElementById('scroll-to-top');
     if (scrollToTopBtn) {
         window.addEventListener('scroll', () => {
@@ -106,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA PARA O COOKIE CONSENT ---
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptCookies = document.getElementById('acceptCookies');
     if (cookieConsent && acceptCookies) {
@@ -119,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA PARA ANIMAÇÃO DE FADE-IN ---
     const fadeInSections = document.querySelectorAll('.fade-in-section');
     if (fadeInSections.length > 0) {
         const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -138,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- INICIALIZA A RECEITA DO DIA ---
     if (typeof initRecipeOfTheDay === 'function') {
         initRecipeOfTheDay();
     }
