@@ -30,16 +30,36 @@ function initRecipeOfTheDay() {
     }
 }
 
+
 // Listener principal que executa quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- CORREÇÃO DO HEADER ---
     const header = document.querySelector('.main-header');
     if (header) {
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        // Verifica se a página atual é a home page (termina com / ou /index.html)
+        const isHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html');
+
+        const handleHeaderStyle = () => {
+            // Condição para o header ficar sólido
+            const shouldBeScrolled = window.scrollY > 50;
+
+            if (isHomePage) {
+                // Na home, o header muda de estilo com o scroll
+                header.classList.toggle('scrolled', shouldBeScrolled);
+            } else {
+                // Em outras páginas, o header já começa com o estilo "scrolled"
+                header.classList.add('scrolled');
+            }
+        };
+
+        // Aplica o estilo correto assim que a página carrega
+        handleHeaderStyle();
+        // Adiciona o listener de scroll para continuar monitorando (essencial para a home)
+        window.addEventListener('scroll', handleHeaderStyle);
     }
 
+    // --- LÓGICA PARA O NOVO MENU MOBILE ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
@@ -47,15 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.addEventListener('click', () => {
             mobileNavOverlay.classList.add('active');
             mobileNavOverlay.setAttribute('aria-hidden', 'false');
-            mobileMenuCloseBtn.focus();
         });
         mobileMenuCloseBtn.addEventListener('click', () => {
             mobileNavOverlay.classList.remove('active');
             mobileNavOverlay.setAttribute('aria-hidden', 'true');
-            mobileMenuBtn.focus();
         });
     }
 
+    // --- LÓGICA PARA O TEMA ESCURO/CLARO ---
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         const currentTheme = localStorage.getItem('theme');
@@ -74,23 +93,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- LÓGICA PARA O OVERLAY DE BUSCA (CORRIGIDA) ---
     const searchIcon = document.getElementById('search-icon');
     const searchOverlay = document.getElementById('search-overlay');
     const closeSearch = document.getElementById('close-search');
-    const searchInput = searchOverlay ? searchOverlay.querySelector('input[type="search"]') : null;
-    if (searchIcon && searchOverlay && closeSearch && searchInput) {
+    if (searchIcon && searchOverlay && closeSearch) {
        searchIcon.addEventListener('click', () => {
            searchOverlay.classList.add('active');
            searchOverlay.setAttribute('aria-hidden', 'false');
-           searchInput.focus();
        });
        closeSearch.addEventListener('click', () => {
            searchOverlay.classList.remove('active');
            searchOverlay.setAttribute('aria-hidden', 'true');
-           searchIcon.focus();
        });
     }
 
+    // --- LÓGICA PARA O BOTÃO "SCROLL TO TOP" ---
     const scrollToTopBtn = document.getElementById('scroll-to-top');
     if (scrollToTopBtn) {
         window.addEventListener('scroll', () => {
@@ -105,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- LÓGICA PARA O COOKIE CONSENT ---
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptCookies = document.getElementById('acceptCookies');
     if (cookieConsent && acceptCookies) {
@@ -117,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- LÓGICA PARA ANIMAÇÃO DE FADE-IN ---
     const fadeInSections = document.querySelectorAll('.fade-in-section');
     if (fadeInSections.length > 0) {
         const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -135,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    // --- INICIALIZA A RECEITA DO DIA ---
     if (typeof initRecipeOfTheDay === 'function') {
         initRecipeOfTheDay();
     }
