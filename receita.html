@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todas as Receitas - Cozinha da Tia</title>
-    <meta name="description" content="Explore um mundo de sabores e encontre sua próxima receita favorita em nossa coleção completa. Pratos fáceis, médios e difíceis para todos os gostos.">
+    <title>Cozinha da Tia</title> 
+    <meta name="description" content="Aprenda a fazer as melhores receitas caseiras com a Cozinha da Tia.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/styles/main.css">
-    <link rel="stylesheet" href="assets/styles/receitas-page.css">
+    <link rel="stylesheet" href="assets/styles/receita-template.css">
     <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7321470203081403"
@@ -19,11 +19,11 @@
         <div class="container">
             <a href="index.html" class="logo">Cozinha da Tia</a>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="receitas.html" class="active">Receitas</a>
-                <a href="sobre.html">Sobre a Tia</a>
-                <a href="contato.html">Contato</a>
-            </nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="receitas.html">Receitas</a>
+    <a href="sobre.html">Sobre a Tia</a>
+    <a href="contato.html">Contato</a>
+</nav>
             <div class="header-icons">
                  <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
                 <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
@@ -37,40 +37,23 @@
         <nav class="mobile-nav">
             <a href="index.html">Home</a>
             <a href="receitas.html">Receitas</a>
-            <a href="sobre.html">Sobre a Tia</a>
             <a href="contato.html">Contato</a>
         </nav>
     </div>
 
     <div class="page-wrapper">
         <main class="container page-content">
-            <header class="page-header fade-in-section">
-                <h1>Nossas Receitas</h1>
-                <p>Explore um mundo de sabores e encontre sua próxima receita favorita.</p>
-            </header>
-
-            <div class="filters-and-search-container fade-in-section">
-                <div id="category-filters" class="category-filters">
-                    </div>
-                <div class="search-box">
-                    <input type="text" id="search-input" placeholder="Buscar pelo nome ou ingrediente..." aria-label="Campo de busca">
-                    <i class="fas fa-search"></i>
+            <article id="recipe-placeholder" class="recipe-container">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Carregando receita...</p>
                 </div>
-            </div>
-
-            <div id="recipe-list" class="recipe-grid fade-in-section">
-                </div>
-
-            <div id="no-results" class="no-results-message" style="display: none;">
-                <i class="fas fa-search"></i>
-                <h2>Nenhuma receita encontrada</h2>
-                <p>Tente ajustar sua busca ou o filtro de categoria.</p>
-            </div>
+            </article>
         </main>
-
+        
         <footer class="main-footer">
             <div class="container">
-                 <div class="footer-content">
+                <div class="footer-content">
                     <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -98,6 +81,6 @@
 
     <script src="assets/javascript/dados-receitas.js"></script>
     <script src="assets/javascript/main.js"></script>
-    <script src="assets/javascript/recipes.js"></script>
+    <script src="assets/javascript/receita-dinamica.js"></script>
 </body>
 </html>
