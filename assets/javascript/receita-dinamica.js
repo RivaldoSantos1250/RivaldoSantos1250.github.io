@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderRecipe(receita, todasAsReceitas);
         setupEventListeners();
         updateMetadata(receita);
+        loadDisqus(receita); // Carrega os comentários
     }, 500);
 
     function renderRecipe(data, allRecipes) {
@@ -52,8 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  </div>
             </div>
         `;
-
-        // --- CÓDIGO NOVO: Gera a secção "Veja Também" ---
+        
         const relatedRecipes = allRecipes.filter(r => r.id !== data.id && r.categoria === data.categoria).slice(0, 3);
         const relatedHtml = relatedRecipes.length > 0 ? `
             <div class="related-recipes-section">
@@ -73,14 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         ` : '';
         
-        // --- CÓDIGO NOVO: Secção de Comentários ---
         const commentsHtml = `
             <div class="comments-section">
                 <h2 class="section-title"><i class="fas fa-comments"></i>Deixe o seu Comentário</h2>
-                <p>Adoramos saber a sua opinião! Fez esta receita? Deixe uma nota ou uma dica abaixo.</p>
-                <div id="disqus_thread">
-                    <p style="text-align:center; padding: 20px; background-color: var(--background-color); border-radius: 8px;">Sistema de comentários a carregar...</p>
-                </div>
+                <div id="disqus_thread"></div>
             </div>
         `;
 
@@ -110,7 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     ${dicasHtml}
                     ${variacoesHtml}
-                    ${relatedHtml} ${commentsHtml} </div>
+                    ${relatedHtml}
+                    ${commentsHtml}
+
+                </div>
 
                 <div class="recipe-sidebar-column">
                     <div class="sidebar-section">
@@ -159,6 +158,21 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         recipePlaceholder.innerHTML = recipeHTML;
+    }
+    
+    // --- FUNÇÃO DO DISQUS ATUALIZADA COM O SEU CÓDIGO ---
+    function loadDisqus(receita) {
+        var disqus_config = function () {
+            this.page.url = window.location.href;  // URL da página atual
+            this.page.identifier = receita.id; // Identificador único da receita
+        };
+        
+        (function() { // NÃO EDITE DAQUI PARA BAIXO
+            var d = document, s = d.createElement('script');
+            s.src = 'https://estacao-sabor.disqus.com/embed.js'; // SEU CÓDIGO AQUI
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
     }
 
     function createMetaItem(icon, label, value) {
