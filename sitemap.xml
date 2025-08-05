@@ -4,114 +4,157 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
 <url>
   <loc>https://rivaldosantos1250.github.io/index.html</loc>
+  <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receitas.html</loc>
+  <changefreq>weekly</changefreq>
   <priority>0.90</priority>
 </url>
 <url>
-  <loc>https://rivaldosantos1250.github.io/contato.html</loc>
+  <loc>https://rivaldosantos1250.github.io/blog.html</loc>
+  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://rivaldosantos1250.github.io/enviar-receita.html</loc>
+  <loc>https://rivaldosantos1250.github.io/sobre.html</loc>
+  <changefreq>monthly</changefreq>
   <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://rivaldosantos1250.github.io/privacy-policy.html</loc>
-  <priority>0.50</priority>
+  <loc>https://rivaldosantos1250.github.io/contato.html</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://rivaldosantos1250.github.io/thanks.html</loc>
-  <priority>0.40</priority>
+  <loc>https://rivaldosantos1250.github.io/enviar-receita.html</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
 </url>
 
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=pudim-tapioca</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=pudim-leite-condensado</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=brownie-caneca</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=brigadeiro-microondas</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=mojito-classico</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=panqueca-aveia-banana</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=feijoada-completa</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=strogonoff-de-frango</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=lasanha-a-bolonhesa</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=coxinha-de-frango</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=pao-de-queijo-mineiro</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=mousse-de-maracuja</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=bolo-de-cenoura-com-chocolate</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=escondidinho-de-carne-seca</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=pave-de-biscoito</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=bolinho-de-chuva</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=empadao-de-frango</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=arroz-carreteiro</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=torta-holandesa</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=quindim</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=bobo-de-camarao</loc>
-  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
+</url>
+
+<url>
+  <loc>https://rivaldosantos1250.github.io/post.html?id=5-sobremesas-faceis</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://rivaldosantos1250.github.io/privacy-policy.html</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.30</priority>
+</url>
+<url>
+  <loc>https://rivaldosantos1250.github.io/thanks.html</loc>
+  <changefreq>never</changefreq>
+  <priority>0.20</priority>
 </url>
 </urlset>
