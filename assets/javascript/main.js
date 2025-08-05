@@ -83,26 +83,54 @@ function initFeaturedRecipes() {
     container.innerHTML = featuredRecipes.map(createFeaturedCard).join('');
 }
 
+// ======== NOVA FUNÇÃO PARA DEIXAR O LINK DO MENU ATIVO AUTOMATICAMENTE ========
+function setActiveNavLink() {
+    const currentLocation = window.location.pathname;
+    const navLinks = document.querySelectorAll('.main-nav a, .mobile-nav a');
+
+    navLinks.forEach(link => {
+        const linkPath = new URL(link.href).pathname;
+
+        // Limpa a classe de todos para garantir
+        link.classList.remove('active');
+
+        // Adiciona a classe se o caminho do link for igual à localização atual
+        if (linkPath === currentLocation) {
+            link.classList.add('active');
+        }
+
+        // Caso especial: se estivermos numa página de receita, ativa o link "Receitas"
+        if (currentLocation.includes('/receita.html') && linkPath.includes('/receitas.html')) {
+            link.classList.add('active');
+        }
+    });
+}
+
 
 // Listener principal que executa quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
 
+    setActiveNavLink(); // <-- CHAMA A NOVA FUNÇÃO
+
     // --- CORREÇÃO DO HEADER ---
     const header = document.querySelector('.main-header');
     if (header) {
+        // Verifica se a página atual é a home
         const isHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html');
 
         const handleHeaderStyle = () => {
             const shouldBeScrolled = window.scrollY > 50;
 
-            if (isHomePage) {
-                header.classList.toggle('scrolled', shouldBeScrolled);
+            if (isHomePage && !shouldBeScrolled) {
+                // Se for a home E estiver no topo, remove o 'scrolled'
+                header.classList.remove('scrolled');
             } else {
+                // Em todas as outras páginas ou se a home for rolada, adiciona o 'scrolled'
                 header.classList.add('scrolled');
             }
         };
-        handleHeaderStyle();
-        window.addEventListener('scroll', handleHeaderStyle);
+        handleHeaderStyle(); // Executa na primeira vez
+        window.addEventListener('scroll', handleHeaderStyle); // E depois no scroll
     }
 
     // --- LÓGICA PARA O NOVO MENU MOBILE ---
