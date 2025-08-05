@@ -1,4 +1,4 @@
-const blogPosts = [
+window.blogPosts = [
     {
         id: '5-sobremesas-faceis',
         title: '5 Sobremesas Fáceis e Rápidas para Surpreender',
@@ -6,7 +6,6 @@ const blogPosts = [
         description: 'Está à procura daquela sobremesa perfeita para fechar um jantar especial, mas não quer passar horas na cozinha? Veja a nossa seleção!',
         tags: ['sobremesas', 'fácil', 'rápido', 'doce', 'pudim', 'brownie', 'brigadeiro', 'mousse', 'pavê'],
         content: `
-            <p><em>Publicado em 01 de Agosto de 2025</em></p>
             <p>Está à procura daquela sobremesa perfeita para fechar um jantar especial, mas não quer passar horas na cozinha? Separamos 5 receitas curingas do nosso livro que são a combinação perfeita de praticidade e sabor. Confira!</p>
 
             <section>

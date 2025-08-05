@@ -17,11 +17,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.title = `${post.title} | Blog Estação Sabor`;
+
+    const createTagsHtml = (tags) => {
+        if (!tags || tags.length === 0) return '';
+        return tags.map(tag => `<li><a href="blog.html?q=${tag}">${tag}</a></li>`).join('');
+    };
+
     const postHTML = `
-        <h1>${post.title}</h1>
-        ${post.content}
-        <br>
-        <a href="blog.html" class="btn">Voltar para o Blog</a>
+        <article class="post-main-content">
+            <header class="post-header">
+                <img src="${post.image}" alt="${post.title}" class="post-image">
+                <h1 class="post-title">${post.title}</h1>
+                <div class="post-meta">
+                    Publicado em 01 de Agosto de 2025 por <strong>Estação Sabor</strong>
+                </div>
+            </header>
+            <section class="post-content">
+                ${post.content}
+                <br>
+                <a href="blog.html" class="btn">Voltar para o Blog</a>
+            </section>
+        </article>
+        
+        <aside class="post-sidebar">
+            <div class="sidebar-widget author-widget">
+                <h3 class="widget-title">Sobre o Autor</h3>
+                <img src="assets/img/tia-gaby.png" alt="Autor do Blog" class="author-avatar">
+                <p>Todas as receitas e dicas da "Estação Sabor" são preparadas com muito carinho para inspirar você na cozinha!</p>
+            </div>
+             <div class="sidebar-widget tags-widget">
+                <h3 class="widget-title">Tags</h3>
+                <ul class="tag-list">
+                    ${createTagsHtml(post.tags)}
+                </ul>
+            </div>
+        </aside>
     `;
     postContainer.innerHTML = postHTML;
 });

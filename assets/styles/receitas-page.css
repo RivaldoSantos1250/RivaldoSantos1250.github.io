@@ -208,3 +208,47 @@ ESTILOS MODERNOS PARA A PÁGINA DE RECEITAS
     font-size: 1.8rem;
     color: var(--text-color);
 }
+
+/* Card de Post de Blog */
+.blog-post-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.blog-post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.blog-post-card .card-image-container {
+    height: 250px; /* Altura da imagem */
+}
+
+.blog-post-card .recipe-card-content {
+    padding: 25px;
+}
+
+.blog-post-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.blog-post-card .post-excerpt {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.blog-post-card .read-more-link {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: auto; /* Empurra para o final do card */
+}
