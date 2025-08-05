@@ -358,3 +358,34 @@ ESTILOS MODERNOS PARA A PÁGINA DE RECEITA
 .author-bio-box .btn-link:hover {
     text-decoration: underline;
 }
+
+/* ================================================ */
+/* NOVOS ESTILOS PARA "VEJA TAMBÉM" E "COMENTÁRIOS" */
+/* ================================================ */
+
+.related-recipes-section, .comments-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid var(--border-color);
+}
+
+/* Grid para as receitas relacionadas */
+.related-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Cards menores */
+}
+
+/* Ajustes nos cards de receita dentro da secção "Veja Também" */
+.related-grid .recipe-card .card-image-container {
+    height: 150px;
+}
+
+.related-grid .recipe-card .recipe-card-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Estilo para a secção de comentários */
+.comments-section p {
+    margin-bottom: 25px;
+    color: var(--secondary-color);
+}

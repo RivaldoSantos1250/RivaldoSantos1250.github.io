@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(() => {
-        const receita = window.todasAsReceitas.find(r => r.id === recipeId);
+        const todasAsReceitas = window.todasAsReceitas || [];
+        const receita = todasAsReceitas.find(r => r.id === recipeId);
 
         if (!receita) {
             recipePlaceholder.innerHTML = `<h1>Erro: Receita "${recipeId}" não encontrada.</h1>`;
@@ -17,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        renderRecipe(receita);
+        renderRecipe(receita, todasAsReceitas);
         setupEventListeners();
         updateMetadata(receita);
     }, 500);
 
-    function renderRecipe(data) {
+    function renderRecipe(data, allRecipes) {
         const dicasHtml = data.dicasDaTia && data.dicasDaTia.length > 0 ? `
             <div class="extra-section">
                 <h2 class="section-title"><i class="fas fa-lightbulb"></i>Dicas da Tia</h2>
@@ -52,6 +53,38 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
+        // --- CÓDIGO NOVO: Gera a secção "Veja Também" ---
+        const relatedRecipes = allRecipes.filter(r => r.id !== data.id && r.categoria === data.categoria).slice(0, 3);
+        const relatedHtml = relatedRecipes.length > 0 ? `
+            <div class="related-recipes-section">
+                <h2 class="section-title"><i class="fas fa-stream"></i>Veja Também</h2>
+                <div class="recipe-grid related-grid">
+                    ${relatedRecipes.map(r => `
+                        <a href="receita.html?id=${r.id}" class="recipe-card">
+                            <div class="card-image-container">
+                                <img src="${r.imagem}" alt="${r.titulo}" loading="lazy">
+                            </div>
+                            <div class="recipe-card-content">
+                                <h3>${r.titulo}</h3>
+                            </div>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        ` : '';
+        
+        // --- CÓDIGO NOVO: Secção de Comentários ---
+        const commentsHtml = `
+            <div class="comments-section">
+                <h2 class="section-title"><i class="fas fa-comments"></i>Deixe o seu Comentário</h2>
+                <p>Adoramos saber a sua opinião! Fez esta receita? Deixe uma nota ou uma dica abaixo.</p>
+                <div id="disqus_thread">
+                    <p style="text-align:center; padding: 20px; background-color: var(--background-color); border-radius: 8px;">Sistema de comentários a carregar...</p>
+                </div>
+            </div>
+        `;
+
+
         const recipeHTML = `
             <div class="recipe-layout">
                 <div class="recipe-main-column">
@@ -77,8 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     ${dicasHtml}
                     ${variacoesHtml}
-
-                </div>
+                    ${relatedHtml} ${commentsHtml} </div>
 
                 <div class="recipe-sidebar-column">
                     <div class="sidebar-section">
