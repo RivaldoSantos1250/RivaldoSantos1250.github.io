@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre a Tia - Cozinha da Tia</title>
+    <meta name="description" content="Conheça a história e a paixão por trás das receitas da Cozinha da Tia.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/legal-page.css">
+    <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Cozinha da Tia</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="receitas.html">Receitas</a>
+                <a href="sobre.html" class="active">Sobre a Tia</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+            <div class="header-icons">
+                 <button id="search-icon" class="icon-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Mudar tema"><i class="fas fa-moon"></i></button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <button id="mobile-menu-close-btn" class="icon-btn close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="sobre.html">Sobre a Tia</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <main class="container page-content">
+            
+            <div class="legal-container fade-in-section">
+                <h1>Sobre a Tia</h1>
+                <img src="assets/img/tia-gaby.png" alt="Foto da Tia" style="width: 200px; border-radius: 50%; display: block; margin: 20px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                
+                <section>
+                    <h2>O Sabor que Vem de Família</h2>
+                    <p>Olá! Eu sou a Tia Lúcia, a alma e o coração por trás da "Cozinha da Tia". A minha paixão pela culinária não nasceu em escolas de chefs renomados, mas sim na cozinha da minha avó, entre o cheiro de bolo a assar e o barulho das panelas.</p>
+                    <p>Este site é um sonho realizado: um cantinho para partilhar as receitas que marcaram a minha vida, os segredos que aprendi ao longo dos anos e o amor que sinto ao transformar ingredientes simples em momentos de pura felicidade à mesa.</p>
+                </section>
+                
+                <section>
+                    <h2>A Nossa Missão</h2>
+                    <p>A "Cozinha da Tia" é mais do que um livro de receitas online. É um convite para que você redescubra o prazer de cozinhar. Todas as receitas aqui são testadas e aprovadas pela minha família e amigos, garantindo que o resultado seja sempre delicioso. São pratos reais, para pessoas reais.</p>
+                    <p>Obrigada por estar aqui e por me deixar fazer parte do seu dia a dia na cozinha. Sinta-se em casa!</p>
+                </section>
+            </div>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 Cozinha da Tia. Todos os direitos reservados.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                     <p><a href="privacy-policy.html">Política de Privacidade</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+        <button id="close-search" class="icon-btn close-btn" aria-label="Fechar busca">&times;</button>
+        <form action="receitas.html" method="GET">
+            <input type="search" name="q" placeholder="Buscar em receitas..." aria-label="Campo de busca" required>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
+    </div>
+    <button id="scroll-to-top" class="icon-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+    <div id="cookieConsent" class="cookie-consent">
+        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="privacy-policy.html">Saiba mais</a>.</p>
+        <button id="acceptCookies" class="btn">Entendi!</button>
+    </div>
+
+    <script src="assets/javascript/dados-receitas.js"></script>
+    <script src="assets/javascript/main.js"></script>
+</body>
+</html>
