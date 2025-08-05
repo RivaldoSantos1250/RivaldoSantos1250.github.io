@@ -237,3 +237,119 @@ document.addEventListener('DOMContentLoaded', () => {
         initFeaturedRecipes();
     }
 });
+
+// SUBSTITUA O CÓDIGO DE BUSCA ANTERIOR POR ESTE EM assets/javascript/main.js
+
+/**
+ * Função para intercalar dois arrays.
+ * Ex: [1, 2], [A, B] se torna [1, A, 2, B]
+ */
+function interleaveArrays(arr1, arr2) {
+    const results = [];
+    const maxLength = Math.max(arr1.length, arr2.length);
+    for (let i = 0; i < maxLength; i++) {
+        if (i < arr1.length) {
+            results.push(arr1[i]);
+        }
+        if (i < arr2.length) {
+            results.push(arr2[i]);
+        }
+    }
+    return results;
+}
+
+/**
+ * Função de Pesquisa Unificada
+ * Busca em receitas e posts de blog e intercala os resultados.
+ */
+function unifiedSearch(query) {
+    const searchTerm = query.toLowerCase().trim();
+    if (searchTerm === '') {
+        return [];
+    }
+
+    const allRecipes = window.todasAsReceitas || [];
+    const allPosts = window.blogPosts || [];
+
+    // Busca nas receitas
+    const matchedRecipes = allRecipes.filter(recipe => {
+        const titleMatch = recipe.titulo.toLowerCase().includes(searchTerm);
+        const ingredientsMatch = recipe.ingredientes.join(' ').toLowerCase().includes(searchTerm);
+        return titleMatch || ingredientsMatch;
+    }).map(recipe => ({
+        type: 'recipe',
+        title: recipe.titulo,
+        url: `receita.html?id=${recipe.id}`,
+        image: recipe.imagem,
+        category: 'Receita'
+    }));
+
+    // Busca nos posts do blog
+    const matchedPosts = allPosts.filter(post => {
+        const titleMatch = post.title.toLowerCase().includes(searchTerm);
+        const descriptionMatch = post.description.toLowerCase().includes(searchTerm);
+        const tagsMatch = post.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        return titleMatch || descriptionMatch || tagsMatch;
+    }).map(post => ({
+        type: 'post',
+        title: post.title,
+        url: `post.html?id=${post.id}`,
+        image: post.image,
+        category: 'Blog'
+    }));
+
+    // Intercala os resultados para uma exibição mista
+    return interleaveArrays(matchedRecipes, matchedPosts);
+}
+
+/**
+ * Mostra a prévia dos resultados da busca
+ */
+function displaySearchResultsPreview(results, container) {
+    if (results.length === 0) {
+        container.innerHTML = '';
+        container.style.display = 'none';
+        return;
+    }
+
+    container.style.display = 'block';
+    container.innerHTML = `
+        <ul class="search-results-list">
+            ${results.slice(0, 10).map(result => `
+                <li>
+                    <a href="${result.url}">
+                        <img src="${result.image}" alt="${result.title}" class="result-image">
+                        <div class="result-info">
+                            <span class="result-title">${result.title}</span>
+                            <span class="result-category">${result.category}</span>
+                        </div>
+                    </a>
+                </li>
+            `).join('')}
+        </ul>
+    `;
+}
+
+// Modifica o listener do overlay de busca para adicionar a prévia
+const searchOverlay = document.getElementById('search-overlay');
+if (searchOverlay) {
+    const searchInput = searchOverlay.querySelector('input[type="search"]');
+    let resultsContainer = searchOverlay.querySelector('.search-results-preview');
+    
+    if (!resultsContainer) {
+        resultsContainer = document.createElement('div');
+        resultsContainer.className = 'search-results-preview';
+        searchInput.parentElement.style.position = 'relative'; // Garante o posicionamento correto
+        searchInput.parentElement.appendChild(resultsContainer);
+    }
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value;
+        if (query.length < 2) { // Não busca com menos de 2 caracteres
+            resultsContainer.style.display = 'none';
+            return;
+        }
+        const results = unifiedSearch(query);
+        displaySearchResultsPreview(results, resultsContainer);
+    });
+}

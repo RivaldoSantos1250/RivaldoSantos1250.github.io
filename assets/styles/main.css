@@ -372,3 +372,65 @@ h2 {
 }
 .social-links { display: flex; gap: 15px; }
 .social-links a { color: var(--secondary-color); font-size: 1.2rem; }
+
+/* Adicione este código em assets/styles/main.css */
+
+.search-overlay form {
+    position: relative;
+}
+
+.search-results-preview {
+    position: absolute;
+    top: 100%; /* Aparece logo abaixo da barra de busca */
+    left: 0;
+    width: 100%;
+    background-color: var(--surface-color);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-height: 450px;
+    overflow-y: auto;
+    z-index: 1002;
+    display: none; /* Começa escondido */
+}
+
+.search-results-list {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.search-results-list li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+}
+
+.search-results-list li a:hover {
+    background-color: var(--border-color);
+}
+
+.search-results-list .result-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    flex-shrink: 0;
+}
+
+.search-results-list .result-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-results-list .result-title {
+    font-weight: 500;
+}
+
+.search-results-list .result-category {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+}
