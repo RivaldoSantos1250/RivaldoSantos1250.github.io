@@ -22,21 +22,30 @@ const receitas = [
         observacoes: ["Para uma versão mais indulgente, sirva com uma calda de caramelo ou doce de leite."]
     },
     {
-        id: "pudim-leite-condensado",
-        titulo: "Pudim de Leite Condensado Perfeito",
-        imagem: "/assets/img/pudim-leite-condensado.webp",
-        autor: { nome: "Tia Lúcia", avatar: "/assets/img/tia-avatar.png" },
-        historia: "Quem resiste a um pudim de leite lisinho e perfeito? Depois de muitos testes, cheguei a esta receita que considero infalível. A dica de ouro é a calda no ponto certo e assar em banho-maria com paciência. É a sobremesa clássica que abraça a gente.",
-        tempoPreparo: "1h 30min",
-        porcoes: "8 fatias",
-        categoria: "Sobremesas",
-        dificuldade: "Fácil",
-        ingredientes: [ "1 xícara (chá) de açúcar para a calda", "1/2 xícara (chá) de água quente para a calda", "1 lata de leite condensado", "A mesma medida da lata de leite integral", "3 ovos inteiros", "1 colher (chá) de essência de baunilha" ],
-        modoPreparo: [ "Derreta o açúcar em uma panela em fogo baixo até formar um caramelo dourado. Adicione a água quente com cuidado e mexa até dissolver os torrões. Forre uma forma de pudim com esta calda e reserve.", "No liquidificador, bata o leite condensado, o leite, os ovos e a baunilha por cerca de 2 minutos, até a mistura ficar bem homogênea.", "Despeje a mistura na forma caramelizada com cuidado.", "Cubra a forma com papel alumínio e asse em banho-maria em forno pré-aquecido a 180°C por aproximadamente 1 hora e 20 minutos.", "O pudim estará firme quando você espetar uma faca e ela sair limpa. Deixe esfriar completamente antes de levar à geladeira.", "Refrigere por pelo menos 6 horas. Desenforme e sirva." ],
-        ferramentas: ["Forma de pudim (18cm)", "Panela para calda", "Liquidificador", "Assadeira para banho-maria"],
-        infoNutricional: { calorias: "320 kcal", carboidratos: "50g", proteinas: "7g", gorduras: "11g" },
-        observacoes: ["Peneirar os ovos antes de bater pode ajudar a evitar o cheiro característico."]
-    },
+    id: "pudim-leite-condensado",
+    titulo: "Pudim de Leite Condensado Perfeito",
+    imagem: "/assets/img/pudim-leite-condensado.webp",
+    autor: { nome: "Tia Lúcia", avatar: "/assets/img/tia-gaby.png" }, // NOVO: Mudei para a foto real
+    historia: "Quem resiste a um pudim de leite lisinho e perfeito? Depois de muitos testes, cheguei a esta receita que considero infalível. A dica de ouro é a calda no ponto certo e assar em banho-maria com paciência. É a sobremesa clássica que abraça a gente.",
+    tempoPreparo: "1h 30min",
+    porcoes: "8 fatias",
+    categoria: "Sobremesas",
+    dificuldade: "Fácil",
+    ingredientes: [ "1 xícara (chá) de açúcar para a calda", "1/2 xícara (chá) de água quente para a calda", "1 lata de leite condensado", "A mesma medida da lata de leite integral", "3 ovos inteiros", "1 colher (chá) de essência de baunilha" ],
+    modoPreparo: [ "Derreta o açúcar em uma panela em fogo baixo até formar um caramelo dourado. Adicione a água quente com cuidado e mexa até dissolver os torrões. Forre uma forma de pudim com esta calda e reserve.", "No liquidificador, bata o leite condensado, o leite, os ovos e a baunilha por cerca de 2 minutos, até a mistura ficar bem homogênea.", "Despeje a mistura na forma caramelizada com cuidado.", "Cubra a forma com papel alumínio e asse em banho-maria em forno pré-aquecido a 180°C por aproximadamente 1 hora e 20 minutos.", "O pudim estará firme quando você espetar uma faca e ela sair limpa. Deixe esfriar completamente antes de levar à geladeira.", "Refrigere por pelo menos 6 horas. Desenforme e sirva." ],
+    ferramentas: ["Forma de pudim (18cm)", "Panela para calda", "Liquidificador", "Assadeira para banho-maria"],
+    infoNutricional: { calorias: "320 kcal", carboidratos: "50g", proteinas: "7g", gorduras: "11g" },
+    observacoes: ["Peneirar os ovos antes de bater pode ajudar a evitar o cheiro característico."],
+    dicasDaTia: [ // NOVO
+        "Para um pudim super liso e sem furinhos, bata a mistura no liquidificador em velocidade baixa ou misture à mão delicadamente.",
+        "Cubra a forma com papel alumínio para garantir um cozimento uniforme no banho-maria.",
+        "Deixe o pudim esfriar completamente antes de o levar à geladeira. Isso ajuda a evitar que ele rache."
+    ],
+    variacoes: [ // NOVO
+        "Adicione 1/2 xícara de coco ralado à mistura do liquidificador para um delicioso Pudim de Leite com Coco.",
+        "Substitua a essência de baunilha por raspas de 1 laranja para um toque cítrico."
+    ]
+},
 	{
         id: "brownie-caneca",
         titulo: "Brownie de Caneca Salva-Vidas",

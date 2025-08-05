@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Simula um pequeno delay para mostrar o spinner de carregamento
     setTimeout(() => {
         const receita = window.todasAsReceitas.find(r => r.id === recipeId);
 
@@ -24,6 +23,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 
     function renderRecipe(data) {
+        const dicasHtml = data.dicasDaTia && data.dicasDaTia.length > 0 ? `
+            <div class="extra-section">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i>Dicas da Tia</h2>
+                <ul class="extra-list">
+                    ${data.dicasDaTia.map(dica => `<li>${dica}</li>`).join('')}
+                </ul>
+            </div>
+        ` : '';
+
+        const variacoesHtml = data.variacoes && data.variacoes.length > 0 ? `
+            <div class="extra-section">
+                <h2 class="section-title"><i class="fas fa-blender"></i>Variações da Receita</h2>
+                <ul class="extra-list">
+                    ${data.variacoes.map(variacao => `<li>${variacao}</li>`).join('')}
+                </ul>
+            </div>
+        ` : '';
+
+        const autorHtml = `
+            <div class="author-bio-box sidebar-section">
+                 <h2 class="section-title"><i class="fas fa-user-edit"></i>Sobre a Autora</h2>
+                 <div class="author-content">
+                    <img src="${data.autor.avatar}" alt="Foto de ${data.autor.nome}" class="author-avatar-bio">
+                    <h3>${data.autor.nome}</h3>
+                    <p>Todas as receitas do site são preparadas com muito carinho e testadas para garantir o melhor resultado na sua cozinha!</p>
+                 </div>
+            </div>
+        `;
+
         const recipeHTML = `
             <div class="recipe-layout">
                 <div class="recipe-main-column">
@@ -46,6 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <ol class="instructions-list">
                         ${data.modoPreparo.map(step => `<li>${step}</li>`).join('')}
                     </ol>
+
+                    ${dicasHtml}
+                    ${variacoesHtml}
+
                 </div>
 
                 <div class="recipe-sidebar-column">
@@ -55,6 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${data.ingredientes.map((item, index) => createIngredientItem(item, index)).join('')}
                         </ul>
                     </div>
+
+                    ${autorHtml}
 
                     <div class="sidebar-section">
                         <h2 class="section-title"><i class="fas fa-tools"></i>Ferramentas</h2>
@@ -95,12 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
         recipePlaceholder.innerHTML = recipeHTML;
     }
 
-    // Funções auxiliares para criar elementos HTML
     function createMetaItem(icon, label, value) {
         return `<div class="meta-item"><i class="${icon}"></i> <div><strong>${label}:</strong> ${value}</div></div>`;
     }
     function createAuthorItem(author) {
-        return `<div class="meta-item"><img src="${author.avatar}" alt="Foto de ${author.nome}" class="author-avatar"> <div><strong>Autor:</strong> ${author.nome}</div></div>`;
+        return `<div class="meta-item"><img src="${author.avatar}" alt="Foto de ${author.nome}" class="author-avatar"> <div><strong>Autor:</strong> <a href="sobre.html" style="color: var(--secondary-color); text-decoration: underline;">${author.nome}</a></div></div>`;
     }
     function createIngredientItem(item, index) {
         return `
@@ -111,9 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </li>`;
     }
 
-    // Configura os eventos de clique e teclado
     function setupEventListeners() {
-        // Para a lista de ingredientes
         document.querySelectorAll('.ingredient-item').forEach(item => {
             const checkbox = item.querySelector('input[type="checkbox"]');
             const toggleCheck = () => {
@@ -129,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Para as estrelas de avaliação
         const stars = document.querySelectorAll('.rating-stars i');
         stars.forEach(star => {
             star.addEventListener('mouseover', (e) => {
@@ -155,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Atualiza metadados da página e JSON-LD para SEO
     function updateMetadata(receita) {
         document.title = `${receita.titulo} | Cozinha da Tia`;
         let metaDescription = document.querySelector('meta[name="description"]');
@@ -163,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
             metaDescription.setAttribute('content', `Receita completa de ${receita.titulo}. Ingredientes e passo a passo detalhado.`);
         }
         
-        // Remove script antigo se existir
         const oldSchema = document.querySelector('script[type="application/ld+json"]');
         if (oldSchema) oldSchema.remove();
 

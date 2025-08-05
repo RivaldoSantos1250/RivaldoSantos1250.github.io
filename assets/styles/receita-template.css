@@ -288,3 +288,73 @@ ESTILOS MODERNOS PARA A PÁGINA DE RECEITA
     color: var(--primary-color);
     margin-bottom: 15px;
 }
+
+/* ================================================ */
+/* NOVOS ESTILOS PARA AS SECÇÕES EXTRA E AUTOR      */
+/* ================================================ */
+
+/* Estilo para as novas secções (Dicas, Variações) */
+.extra-section {
+    margin-top: 40px;
+    background-color: var(--background-color);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.extra-list {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.8;
+}
+
+.extra-list li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.extra-list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/* Estilo para o novo box do autor na barra lateral */
+.author-bio-box {
+    text-align: center;
+}
+
+.author-bio-box .author-avatar-bio {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.author-bio-box h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.author-bio-box p {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.author-bio-box .btn-link {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.author-bio-box .btn-link:hover {
+    text-decoration: underline;
+}
