@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="post-summary-content">
                     <h3 class="post-title">${post.title}</h3>
-                    <div class="post-meta">Publicado em 01 de Agosto de 2025</div>
+                    <div class="post-meta">Publicado em ${post.date}</div>
                     <p class="post-excerpt">${post.description}</p>
                     <span class="read-more-link">Ler Artigo Completo &rarr;</span>
                 </div>

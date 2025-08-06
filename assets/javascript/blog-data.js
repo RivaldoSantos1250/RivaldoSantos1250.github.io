@@ -3,6 +3,7 @@ window.blogPosts = [
         id: '5-sobremesas-faceis',
         title: '5 Sobremesas Fáceis e Rápidas para Surpreender',
         image: 'assets/img/blog-img/5-sobremesas-faceis-rapidas.jpg',
+        date: '01 de Agosto de 2025',
         description: 'Está à procura daquela sobremesa perfeita para fechar um jantar especial, mas não quer passar horas na cozinha? Veja a nossa seleção!',
         tags: ['sobremesas', 'fácil', 'rápido', 'doce', 'pudim', 'brownie', 'brigadeiro', 'mousse', 'pavê'],
         content: `
@@ -48,6 +49,7 @@ window.blogPosts = [
         id: 'origem-comidas-populares',
         title: 'A Origem das Comidas: Como Pratos Populares Cruzaram o Mundo',
         image: 'assets/img/blog-img/origem-das-comidas.jpg',
+        date: '06 de Agosto de 2025',
         description: 'Você já se perguntou de onde veio o pão, o sushi ou a pizza? Conheça as verdadeiras origens de pratos que fazem parte do nosso dia a dia.',
         tags: ['história', 'gastronomia', 'comidas do mundo', 'curiosidades', 'pizza', 'sushi', 'hambúrguer', 'tradição'],
         content: `

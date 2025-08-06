@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <header class="post-header">
                 <img src="${post.image}" alt="${post.title}" class="post-image">
                 <h1 class="post-title">${post.title}</h1>
-                <div class="post-meta">
-                    Publicado em 01 de Agosto de 2025 por <strong>Estação Sabor</strong>
+              <div class="post-meta">
+            Publicado em ${post.date} por <strong>Estação Sabor</strong>
                 </div>
             </header>
             <section class="post-content">
