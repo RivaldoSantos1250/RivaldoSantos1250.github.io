@@ -43,6 +43,49 @@ window.blogPosts = [
                 <a href="receita.html?id=pave-de-biscoito" class="btn">Ver Receita Completa</a>
             </section>
         `
+    },
+    {
+        id: 'origem-comidas-populares',
+        title: 'A Origem das Comidas: Como Pratos Populares Cruzaram o Mundo',
+        image: 'assets/img/blog-img/origem-das-comidas.jpg',
+        description: 'Você já se perguntou de onde veio o pão, o sushi ou a pizza? Conheça as verdadeiras origens de pratos que fazem parte do nosso dia a dia.',
+        tags: ['história', 'gastronomia', 'comidas do mundo', 'curiosidades', 'pizza', 'sushi', 'hambúrguer', 'tradição'],
+        content: `
+            <p>Por trás de cada prato que amamos, existe uma história. Algumas vêm de tradições milenares, outras nasceram por acaso ou necessidade. Saber a origem dos alimentos que fazem parte da nossa rotina é como viajar no tempo — com garfo e faca. Hoje, vamos te levar por um passeio histórico através de pratos famosos que cruzaram fronteiras e conquistaram paladares no mundo todo.</p>
+
+            <section>
+                <h2>🍕 Pizza – Da Roma Antiga à Itália Moderna</h2>
+                <img src="assets/img/pizza-napolitana.jpg" alt="Pizza Napolitana" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+                <p>Embora seja símbolo da culinária italiana, a pizza tem raízes mais antigas: no Império Romano, já se comia uma massa achatada com azeite e ervas. Mas foi em Nápoles, no século XVIII, que ela ganhou molho de tomate e virou o prato que conhecemos hoje. A famosa "Pizza Margherita" foi criada em homenagem à rainha Margherita, com as cores da bandeira da Itália: manjericão (verde), mussarela (branco) e tomate (vermelho).</p>
+            </section>
+
+            <section>
+                <h2>🍣 Sushi – Da Conservação ao Prato Gourmet</h2>
+                <img src="assets/img/sushi-origem.jpg" alt="Sushi Tradicional" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+                <p>O sushi não nasceu no Japão como muitos pensam — sua origem está na China, onde o peixe era conservado em arroz fermentado. Só séculos depois essa prática foi levada ao Japão, onde se transformou em arte. O sushi moderno, como conhecemos hoje (especialmente o “nigiri”), surgiu em Tóquio no século XIX, como uma espécie de "fast-food" de rua.</p>
+            </section>
+
+            <section>
+                <h2>🍔 Hambúrguer – De Hamburgo aos Estados Unidos</h2>
+                <img src="assets/img/hamburguer-historia.jpg" alt="Hambúrguer Clássico" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+                <p>O hambúrguer vem de Hamburgo, na Alemanha, onde marinheiros comiam carne moída moldada em discos. Mas foram os imigrantes alemães nos Estados Unidos que popularizaram o sanduíche de carne no pão, dando origem ao "hamburger". Nos anos 1900, surgiram os primeiros carrinhos vendendo o lanche nas feiras, até virar o fenômeno global que é hoje.</p>
+            </section>
+
+            <section>
+                <h2>🥟 Pastel – Um Toque Oriental no Brasil</h2>
+                <img src="assets/img/pastel-historia.jpg" alt="Pastel Brasileiro" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+                <p>O pastel brasileiro é fruto da criatividade dos imigrantes chineses, que adaptaram o tradicional “rolinho primavera” aos ingredientes disponíveis aqui. Com o tempo, o pastel ganhou versões doces e salgadas, sendo adotado nas feiras e nas ruas como um lanche tipicamente brasileiro — mas com alma asiática.</p>
+            </section>
+
+            <section>
+                <h2>🍫 Chocolate – O Ouro dos Maias e Astecas</h2>
+                <img src="assets/img/chocolate-antigo.jpg" alt="Cacau Antigo" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+                <p>Antes de virar barra, o chocolate era uma bebida amarga e sagrada. Maias e astecas usavam o cacau em rituais e como moeda. Os espanhóis levaram o cacau para a Europa no século XVI, onde ele foi adoçado e transformado no chocolate que conhecemos. Hoje, é um dos alimentos mais amados do planeta — e sua origem é profundamente ligada à cultura indígena americana.</p>
+            </section>
+
+            <p>Esses pratos mostram que a comida é muito mais do que sabor: é memória, cultura e herança. A próxima vez que você comer uma fatia de pizza ou um pastel de feira, lembre-se de que ali também está um pedacinho da história da humanidade.</p>
+
+            <a href="receita.html?id=pizza-caseira" class="btn">Aprenda a Fazer Pizza em Casa</a>
+        `
     }
-    // Para adicionar novas postagens, basta adicionar um novo objeto aqui.
 ];

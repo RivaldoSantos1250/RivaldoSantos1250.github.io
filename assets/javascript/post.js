@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <aside class="post-sidebar">
             <div class="sidebar-widget author-widget">
                 <h3 class="widget-title">Sobre o Autor</h3>
-                <img src="assets/img/tia-gaby.png" alt="Autor do Blog" class="author-avatar">
+                <img src="assets/img/estacaosabor.jpg" alt="Autor do Blog" class="author-avatar">
                 <p>Todas as receitas e dicas da "Estação Sabor" são preparadas com muito carinho para inspirar você na cozinha!</p>
             </div>
              <div class="sidebar-widget tags-widget">

@@ -83,6 +83,34 @@ function initFeaturedRecipes() {
     container.innerHTML = featuredRecipes.map(createFeaturedCard).join('');
 }
 
+// --- NOVA FUNÇÃO PARA A NOTÍCIA DO BLOG NA HOME ---
+function initBlogPostOfTheHour() {
+    const container = document.getElementById('blog-post-of-the-hour');
+    if (!container) return;
+
+    const allPosts = window.blogPosts || [];
+    if (allPosts.length === 0) return;
+
+    // Seleciona um post com base na hora atual
+    const currentHour = new Date().getHours();
+    const postIndex = currentHour % allPosts.length;
+    const post = allPosts[postIndex];
+
+    const postHTML = `
+        <a href="post.html?id=${post.id}" class="recipe-card">
+            <div class="card-image-container" style="height: 250px;">
+                <img src="${post.image}" alt="${post.title}" loading="lazy">
+            </div>
+            <div class="recipe-card-content">
+                <h3>${post.title}</h3>
+                <p style="color: var(--secondary-color); font-size: 1rem;">${post.description}</p>
+            </div>
+        </a>
+    `;
+    container.innerHTML = postHTML;
+}
+
+
 // ======== NOVA FUNÇÃO PARA DEIXAR O LINK DO MENU ATIVO AUTOMATICAMENTE ========
 function setActiveNavLink() {
     const currentLocation = window.location.pathname;
@@ -235,6 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (typeof initFeaturedRecipes === 'function') {
         initFeaturedRecipes();
+    }
+    if (typeof initBlogPostOfTheHour === 'function') {
+        initBlogPostOfTheHour();
     }
 });
 
