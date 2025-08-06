@@ -2,7 +2,7 @@ window.blogPosts = [
     {
         id: '5-sobremesas-faceis',
         title: '5 Sobremesas Fáceis e Rápidas para Surpreender',
-        image: 'assets/img/pave-de-biscoito.jpg',
+        image: 'assets/img/blog-img/5-sobremesas-faceis-rapidas.jpg',
         description: 'Está à procura daquela sobremesa perfeita para fechar um jantar especial, mas não quer passar horas na cozinha? Veja a nossa seleção!',
         tags: ['sobremesas', 'fácil', 'rápido', 'doce', 'pudim', 'brownie', 'brigadeiro', 'mousse', 'pavê'],
         content: `
