@@ -152,7 +152,7 @@ const receitas = [
     {
 		id: "lasanha-a-bolonhesa",
 		titulo: "Lasanha à Bolonhesa de Domingo",
-		imagem: "/assets/img/lasanha.jpg",
+		imagem: "/assets/img/lasanha-bolonhesa.jpg",
 		autor: { nome: "Lucia", avatar: "/assets/img/tia-lucia.png" },
 		historia: "Lasanha é prato de celebração! Essa receita de molho à bolonhesa é a que faço há anos. O segredo é um molho bem apurado e não economizar no queijo. Intercalar com molho branco a deixa ainda mais suculenta. Prepare-se para os elogios!",
 		tempoPreparo: "1h 45min",
