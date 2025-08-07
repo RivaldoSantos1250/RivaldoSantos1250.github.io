@@ -148,6 +148,13 @@
 </url>
 
 <url>
+  <loc>https://rivaldosantos1250.github.io/post.html?id=origem-comidas-populares</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
+
+<url>
   <loc>https://rivaldosantos1250.github.io/privacy-policy.html</loc>
   <changefreq>yearly</changefreq>
   <priority>0.30</priority>
