@@ -89,5 +89,52 @@ window.blogPosts = [
 
             <a href="receita.html?id=pizza-caseira" class="btn">Aprenda a Fazer Pizza em Casa</a>
         `
-    }
+    },
+
+    {
+    id: 'historia-especiarias',
+    title: 'Especiarias que Mudaram a História da Humanidade',
+    image: 'assets/img/blog-img/especiarias-historia.jpg',
+    date: '08 de Agosto de 2025',
+    description: 'Muito antes dos supermercados, as especiarias eram raras, valiosas e disputadas por impérios inteiros. Conheça as histórias por trás desses tesouros da cozinha.',
+    tags: ['história', 'gastronomia', 'comércio', 'especiarias', 'culinária', 'cultura alimentar'],
+    content: `
+        <p>Durante séculos, especiarias foram mais valiosas que ouro. Pimenta, canela, noz-moscada e cravo viajaram milhares de quilômetros, impulsionando descobertas, guerras e trocas culturais. Estas pequenas iguarias transformaram a gastronomia e a economia mundial.</p>
+
+        <section>
+            <h2>🌶️ Pimenta-Preta – O Ouro Negro da Índia</h2>
+            <img src="assets/img/pimenta-historia.jpg" alt="Pimenta-preta" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+            <p>Originária da costa de Malabar, na Índia, a pimenta-preta era tão valiosa na Idade Média que servia como moeda. Comerciantes árabes a levaram para a Europa, despertando o interesse de exploradores como Vasco da Gama.</p>
+        </section>
+
+        <section>
+            <h2>🍯 Canela – Do Egito Antigo às Rotas de Comércio</h2>
+            <img src="assets/img/canela-historia.jpg" alt="Canela" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+            <p>Usada no Egito Antigo para embalsamar e aromatizar alimentos, a canela era tão rara que, por muito tempo, sua origem foi mantida em segredo por comerciantes árabes. Hoje, é comum em doces e bebidas no mundo todo.</p>
+        </section>
+
+        <section>
+            <h2>🌰 Noz-Moscada – A Especiaria que Valeu Guerras</h2>
+            <img src="assets/img/noz-moscada-historia.jpg" alt="Noz-moscada" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+            <p>Vinda das Ilhas Banda, na Indonésia, a noz-moscada motivou disputas entre portugueses, holandeses e ingleses no século XVII. Além do sabor, era valorizada por supostas propriedades medicinais.</p>
+        </section>
+
+        <section>
+            <h2>🌺 Cravo-da-Índia – Aroma e Poder</h2>
+            <img src="assets/img/cravo-historia.jpg" alt="Cravo-da-Índia" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+            <p>Originário das Ilhas Molucas, o cravo era usado como conservante e aromatizante. No século XVI, sua posse significava riqueza e prestígio.</p>
+        </section>
+
+        <section>
+            <h2>🫖 Chá – Mais que uma Bebida</h2>
+            <img src="assets/img/cha-historia.jpg" alt="Chá" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+            <p>Descoberto na China por volta de 2737 a.C., o chá se espalhou pelo mundo e se tornou símbolo cultural em vários países. No século XVIII, o comércio de chá foi central nas relações entre a China, a Inglaterra e as colônias americanas.</p>
+        </section>
+
+        <p>Essas especiarias mostram que o sabor na cozinha é também parte da história humana, conectando continentes e influenciando o destino de nações.</p>
+
+        <a href="artigo.html?id=rotas-das-especiarias" class="btn">Conheça as Rotas das Especiarias</a>
+    `
+}
+
 ];
