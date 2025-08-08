@@ -153,6 +153,12 @@
   <priority>0.80</priority>
 </url>
 
+<url>
+  <loc>https://rivaldosantos1250.github.io/post.html?id=historia-especiarias</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
 
 <url>
   <loc>https://rivaldosantos1250.github.io/privacy-policy.html</loc>
