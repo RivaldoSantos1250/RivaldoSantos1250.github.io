@@ -81,3 +81,32 @@ ESTILOS PARA A PÁGINA DE ENVIO DE RECEITA
     font-size: 1.1rem;
     font-weight: 600;
 }
+
+/* ESTILOS PARA A MENSAGEM DE SUCESSO */
+#form-success-message {
+    text-align: center;
+    padding: 40px 20px;
+    border: 2px dashed var(--primary-color);
+    border-radius: var(--border-radius);
+}
+
+#form-success-message .icon-container {
+    margin-bottom: 20px;
+}
+
+#form-success-message .icon-container i {
+    font-size: 4rem;
+    color: #28a745; /* Verde sucesso */
+}
+
+#form-success-message h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#form-success-message p {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
