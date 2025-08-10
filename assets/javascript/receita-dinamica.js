@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupEventListeners();
         updateMetadata(receita);
         loadDisqus(receita); // Carrega os comentários
+        checkExistingRating(receita.id);
     }, 500);
 
     function renderRecipe(data, allRecipes) {
@@ -191,45 +192,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupEventListeners() {
-        document.querySelectorAll('.ingredient-item').forEach(item => {
-            const checkbox = item.querySelector('input[type="checkbox"]');
-            const toggleCheck = () => {
-                checkbox.checked = !checkbox.checked;
-                item.setAttribute('aria-checked', checkbox.checked);
-            };
-            item.addEventListener('click', toggleCheck);
-            item.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleCheck();
-                }
-            });
+    // Lógica dos ingredientes (permanece a mesma)
+    document.querySelectorAll('.ingredient-item').forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        const toggleCheck = () => {
+            checkbox.checked = !checkbox.checked;
+            item.setAttribute('aria-checked', checkbox.checked);
+        };
+        item.addEventListener('click', toggleCheck);
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleCheck();
+            }
+        });
+    });
+
+    // --- NOVA LÓGICA DE AVALIAÇÃO ---
+    const ratingContainer = document.querySelector('.rating-stars');
+    if (!ratingContainer) return;
+
+    const stars = ratingContainer.querySelectorAll('i');
+    const recipeId = new URLSearchParams(window.location.search).get('id');
+    const ratingKey = `rating_${recipeId}`;
+
+    const setRating = (ratingValue) => {
+        stars.forEach(star => {
+            const isSelected = star.dataset.value <= ratingValue;
+            star.classList.toggle('fas', isSelected); // Preenchida
+            star.classList.toggle('far', !isSelected); // Vazia
+        });
+    };
+
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            if (!ratingContainer.hasAttribute('data-rating-set')) {
+                setRating(star.dataset.value);
+            }
         });
 
-        const stars = document.querySelectorAll('.rating-stars i');
-        stars.forEach(star => {
-            star.addEventListener('mouseover', (e) => {
-                const currentValue = e.target.dataset.value;
-                stars.forEach(s => {
-                    s.classList.toggle('fas', s.dataset.value <= currentValue);
-                    s.classList.toggle('far', s.dataset.value > currentValue);
-                });
-            });
-            star.addEventListener('mouseout', () => {
-                 stars.forEach(s => {
-                    if(!s.parentElement.hasAttribute('data-rating-set')) {
-                        s.classList.add('far');
-                        s.classList.remove('fas');
-                    }
-                });
-            });
-            star.addEventListener('click', (e) => {
-                const rating = e.target.dataset.value;
-                e.target.parentElement.setAttribute('data-rating-set', 'true');
-                alert(`Obrigado por avaliar com ${rating} estrelas!`);
-            });
+        star.addEventListener('click', () => {
+            const rating = star.dataset.value;
+            localStorage.setItem(ratingKey, rating);
+            ratingContainer.setAttribute('data-rating-set', 'true');
+            setRating(rating);
         });
-    }
+    });
+
+    ratingContainer.addEventListener('mouseout', () => {
+        if (!ratingContainer.hasAttribute('data-rating-set')) {
+            setRating(0); // Limpa as estrelas se nenhuma foi clicada
+        } else {
+            const savedRating = localStorage.getItem(ratingKey) || 0;
+            setRating(savedRating); // Restaura a avaliação guardada
+        }
+    });
+}
     
     function updateMetadata(receita) {
         document.title = `${receita.titulo} | Cozinha da Tia`;
@@ -269,3 +287,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(script);
     }
 });
+
+function checkExistingRating(recipeId) {
+    const ratingKey = `rating_${recipeId}`;
+    const savedRating = localStorage.getItem(ratingKey);
+
+    if (savedRating) {
+        const ratingContainer = document.querySelector('.rating-stars');
+        const stars = ratingContainer.querySelectorAll('i');
+        
+        ratingContainer.setAttribute('data-rating-set', 'true');
+        stars.forEach(star => {
+            const isSelected = star.dataset.value <= savedRating;
+            star.classList.toggle('fas', isSelected);
+            star.classList.toggle('far', !isSelected);
+        });
+    }
+}
