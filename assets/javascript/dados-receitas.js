@@ -383,6 +383,54 @@ const receitas = [
         dicasDoChef: ["Cozinhar o camarão por pouco tempo é o segredo para que ele fique macio e suculento.", "Use um bom azeite de dendê para um sabor autêntico.", "Sirva com arroz branco e uma farofa de dendê para uma experiência completa."],
         variacoes: ["Adicione um pouco de pimenta de cheiro picada ao refogado para um aroma incrível.", "Substitua o camarão por frango desfiado ou carne seca para um 'Bobó Falso' delicioso."]
 	},
+
+	{
+	id: "torta-frango-liquidificador",
+	titulo: "Torta de Frango de Liquidificador",
+	imagem: "/assets/img/torta-frango.jpg",
+	autor: { "nome": "Estação Sabor", avatar: "/assets/img/estacaosabor.jpg" },
+	historia: "A torta de frango de liquidificador é prática, fofinha e muito saborosa. Ideal para lanches rápidos, reuniões de família ou até para vender, ela combina uma massa leve com um recheio cremoso e temperado.",
+	tempoPreparo: "50 min",
+	porcoes: "8 porções",
+	categoria: "Lanche",
+	dificuldade: "Fácil",
+	ingredientes: [
+		"3 ovos",
+		"2 xícaras de leite",
+		"1 xícara de óleo",
+		"2 xícaras de farinha de trigo",
+		"1 colher de sopa de fermento químico em pó",
+		"1 colher de chá de sal",
+		"1 peito de frango cozido e desfiado",
+		"1 cebola picada",
+		"2 dentes de alho picados",
+		"1 tomate picado sem sementes",
+		"1/2 xícara de milho verde",
+		"1/2 xícara de ervilha",
+		"Cheiro-verde a gosto",
+		"Sal e pimenta-do-reino a gosto"
+	],
+     modoPreparo: [
+		"No liquidificador, bata os ovos, o leite, o óleo, a farinha e o sal até formar uma massa homogênea.",
+		"Misture o fermento delicadamente com uma colher e reserve.",
+		"Em uma panela, refogue a cebola e o alho até dourar, acrescente o frango, o tomate, o milho, a ervilha e o cheiro-verde, temperando a gosto.",
+		"Unte e enfarinhe uma forma média, despeje metade da massa, distribua o recheio de frango e cubra com o restante da massa.",
+		"Leve ao forno preaquecido a 180°C por cerca de 35 a 40 minutos, ou até dourar."
+	],
+	ferramentas: ["Liquidificador", "Panela", "Colher de pau", "Forma média"],
+	infoNutricional: { calorias: "320 kcal", carboidratos: "35g", proteinas: "14g", gorduras: "14g" },
+	observacoes: ["Você pode congelar a torta já assada e reaquecer no forno antes de servir."],
+	dicasDoChef: [
+		"Adicione queijo ralado na massa para mais sabor.",
+		"Use temperos como páprica ou curry para variar o recheio.",
+		"Sirva com salada verde para um lanche mais equilibrado."
+	],
+	variacoes: [
+		"Substitua o frango por atum e acrescente azeitonas.",
+		"Use legumes refogados para uma versão vegetariana."
+	]
+}
+	
 ];
 
 // Disponibiliza a variável globalmente
