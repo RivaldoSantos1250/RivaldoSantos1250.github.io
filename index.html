@@ -54,14 +54,13 @@
             </section>
 
             <section class="ingredient-search-section container fade-in-section">
-                <h2>O que tem na sua geladeira?</h2>
-                <p>Nos diga um ingrediente e nós te damos a receita perfeita!</p>
-                <form class="ingredient-search-form" action="receitas.html" method="GET">
-                    <input type="text" name="q" placeholder="Ex: Chocolate, frango, batata..." aria-label="Buscar por ingrediente" required>
-                    <button type="submit" class="btn"><i class="fas fa-search" aria-hidden="true"></i> Encontrar Receita</button>
-                </form>
-            </section>
-
+    <h2>O que tem na sua geladeira?</h2>
+    <p>Nos diga um ingrediente e nós te damos a receita perfeita!</p>
+    <div class="ingredient-search-form">
+        <input type="text" id="home-search-input" placeholder="Ex: Chocolate, frango, batata..." aria-label="Buscar por ingrediente">
+        <button id="home-search-btn" class="btn"><i class="fas fa-search" aria-hidden="true"></i> Encontrar Receita</button>
+    </div>
+</section>
             <section class="featured-recipes container fade-in-section">
                 <h2>Populares da Semana</h2>
                 <div id="featured-recipe-list" class="recipe-grid">

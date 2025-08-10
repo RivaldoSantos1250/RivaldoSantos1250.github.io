@@ -384,3 +384,30 @@ if (searchOverlay) {
         displaySearchResultsPreview(results, resultsContainer);
     });
 }
+
+// --- LÓGICA PARA A BUSCA NA PÁGINA INICIAL ---
+const homeSearchInput = document.getElementById('home-search-input');
+const homeSearchBtn = document.getElementById('home-search-btn');
+
+if (homeSearchInput && homeSearchBtn && searchOverlay) {
+    // Abre a busca quando o botão é clicado
+    homeSearchBtn.addEventListener('click', () => {
+        searchOverlay.classList.add('active');
+        searchOverlay.setAttribute('aria-hidden', 'false');
+        // Coloca o texto do input da home no input da busca
+        const overlayInput = searchOverlay.querySelector('input[type="search"]');
+        if (overlayInput) {
+            overlayInput.value = homeSearchInput.value;
+            // Dispara um evento para que a pré-visualização de resultados funcione
+            overlayInput.dispatchEvent(new Event('input'));
+            overlayInput.focus();
+        }
+    });
+
+    // Permite buscar pressionando Enter no campo
+    homeSearchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            homeSearchBtn.click(); // Simula um clique no botão
+        }
+    });
+}

@@ -137,8 +137,9 @@ h2 {
 /* ANIMAÇÃO DE FADE-IN */
 .fade-in-section {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(40px); /* Aumentamos a distância inicial para o efeito ser mais notável */
+    transition: opacity 0.9s cubic-bezier(0.17, 0.55, 0.55, 1), 
+                transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
 }
 .fade-in-section.visible {
     opacity: 1;
