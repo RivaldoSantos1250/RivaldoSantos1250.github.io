@@ -27,6 +27,7 @@ function initRecipeOfTheDay() {
         titleEl.textContent = recipeOfTheDay.titulo;
         descriptionEl.textContent = descriptionSummary.substring(0, 150) + '...';
         linkEl.href = `receita.html?id=${recipeOfTheDay.id}`;
+        linkEl.setAttribute('aria-label', `Ver receita completa de ${recipeOfTheDay.titulo}`);
     }
 }
 

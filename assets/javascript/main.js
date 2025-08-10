@@ -272,3 +272,11 @@ if (searchOverlay) {
     });
 }
 
+// --- ATUALIZA O ANO DO COPYRIGHT AUTOMATICAMENTE ---
+document.addEventListener('DOMContentLoaded', () => {
+    const copyrightElement = document.getElementById('copyright');
+    if (copyrightElement) {
+        copyrightElement.innerHTML = `&copy; ${new Date().getFullYear()} Estação Sabor. Todos os direitos reservados.`;
+    }
+});
+
