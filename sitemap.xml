@@ -90,6 +90,13 @@
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
+
+<url>
+  <loc>https://rivaldosantos1250.github.io/receita.html?id=empadao-liquidificador</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
+</url>
+
 <url>
   <loc>https://rivaldosantos1250.github.io/receita.html?id=pao-de-queijo-mineiro</loc>
   <changefreq>monthly</changefreq>
