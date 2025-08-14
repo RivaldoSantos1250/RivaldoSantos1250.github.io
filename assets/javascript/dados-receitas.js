@@ -429,6 +429,56 @@ const receitas = [
 		"Substitua o frango por atum e acrescente azeitonas.",
 		"Use legumes refogados para uma versão vegetariana."
 	]
+},
+
+{
+    id: "empadao-liquidificador",
+    titulo: "Empadão de Liquidificador",
+    imagem: "/assets/img/empadao-liquidificador.jpg",
+    autor: { nome: "Estação Sabor", avatar: "/assets/img/estacaosabor.jpg" },
+    historia: "A Empadão de Liquidificador é um clássico que une a praticidade do liquidificador com o sabor de um recheio de carne cremoso. É perfeito para um almoço em família, um lanche da tarde ou até mesmo para uma festa. A massa fica macia e o recheio suculento, uma combinação irresistível!",
+    tempoPreparo: "60 min",
+    porcoes: "10 porções",
+    categoria: "Salgado",
+    dificuldade: "Fácil",
+    ingredientes: [
+        "3 ovos",
+        "1 xícara de leite",
+        "1/2 xícara de óleo",
+        "2 xícaras de farinha de trigo",
+        "1 colher de sopa de queijo parmesão ralado",
+        "1 colher de sopa de fermento em pó",
+        "Sal a gosto",
+        "500g de carne moída",
+        "1 cebola picada",
+        "2 dentes de alho amassados",
+        "1 tomate picado",
+        "1/2 xícara de azeitonas picadas",
+        "1/2 xícara de milho",
+        "1/2 xícara de molho de tomate",
+        "Cheiro-verde a gosto",
+        "Sal e pimenta-do-reino a gosto",
+        "1/2 copo de requeijão cremoso",
+        "1 gema para pincelar"
+    ],
+    modoPreparo: [
+        "Em uma panela, refogue a cebola e o alho. Adicione a carne moída e cozinhe até ficar soltinha e dourada. Junte o tomate, as azeitonas, o milho, o molho de tomate, sal e pimenta. Cozinhe por mais alguns minutos. Desligue o fogo, misture o cheiro-verde e o requeijão cremoso.",
+        "No liquidificador, bata os ovos, o leite, o óleo, o queijo parmesão e o sal. Adicione a farinha de trigo aos poucos. Por último, adicione o fermento e bata rapidamente, apenas para misturar.",
+        "Unte e enfarinhe uma forma média. Despeje metade da massa na forma, espalhe o recheio de carne e cubra com o restante da massa. Pincele a gema por toda a superfície.",
+        "Leve ao forno pré-aquecido a 180°C por cerca de 40 minutos, ou até que a empada esteja dourada e firme."
+    ],
+    ferramentas: ["Liquidificador", "Panela", "Colher de pau", "Forma média", "Pincel culinário"],
+    infoNutricional: { calorias: "350 kcal", carboidratos: "28g", proteinas: "18g", gorduras: "18g" },
+    observacoes: ["Você pode adicionar queijo ralado por cima da massa antes de levar ao forno para uma camada extra de sabor."],
+    dicasDoChef: [
+        "Use carne moída de sua preferência. A patinho ou alcatra moída são ótimas opções.",
+        "Se preferir, substitua o requeijão por cream cheese para uma textura diferente.",
+        "Sirva a empada com uma salada verde para uma refeição completa."
+    ],
+    variacoes: [
+        "Troque o recheio de carne por calabresa moída ou presunto e queijo picados.",
+        "Para uma versão vegetariana, use um recheio de palmito com azeitonas ou legumes picados refogados."
+    ]
 }
 	
 ];
