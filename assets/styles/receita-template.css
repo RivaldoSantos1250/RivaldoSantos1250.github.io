@@ -14,32 +14,33 @@ ESTILOS MODERNOS PARA A PÁGINA DE RECEITA
 
 /* Estrutura Principal */
 .recipe-layout {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
     margin-top: 40px;
 }
 
+.recipe-header-group { order: 1; }
+.recipe-sidebar-column { order: 2; }
+.recipe-body-group { order: 3; }
+
 /* Layout para telas maiores (desktop) */
 @media (min-width: 992px) {
     .recipe-layout {
+        display: grid;
+        flex-direction: unset;
         grid-template-columns: 2fr 1fr; /* Coluna principal maior, coluna lateral menor */
+        grid-template-areas: 
+            "header sidebar"
+            "body   sidebar";
         gap: 50px;
     }
-}
 
-/* Coluna Principal (imagem, instruções, etc) */
-.recipe-main-column {
-    order: 1;
-}
-
-/* Coluna Lateral (ingredientes, ferramentas) */
-.recipe-sidebar-column {
-    order: 2;
-}
-
-@media (min-width: 992px) {
-    .recipe-sidebar-column {
+    .recipe-header-group { grid-area: header; order: unset; }
+    .recipe-body-group { grid-area: body; order: unset; }
+    .recipe-sidebar-column { 
+        grid-area: sidebar;
+        order: unset;
         position: sticky;
         top: 100px; /* Distância do header */
         height: calc(100vh - 120px);

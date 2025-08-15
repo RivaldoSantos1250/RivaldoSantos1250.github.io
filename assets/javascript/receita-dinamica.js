@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 
     function renderRecipe(data, allRecipes) {
-        const dicasHtml = data.dicasDaTia && data.dicasDaTia.length > 0 ? `
+        const dicasHtml = data.dicasDoChef && data.dicasDoChef.length > 0 ? `
             <div class="extra-section">
-                <h2 class="section-title"><i class="fas fa-lightbulb"></i>Dicas da Tia</h2>
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i>Dicas do Chef</h2>
                 <ul class="extra-list">
-                    ${data.dicasDaTia.map(dica => `<li>${dica}</li>`).join('')}
+                    ${data.dicasDoChef.map(dica => `<li>${dica}</li>`).join('')}
                 </ul>
             </div>
         ` : '';
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const autorHtml = `
             <div class="author-bio-box sidebar-section">
-                 <h2 class="section-title"><i class="fas fa-user-edit"></i>Sobre a Autora</h2>
+                 <h2 class="section-title"><i class="fas fa-user-edit"></i>Sobre o Autor</h2>
                  <div class="author-content">
                     <img src="${data.autor.avatar}" alt="Foto de ${data.autor.nome}" class="author-avatar-bio">
                     <h3>${data.autor.nome}</h3>
@@ -81,35 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-
         const recipeHTML = `
             <div class="recipe-layout">
-                <div class="recipe-main-column">
+                <div class="recipe-header-group">
                     <h1 class="recipe-title">${data.titulo}</h1>
-                    
                     <div class="recipe-meta-bar">
                         ${createMetaItem('fa-regular fa-clock', 'Tempo', data.tempoPreparo)}
                         ${createMetaItem('fa-solid fa-utensils', 'Rende', data.porcoes)}
                         ${createMetaItem('fa-solid fa-bookmark', 'Categoria', data.categoria)}
                         ${createAuthorItem(data.autor)}
                     </div>
-
                     <img src="${data.imagem}" alt="Foto de ${data.titulo}" class="recipe-hero-image">
-
                     <div class="author-note-box">
                         <p>${data.historia}</p>
                     </div>
-
-                    <h2 class="section-title"><i class="fas fa-clipboard-list"></i>Modo de Preparo</h2>
-                    <ol class="instructions-list">
-                        ${data.modoPreparo.map(step => `<li>${step}</li>`).join('')}
-                    </ol>
-
-                    ${dicasHtml}
-                    ${variacoesHtml}
-                    ${relatedHtml}
-                    ${commentsHtml}
-
                 </div>
 
                 <div class="recipe-sidebar-column">
@@ -119,16 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${data.ingredientes.map((item, index) => createIngredientItem(item, index)).join('')}
                         </ul>
                     </div>
-
                     ${autorHtml}
-
                     <div class="sidebar-section">
                         <h2 class="section-title"><i class="fas fa-tools"></i>Ferramentas</h2>
                         <ul class="tools-list">
                            ${data.ferramentas.map(tool => `<li><i class="fas fa-check"></i>${tool}</li>`).join('')}
                         </ul>
                     </div>
-                    
                     <div class="sidebar-section">
                         <h2 class="section-title"><i class="fas fa-chart-pie"></i>Info Nutricional</h2>
                          <ul class="nutrition-list">
@@ -138,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li class="nutrition-list-item"><strong>Gorduras:</strong> <span>${data.infoNutricional.gorduras}</span></li>
                         </ul>
                     </div>
-
                     <div class="sidebar-section">
                         <h2 class="section-title"><i class="fas fa-star"></i>Avalie</h2>
                         <div class="rating-stars" aria-label="Avaliação por estrelas">
@@ -155,6 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
                             <a href="#" class="share-btn" aria-label="Compartilhar no Pinterest"><i class="fab fa-pinterest"></i></a>
                          </div>
                     </div>
+                </div>
+
+                <div class="recipe-body-group">
+                    <h2 class="section-title"><i class="fas fa-clipboard-list"></i>Modo de Preparo</h2>
+                    <ol class="instructions-list">
+                        ${data.modoPreparo.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                    ${dicasHtml}
+                    ${variacoesHtml}
+                    ${relatedHtml}
+                    ${commentsHtml}
                 </div>
             </div>
         `;
